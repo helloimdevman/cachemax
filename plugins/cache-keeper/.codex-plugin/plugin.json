@@ -1,0 +1,26 @@
+{
+  "name": "cache-keeper",
+  "version": "0.2.0",
+  "description": "Keep an owned session active with bounded, hidden maintenance turns.",
+  "author": {
+    "name": "Cache Keeper contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "cache",
+    "session",
+    "productivity"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Cache Keeper",
+    "shortDescription": "Quiet session keepalive with strict limits",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive"
+    ],
+    "defaultPrompt": [
+      "Keep this session ready for 30 minutes; let me choose the TTL."
+    ]
+  }
+}

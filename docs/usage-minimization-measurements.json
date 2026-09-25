@@ -1,0 +1,1350 @@
+{
+  "generatedAt": "2026-09-25T06:40:07.756Z",
+  "plan": {
+    "at": "2026-09-25T06:08:32.502Z",
+    "objective": "Reduce measured keeper usage without changing host model, conversation, tool guard, or cadence.",
+    "initialProbeLimit": 18,
+    "phase1": {
+      "host": "claude",
+      "requests": 8,
+      "variable": "CLI process lifetime",
+      "sequence": "seed + 3 fixed maintenance prompts per arm; 2s after each response",
+      "fixtureLines": 1500
+    },
+    "hypotheses": [
+      "Persistent Claude process reduces repeated cache writes",
+      "Lower Grok reasoning reduces generated tokens",
+      "Shorter fixed prompt reduces appended input without losing dot-only output"
+    ],
+    "versions": {
+      "claude": "2.1.282 (Claude Code)",
+      "codex": "codex-cli 0.156.1",
+      "grok": "grok 1.0.41 (4220f3b224a6) [stable]"
+    },
+    "noSubagents": true,
+    "noAuthFiles": true,
+    "phase2": {
+      "maxPrompts": 21,
+      "perHostPrompts": 7,
+      "intervalMs": 180000,
+      "sequence": [
+        "seed",
+        "warmup",
+        "previous",
+        "short",
+        "short",
+        "previous",
+        "recall"
+      ],
+      "startLabel": "short-20260925",
+      "candidatePrompt": "Only .",
+      "changesExcluded": [
+        "persistent Claude process",
+        "per-keeper reasoning effort changes"
+      ],
+      "totalPlannedPrompts": 39
+    },
+    "interruptedConfirmation": {
+      "completedConversationPrompts": 9,
+      "localPreflightRejections": 3,
+      "reason": "Global configuration mtime changed before dispatch; no content hash was recorded at that time.",
+      "reports": [
+        "maintenance-claude-short-20260925.json",
+        "maintenance-codex-short-20260925.json",
+        "maintenance-grok-short-20260925.json"
+      ]
+    },
+    "continuedConfirmation": {
+      "maxConversationPrompts": 12,
+      "perHost": 4,
+      "intervalMs": 180000,
+      "sequence": [
+        "short",
+        "previous",
+        "short",
+        "recall"
+      ],
+      "reuse": "The same three closed synthetic sessions; previous failed rows retained.",
+      "environmentCheck": "Content SHA-256 instead of mtime",
+      "totalConversationPromptCap": 39,
+      "automaticRetries": false
+    }
+  },
+  "sourceSHA256": {
+    "plugins/cache-keeper/scripts/core.mjs": "c8bfc2d4a276231060221ce67b156d459c61ac25994ab764c706263a5f1adc18",
+    "plugins/cache-keeper/scripts/adapters.mjs": "ade420d8e992f4789620dea7e4f247dd83f0d5c7f1450cad45c00c769dc84ff5",
+    "tests/maintenance-usage.mjs": "0dfded3c7c6da9b4f279bfb6c433996b6aec54649192aabcc28571b5553be042",
+    "tests/validation-support.mjs": "1a7568c167f2e6a131e3f38de6f31172852b0fbf90e5dd183e0dc462fbc49431"
+  },
+  "diagnostics": {
+    "claudeProcess": {
+      "startedAt": "2026-09-25T06:09:19.929Z",
+      "model": "claude-opus-5-5[1m]",
+      "maxPrompts": 8,
+      "arms": [
+        {
+          "persistent": false,
+          "turns": [
+            {
+              "index": 0,
+              "source": "seed",
+              "durationMs": 3505.8784579999997,
+              "usage": {
+                "inputTokens": 2,
+                "cacheReadTokens": 10459,
+                "cacheWriteTokens": 42842,
+                "outputTokens": 71,
+                "reasoningTokens": 67,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.3462558,
+                "cacheWrite1hTokens": 42842,
+                "cacheWrite5mTokens": 0
+              }
+            },
+            {
+              "index": 1,
+              "source": "keeper",
+              "durationMs": 3119.2357920000004,
+              "usage": {
+                "inputTokens": 2,
+                "cacheReadTokens": 53301,
+                "cacheWriteTokens": 2008,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.373048,
+                "cacheWrite1hTokens": 2008,
+                "cacheWrite5mTokens": 0
+              }
+            },
+            {
+              "index": 2,
+              "source": "keeper",
+              "durationMs": 3154.6643750000003,
+              "usage": {
+                "inputTokens": 2,
+                "cacheReadTokens": 55309,
+                "cacheWriteTokens": 39,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.3844898,
+                "cacheWrite1hTokens": 39,
+                "cacheWrite5mTokens": 0
+              }
+            },
+            {
+              "index": 3,
+              "source": "keeper",
+              "durationMs": 3001.311375000001,
+              "usage": {
+                "inputTokens": 2,
+                "cacheReadTokens": 55348,
+                "cacheWriteTokens": 39,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.3959394,
+                "cacheWrite1hTokens": 39,
+                "cacheWrite5mTokens": 0
+              }
+            }
+          ]
+        },
+        {
+          "persistent": true,
+          "turns": [
+            {
+              "index": 0,
+              "source": "seed",
+              "durationMs": 3681.0793330000015,
+              "usage": {
+                "inputTokens": 2,
+                "cacheReadTokens": 10459,
+                "cacheWriteTokens": 42846,
+                "outputTokens": 59,
+                "reasoningTokens": 55,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.3460478,
+                "cacheWrite1hTokens": 42846,
+                "cacheWrite5mTokens": 0
+              }
+            },
+            {
+              "index": 1,
+              "source": "keeper",
+              "durationMs": 1673.5464169999977,
+              "usage": {
+                "inputTokens": 2,
+                "cacheReadTokens": 53305,
+                "cacheWriteTokens": 3861,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.38766480000000003,
+                "cacheWrite1hTokens": 3861,
+                "cacheWrite5mTokens": 0
+              }
+            },
+            {
+              "index": 2,
+              "source": "keeper",
+              "durationMs": 1741.246458000005,
+              "usage": {
+                "inputTokens": 2,
+                "cacheReadTokens": 57166,
+                "cacheWriteTokens": 39,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.39947800000000006,
+                "cacheWrite1hTokens": 39,
+                "cacheWrite5mTokens": 0
+              }
+            },
+            {
+              "index": 3,
+              "source": "keeper",
+              "durationMs": 1853.6112909999938,
+              "usage": {
+                "inputTokens": 2,
+                "cacheReadTokens": 57205,
+                "cacheWriteTokens": 39,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.4112990000000001,
+                "cacheWrite1hTokens": 39,
+                "cacheWrite5mTokens": 0
+              }
+            }
+          ]
+        }
+      ],
+      "submitted": 8,
+      "finishedAt": "2026-09-25T06:09:57.131Z"
+    },
+    "codexPrompt": {
+      "startedAt": "2026-09-25T06:12:04.769Z",
+      "host": "codex",
+      "maxPrompts": 5,
+      "turns": [
+        {
+          "index": 0,
+          "source": "seed",
+          "usage": {
+            "inputTokens": 36583,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 21,
+            "reasoningTokens": 14,
+            "costUSD": null
+          }
+        },
+        {
+          "index": 1,
+          "source": "keeper",
+          "prompt": "Only \".\". No tools.",
+          "durationMs": 2693.3257090000006,
+          "usage": {
+            "inputTokens": 36616,
+            "cacheReadTokens": 36352,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "index": 2,
+          "source": "keeper",
+          "prompt": "Only .",
+          "durationMs": 3664.1659160000017,
+          "usage": {
+            "inputTokens": 36629,
+            "cacheReadTokens": 36480,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "index": 3,
+          "source": "keeper",
+          "prompt": "Only \".\". No tools.",
+          "durationMs": 4335.2772920000025,
+          "usage": {
+            "inputTokens": 36646,
+            "cacheReadTokens": 36480,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "index": 4,
+          "source": "keeper",
+          "prompt": "Only .",
+          "durationMs": 2672.8148340000007,
+          "usage": {
+            "inputTokens": 36659,
+            "cacheReadTokens": 36480,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        }
+      ],
+      "finishedAt": "2026-09-25T06:12:35.913Z"
+    },
+    "grokEffort": {
+      "startedAt": "2026-09-25T06:12:04.769Z",
+      "host": "grok",
+      "maxPrompts": 5,
+      "turns": [
+        {
+          "index": 0,
+          "source": "seed",
+          "effort": "high",
+          "durationMs": 8529.49525,
+          "usage": {
+            "inputTokens": 55376,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0,
+            "outputTokens": 75,
+            "reasoningTokens": null,
+            "costUSD": 0.03780868
+          }
+        },
+        {
+          "index": 1,
+          "source": "keeper",
+          "effort": "high",
+          "durationMs": 5108.739291999998,
+          "usage": {
+            "inputTokens": 182,
+            "cacheReadTokens": 55296,
+            "cacheWriteTokens": 0,
+            "outputTokens": 22,
+            "reasoningTokens": null,
+            "costUSD": 0.00956896
+          }
+        },
+        {
+          "index": 2,
+          "source": "keeper",
+          "effort": "low",
+          "durationMs": 6389.937332999998,
+          "usage": {
+            "inputTokens": 55527,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0,
+            "outputTokens": 19,
+            "reasoningTokens": null,
+            "costUSD": 0.03779712
+          }
+        },
+        {
+          "index": 3,
+          "source": "keeper",
+          "effort": "low",
+          "durationMs": 6037.8243330000005,
+          "usage": {
+            "inputTokens": 149,
+            "cacheReadTokens": 55424,
+            "cacheWriteTokens": 0,
+            "outputTokens": 15,
+            "reasoningTokens": null,
+            "costUSD": 0.009554
+          }
+        },
+        {
+          "index": 4,
+          "source": "keeper",
+          "effort": "high",
+          "durationMs": 7944.6421249999985,
+          "usage": {
+            "inputTokens": 55615,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0,
+            "outputTokens": 31,
+            "reasoningTokens": null,
+            "costUSD": 0.03788144
+          }
+        }
+      ],
+      "finishedAt": "2026-09-25T06:12:46.788Z"
+    }
+  },
+  "interrupted": [
+    {
+      "host": "claude",
+      "model": "claude-opus-5-5[1m]",
+      "startedAt": "2026-09-25T06:16:27.458Z",
+      "environment": {
+        "runtimeSHA256": "d9803e8e4f6e498c270118cf8539056037a1021dfd7ee1aa96814b66c9ebad68",
+        "version": "2.1.282 (Claude Code)",
+        "node": "v26.7.0"
+      },
+      "intervalMs": 180000,
+      "maxPrompts": 7,
+      "status": "failed",
+      "promptSequence": [
+        "previous",
+        "short",
+        "short",
+        "previous"
+      ],
+      "turns": [
+        {
+          "stage": "seed",
+          "usage": {
+            "inputTokens": 2,
+            "cacheReadTokens": 10459,
+            "cacheWriteTokens": 42841,
+            "outputTokens": 82,
+            "reasoningTokens": 78,
+            "costUSD": null,
+            "reportedSessionCostUSD": 0.3464678,
+            "cacheWrite1hTokens": 42841,
+            "cacheWrite5mTokens": 0
+          },
+          "durationMs": 5141.574667
+        },
+        {
+          "stage": "warmup",
+          "usage": {
+            "inputTokens": 2,
+            "cacheReadTokens": 53300,
+            "cacheWriteTokens": 2019,
+            "outputTokens": 3,
+            "reasoningTokens": 0,
+            "costUSD": null,
+            "reportedSessionCostUSD": 0.3733478,
+            "cacheWrite1hTokens": 2019,
+            "cacheWrite5mTokens": 0
+          },
+          "durationMs": 4200.779834
+        },
+        {
+          "stage": "keeper",
+          "variant": "previous",
+          "usage": {
+            "inputTokens": 2,
+            "cacheReadTokens": 55319,
+            "cacheWriteTokens": 644,
+            "outputTokens": 3,
+            "reasoningTokens": 0,
+            "costUSD": null,
+            "reportedSessionCostUSD": 0.3896316,
+            "cacheWrite1hTokens": 644,
+            "cacheWrite5mTokens": 0
+          },
+          "durationMs": 4441.141792000009
+        }
+      ],
+      "error": "Expected values to be strictly equal:\n\n1 !== 4\n",
+      "requests": 4,
+      "requestStatuses": [
+        {
+          "source": "user",
+          "status": "completed"
+        },
+        {
+          "source": "user",
+          "status": "completed"
+        },
+        {
+          "source": "keeper",
+          "status": "completed"
+        },
+        {
+          "source": "keeper",
+          "status": "failed"
+        }
+      ],
+      "finishedAt": "2026-09-25T06:22:41.335Z"
+    },
+    {
+      "host": "codex",
+      "model": "gpt-6-astra",
+      "startedAt": "2026-09-25T06:16:27.488Z",
+      "environment": {
+        "runtimeSHA256": "d9803e8e4f6e498c270118cf8539056037a1021dfd7ee1aa96814b66c9ebad68",
+        "version": "codex-cli 0.156.1",
+        "node": "v26.7.0"
+      },
+      "intervalMs": 180000,
+      "maxPrompts": 7,
+      "status": "failed",
+      "promptSequence": [
+        "previous",
+        "short",
+        "short",
+        "previous"
+      ],
+      "turns": [
+        {
+          "stage": "seed",
+          "usage": {
+            "inputTokens": 36577,
+            "cacheReadTokens": 5632,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          },
+          "durationMs": 6518.5774169999995
+        },
+        {
+          "stage": "warmup",
+          "usage": {
+            "inputTokens": 36594,
+            "cacheReadTokens": 36352,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          },
+          "durationMs": 4160.256791
+        },
+        {
+          "stage": "keeper",
+          "variant": "previous",
+          "usage": {
+            "inputTokens": 36611,
+            "cacheReadTokens": 36352,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          },
+          "durationMs": 3323.7961249999935
+        }
+      ],
+      "error": "Expected values to be strictly equal:\n\n1 !== 4\n",
+      "requests": 4,
+      "requestStatuses": [
+        {
+          "source": "user",
+          "status": "completed"
+        },
+        {
+          "source": "user",
+          "status": "completed"
+        },
+        {
+          "source": "keeper",
+          "status": "completed"
+        },
+        {
+          "source": "keeper",
+          "status": "failed"
+        }
+      ],
+      "finishedAt": "2026-09-25T06:22:42.764Z"
+    },
+    {
+      "host": "grok",
+      "model": "grok-4.7",
+      "startedAt": "2026-09-25T06:16:27.484Z",
+      "environment": {
+        "runtimeSHA256": "d9803e8e4f6e498c270118cf8539056037a1021dfd7ee1aa96814b66c9ebad68",
+        "version": "grok 1.0.41 (4220f3b224a6) [stable]",
+        "node": "v26.7.0"
+      },
+      "intervalMs": 180000,
+      "maxPrompts": 7,
+      "status": "failed",
+      "promptSequence": [
+        "previous",
+        "short",
+        "short",
+        "previous"
+      ],
+      "turns": [
+        {
+          "stage": "seed",
+          "usage": {
+            "inputTokens": 55368,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0,
+            "outputTokens": 64,
+            "reasoningTokens": null,
+            "costUSD": 0.0377808
+          },
+          "durationMs": 9682.894167
+        },
+        {
+          "stage": "warmup",
+          "usage": {
+            "inputTokens": 163,
+            "cacheReadTokens": 55296,
+            "cacheWriteTokens": 0,
+            "outputTokens": 22,
+            "reasoningTokens": null,
+            "costUSD": 0.00955604
+          },
+          "durationMs": 5891.6134170000005
+        },
+        {
+          "stage": "keeper",
+          "variant": "previous",
+          "usage": {
+            "inputTokens": 84,
+            "cacheReadTokens": 55424,
+            "cacheWriteTokens": 0,
+            "outputTokens": 32,
+            "reasoningTokens": null,
+            "costUSD": 0.00954448
+          },
+          "durationMs": 6344.926000000007
+        }
+      ],
+      "error": "Expected values to be strictly equal:\n\n1 !== 4\n",
+      "requests": 4,
+      "requestStatuses": [
+        {
+          "source": "user",
+          "status": "completed"
+        },
+        {
+          "source": "user",
+          "status": "completed"
+        },
+        {
+          "source": "keeper",
+          "status": "completed"
+        },
+        {
+          "source": "keeper",
+          "status": "failed"
+        }
+      ],
+      "finishedAt": "2026-09-25T06:22:49.515Z"
+    }
+  ],
+  "confirmation": [
+    {
+      "host": "claude",
+      "model": "claude-opus-5-5[1m]",
+      "startedAt": "2026-09-25T06:28:36.782Z",
+      "environment": {
+        "runtimeSHA256": "d9803e8e4f6e498c270118cf8539056037a1021dfd7ee1aa96814b66c9ebad68",
+        "version": "2.1.282 (Claude Code)",
+        "node": "v26.7.0"
+      },
+      "intervalMs": 180000,
+      "maxPrompts": 4,
+      "continuedSyntheticSession": true,
+      "status": "passed",
+      "promptSequence": [
+        "short",
+        "previous",
+        "short"
+      ],
+      "turns": [
+        {
+          "stage": "prior_baseline",
+          "usage": {
+            "inputTokens": 2,
+            "cacheReadTokens": 55319,
+            "cacheWriteTokens": 644,
+            "outputTokens": 3,
+            "reasoningTokens": 0,
+            "costUSD": null,
+            "reportedSessionCostUSD": 0.3896316,
+            "cacheWrite1hTokens": 644,
+            "cacheWrite5mTokens": 0
+          }
+        },
+        {
+          "stage": "keeper",
+          "variant": "short",
+          "usage": {
+            "inputTokens": 2,
+            "cacheReadTokens": 55963,
+            "cacheWriteTokens": 184,
+            "outputTokens": 3,
+            "reasoningTokens": 0,
+            "costUSD": null,
+            "reportedSessionCostUSD": 0.4023642,
+            "cacheWrite1hTokens": 184,
+            "cacheWrite5mTokens": 0
+          },
+          "durationMs": 4176.497249999986
+        },
+        {
+          "stage": "keeper",
+          "variant": "previous",
+          "usage": {
+            "inputTokens": 2,
+            "cacheReadTokens": 56147,
+            "cacheWriteTokens": 768,
+            "outputTokens": 3,
+            "reasoningTokens": 0,
+            "costUSD": null,
+            "reportedSessionCostUSD": 0.4198056,
+            "cacheWrite1hTokens": 768,
+            "cacheWrite5mTokens": 0
+          },
+          "durationMs": 3973.7585410000174
+        },
+        {
+          "stage": "keeper",
+          "variant": "short",
+          "usage": {
+            "inputTokens": 2,
+            "cacheReadTokens": 56915,
+            "cacheWriteTokens": 33,
+            "outputTokens": 3,
+            "reasoningTokens": 0,
+            "costUSD": null,
+            "reportedSessionCostUSD": 0.4315206,
+            "cacheWrite1hTokens": 33,
+            "cacheWrite5mTokens": 0
+          },
+          "durationMs": 4103.493415999925
+        },
+        {
+          "stage": "recall",
+          "usage": {
+            "inputTokens": 2,
+            "cacheReadTokens": 56948,
+            "cacheWriteTokens": 47,
+            "outputTokens": 18,
+            "reasoningTokens": 0,
+            "costUSD": null,
+            "reportedSessionCostUSD": 0.4436542,
+            "cacheWrite1hTokens": 47,
+            "cacheWrite5mTokens": 0
+          },
+          "durationMs": 4315.364084000001
+        }
+      ],
+      "cadence": {
+        "activatedAt": 88.94120900006965,
+        "turns": [
+          {
+            "startedAt": 180094.715334,
+            "finishedAt": 184285.74725
+          },
+          {
+            "startedAt": 364289.524834,
+            "finishedAt": 368286.518459
+          },
+          {
+            "startedAt": 548289.577334,
+            "finishedAt": 552408.541584
+          }
+        ]
+      },
+      "continuity": true,
+      "hiddenLive": true,
+      "hiddenReplay": true,
+      "requests": 4,
+      "requestStatuses": [
+        {
+          "source": "keeper",
+          "status": "completed"
+        },
+        {
+          "source": "keeper",
+          "status": "completed"
+        },
+        {
+          "source": "keeper",
+          "status": "completed"
+        },
+        {
+          "source": "user",
+          "status": "completed"
+        }
+      ],
+      "warnings": [],
+      "finishedAt": "2026-09-25T06:37:53.478Z"
+    },
+    {
+      "host": "codex",
+      "model": "gpt-6-astra",
+      "startedAt": "2026-09-25T06:28:36.812Z",
+      "environment": {
+        "runtimeSHA256": "d9803e8e4f6e498c270118cf8539056037a1021dfd7ee1aa96814b66c9ebad68",
+        "version": "codex-cli 0.156.1",
+        "node": "v26.7.0"
+      },
+      "intervalMs": 180000,
+      "maxPrompts": 4,
+      "continuedSyntheticSession": true,
+      "status": "passed",
+      "promptSequence": [
+        "short",
+        "previous",
+        "short"
+      ],
+      "turns": [
+        {
+          "stage": "prior_baseline",
+          "usage": {
+            "inputTokens": 36611,
+            "cacheReadTokens": 36352,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "stage": "keeper",
+          "variant": "short",
+          "usage": {
+            "inputTokens": 37892,
+            "cacheReadTokens": 36480,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          },
+          "durationMs": 7661.174208000011
+        },
+        {
+          "stage": "keeper",
+          "variant": "previous",
+          "usage": {
+            "inputTokens": 37909,
+            "cacheReadTokens": 37760,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          },
+          "durationMs": 8697.436583999952
+        },
+        {
+          "stage": "keeper",
+          "variant": "short",
+          "usage": {
+            "inputTokens": 37922,
+            "cacheReadTokens": 37760,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          },
+          "durationMs": 4546.571041000076
+        },
+        {
+          "stage": "recall",
+          "usage": {
+            "inputTokens": 37945,
+            "cacheReadTokens": 37760,
+            "cacheWriteTokens": null,
+            "outputTokens": 18,
+            "reasoningTokens": 0,
+            "costUSD": null
+          },
+          "durationMs": 7552.305500000017
+        }
+      ],
+      "cadence": {
+        "activatedAt": 995.9159580001142,
+        "turns": [
+          {
+            "startedAt": 181000.4225,
+            "finishedAt": 188724.803666
+          },
+          {
+            "startedAt": 368728.246625,
+            "finishedAt": 377479.731583
+          },
+          {
+            "startedAt": 557481.12125,
+            "finishedAt": 562068.736833
+          }
+        ]
+      },
+      "continuity": true,
+      "hiddenLive": true,
+      "hiddenReplay": true,
+      "requests": 4,
+      "requestStatuses": [
+        {
+          "source": "keeper",
+          "status": "completed"
+        },
+        {
+          "source": "keeper",
+          "status": "completed"
+        },
+        {
+          "source": "keeper",
+          "status": "completed"
+        },
+        {
+          "source": "user",
+          "status": "completed"
+        }
+      ],
+      "warnings": [],
+      "finishedAt": "2026-09-25T06:38:06.443Z"
+    },
+    {
+      "host": "grok",
+      "model": "grok-4.7",
+      "startedAt": "2026-09-25T06:28:36.809Z",
+      "environment": {
+        "runtimeSHA256": "d9803e8e4f6e498c270118cf8539056037a1021dfd7ee1aa96814b66c9ebad68",
+        "version": "grok 1.0.41 (4220f3b224a6) [stable]",
+        "node": "v26.7.0"
+      },
+      "intervalMs": 180000,
+      "maxPrompts": 4,
+      "continuedSyntheticSession": true,
+      "status": "passed",
+      "promptSequence": [
+        "short",
+        "previous",
+        "short"
+      ],
+      "turns": [
+        {
+          "stage": "prior_baseline",
+          "usage": {
+            "inputTokens": 84,
+            "cacheReadTokens": 55424,
+            "cacheWriteTokens": 0,
+            "outputTokens": 32,
+            "reasoningTokens": null,
+            "costUSD": 0.00954448
+          }
+        },
+        {
+          "stage": "keeper",
+          "variant": "short",
+          "usage": {
+            "inputTokens": 139,
+            "cacheReadTokens": 55424,
+            "cacheWriteTokens": 0,
+            "outputTokens": 20,
+            "reasoningTokens": null,
+            "costUSD": 0.0095574
+          },
+          "durationMs": 7849.926291999989
+        },
+        {
+          "stage": "keeper",
+          "variant": "previous",
+          "usage": {
+            "inputTokens": 55610,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0,
+            "outputTokens": 33,
+            "reasoningTokens": null,
+            "costUSD": 0.03788212
+          },
+          "durationMs": 7651.183332999994
+        },
+        {
+          "stage": "keeper",
+          "variant": "short",
+          "usage": {
+            "inputTokens": 114,
+            "cacheReadTokens": 55552,
+            "cacheWriteTokens": 0,
+            "outputTokens": 18,
+            "reasoningTokens": null,
+            "costUSD": 0.00955808
+          },
+          "durationMs": 4963.874375000014
+        },
+        {
+          "stage": "recall",
+          "usage": {
+            "inputTokens": 165,
+            "cacheReadTokens": 55552,
+            "cacheWriteTokens": 0,
+            "outputTokens": 62,
+            "reasoningTokens": null,
+            "costUSD": 0.00968252
+          },
+          "durationMs": 5473.845665999921
+        }
+      ],
+      "cadence": {
+        "activatedAt": 80.71804099995643,
+        "turns": [
+          {
+            "startedAt": 180085.971458,
+            "finishedAt": 187981.569708
+          },
+          {
+            "startedAt": 367985.659958,
+            "finishedAt": 375681.611625
+          },
+          {
+            "startedAt": 555686.53375,
+            "finishedAt": 560704.199541
+          }
+        ]
+      },
+      "continuity": true,
+      "hiddenLive": true,
+      "hiddenReplay": true,
+      "requests": 4,
+      "requestStatuses": [
+        {
+          "source": "keeper",
+          "status": "completed"
+        },
+        {
+          "source": "keeper",
+          "status": "completed"
+        },
+        {
+          "source": "keeper",
+          "status": "completed"
+        },
+        {
+          "source": "user",
+          "status": "completed"
+        }
+      ],
+      "warnings": [],
+      "finishedAt": "2026-09-25T06:38:02.927Z"
+    }
+  ],
+  "analysis": [
+    {
+      "host": "claude",
+      "rows": [
+        {
+          "stage": "prior_baseline",
+          "variant": null,
+          "requests": 1,
+          "inputTokens": 55965,
+          "cacheReadTokens": 55319,
+          "nonCachedInputTokens": 2,
+          "cacheWriteTokens": 644,
+          "outputTokens": 3,
+          "reasoningTokens": 0,
+          "weightedCacheShare": 0.9884570713839006,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": null,
+          "inputGrowth": null,
+          "inputGrowthLessPreviousReportedOutput": null
+        },
+        {
+          "stage": "keeper",
+          "variant": "short",
+          "requests": 1,
+          "inputTokens": 56149,
+          "cacheReadTokens": 55963,
+          "nonCachedInputTokens": 2,
+          "cacheWriteTokens": 184,
+          "outputTokens": 3,
+          "reasoningTokens": 0,
+          "weightedCacheShare": 0.9966873853496946,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": 0.012732599999999983,
+          "inputGrowth": 184,
+          "inputGrowthLessPreviousReportedOutput": 181,
+          "localScheduleDelayMs": 5.774124999938067,
+          "localDurationMs": 4191.031915999978
+        },
+        {
+          "stage": "keeper",
+          "variant": "previous",
+          "requests": 1,
+          "inputTokens": 56917,
+          "cacheReadTokens": 56147,
+          "nonCachedInputTokens": 2,
+          "cacheWriteTokens": 768,
+          "outputTokens": 3,
+          "reasoningTokens": 0,
+          "weightedCacheShare": 0.986471528717255,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": 0.017441399999999996,
+          "inputGrowth": 768,
+          "inputGrowthLessPreviousReportedOutput": 765,
+          "localScheduleDelayMs": 3.777583999966737,
+          "localDurationMs": 3996.993625000003
+        },
+        {
+          "stage": "keeper",
+          "variant": "short",
+          "requests": 1,
+          "inputTokens": 56950,
+          "cacheReadTokens": 56915,
+          "nonCachedInputTokens": 2,
+          "cacheWriteTokens": 33,
+          "outputTokens": 3,
+          "reasoningTokens": 0,
+          "weightedCacheShare": 0.9993854258121159,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": 0.011714999999999975,
+          "inputGrowth": 33,
+          "inputGrowthLessPreviousReportedOutput": 30,
+          "localScheduleDelayMs": 3.058875000104308,
+          "localDurationMs": 4118.964249999961
+        },
+        {
+          "stage": "recall",
+          "variant": null,
+          "requests": 1,
+          "inputTokens": 56997,
+          "cacheReadTokens": 56948,
+          "nonCachedInputTokens": 2,
+          "cacheWriteTokens": 47,
+          "outputTokens": 18,
+          "reasoningTokens": 0,
+          "weightedCacheShare": 0.9991403056301209,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": 0.012133600000000022,
+          "inputGrowth": 47,
+          "inputGrowthLessPreviousReportedOutput": 44
+        }
+      ],
+      "completedMaintenance": 3,
+      "completedShort": 2
+    },
+    {
+      "host": "codex",
+      "rows": [
+        {
+          "stage": "prior_baseline",
+          "variant": null,
+          "requests": 1,
+          "inputTokens": 36611,
+          "cacheReadTokens": 36352,
+          "nonCachedInputTokens": 259,
+          "cacheWriteTokens": null,
+          "outputTokens": 5,
+          "reasoningTokens": 0,
+          "weightedCacheShare": 0.9929256234465051,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": null,
+          "inputGrowth": null,
+          "inputGrowthLessPreviousReportedOutput": null
+        },
+        {
+          "stage": "keeper",
+          "variant": "short",
+          "requests": 1,
+          "inputTokens": 37892,
+          "cacheReadTokens": 36480,
+          "nonCachedInputTokens": 1412,
+          "cacheWriteTokens": null,
+          "outputTokens": 5,
+          "reasoningTokens": 0,
+          "weightedCacheShare": 0.9627361976142721,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": null,
+          "inputGrowth": 1281,
+          "inputGrowthLessPreviousReportedOutput": 1276,
+          "localScheduleDelayMs": 4.506541999871843,
+          "localDurationMs": 7724.3811660000065
+        },
+        {
+          "stage": "keeper",
+          "variant": "previous",
+          "requests": 1,
+          "inputTokens": 37909,
+          "cacheReadTokens": 37760,
+          "nonCachedInputTokens": 149,
+          "cacheWriteTokens": null,
+          "outputTokens": 5,
+          "reasoningTokens": 0,
+          "weightedCacheShare": 0.9960695349389327,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": null,
+          "inputGrowth": 17,
+          "inputGrowthLessPreviousReportedOutput": 12,
+          "localScheduleDelayMs": 3.4429590000072494,
+          "localDurationMs": 8751.484957999957
+        },
+        {
+          "stage": "keeper",
+          "variant": "short",
+          "requests": 1,
+          "inputTokens": 37922,
+          "cacheReadTokens": 37760,
+          "nonCachedInputTokens": 162,
+          "cacheWriteTokens": null,
+          "outputTokens": 5,
+          "reasoningTokens": 0,
+          "weightedCacheShare": 0.9957280734138495,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": null,
+          "inputGrowth": 13,
+          "inputGrowthLessPreviousReportedOutput": 8,
+          "localScheduleDelayMs": 1.3896670000394806,
+          "localDurationMs": 4587.615583000006
+        },
+        {
+          "stage": "recall",
+          "variant": null,
+          "requests": 1,
+          "inputTokens": 37945,
+          "cacheReadTokens": 37760,
+          "nonCachedInputTokens": 185,
+          "cacheWriteTokens": null,
+          "outputTokens": 18,
+          "reasoningTokens": 0,
+          "weightedCacheShare": 0.9951245223349585,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": null,
+          "inputGrowth": 23,
+          "inputGrowthLessPreviousReportedOutput": 18
+        }
+      ],
+      "completedMaintenance": 3,
+      "completedShort": 2
+    },
+    {
+      "host": "grok",
+      "rows": [
+        {
+          "stage": "prior_baseline",
+          "variant": null,
+          "requests": 1,
+          "inputTokens": 55508,
+          "cacheReadTokens": 55424,
+          "nonCachedInputTokens": 84,
+          "cacheWriteTokens": 0,
+          "outputTokens": 32,
+          "reasoningTokens": null,
+          "weightedCacheShare": 0.998486704619154,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": null,
+          "inputGrowth": null,
+          "inputGrowthLessPreviousReportedOutput": null
+        },
+        {
+          "stage": "keeper",
+          "variant": "short",
+          "requests": 1,
+          "inputTokens": 55563,
+          "cacheReadTokens": 55424,
+          "nonCachedInputTokens": 139,
+          "cacheWriteTokens": 0,
+          "outputTokens": 20,
+          "reasoningTokens": null,
+          "weightedCacheShare": 0.9974983352230801,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": 0.0095574,
+          "inputGrowth": 55,
+          "inputGrowthLessPreviousReportedOutput": 23,
+          "localScheduleDelayMs": 5.253417000058107,
+          "localDurationMs": 7895.598249999981
+        },
+        {
+          "stage": "keeper",
+          "variant": "previous",
+          "requests": 1,
+          "inputTokens": 55610,
+          "cacheReadTokens": 0,
+          "nonCachedInputTokens": 55610,
+          "cacheWriteTokens": 0,
+          "outputTokens": 33,
+          "reasoningTokens": null,
+          "weightedCacheShare": 0,
+          "zeroCacheRequests": 1,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 0,
+          "reportedRequestCostUSD": 0.03788212,
+          "inputGrowth": 47,
+          "inputGrowthLessPreviousReportedOutput": 27,
+          "localScheduleDelayMs": 4.090250000008382,
+          "localDurationMs": 7695.951667000016
+        },
+        {
+          "stage": "keeper",
+          "variant": "short",
+          "requests": 1,
+          "inputTokens": 55666,
+          "cacheReadTokens": 55552,
+          "nonCachedInputTokens": 114,
+          "cacheWriteTokens": 0,
+          "outputTokens": 18,
+          "reasoningTokens": null,
+          "weightedCacheShare": 0.9979520712822908,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": 0.00955808,
+          "inputGrowth": 56,
+          "inputGrowthLessPreviousReportedOutput": 23,
+          "localScheduleDelayMs": 4.922124999924563,
+          "localDurationMs": 5017.665791000007
+        },
+        {
+          "stage": "recall",
+          "variant": null,
+          "requests": 1,
+          "inputTokens": 55717,
+          "cacheReadTokens": 55552,
+          "nonCachedInputTokens": 165,
+          "cacheWriteTokens": 0,
+          "outputTokens": 62,
+          "reasoningTokens": null,
+          "weightedCacheShare": 0.9970386058115117,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 1,
+          "reportedRequestCostUSD": 0.00968252,
+          "inputGrowth": 51,
+          "inputGrowthLessPreviousReportedOutput": 33
+        }
+      ],
+      "completedMaintenance": 3,
+      "completedShort": 2
+    }
+  ],
+  "meanings": {
+    "inputGrowthLessPreviousReportedOutput": "Reported total input now minus previous total input minus previous reported output. Includes any other newly injected context; not an isolated prompt tokenizer count.",
+    "cost": "Provider CLI estimates, not invoices or isolated subscription quota. The first resumed request is not a steady-state comparison.",
+    "interruption": "Three local requests rejected by environment preflight before adapter dispatch; no content snapshot at that point.",
+    "prior_baseline": "An already completed turn from the interrupted stage, included only as a baseline; not an additional model call."
+  },
+  "verification": {
+    "completedConversationPrompts": 39,
+    "localPreflightRejections": 3,
+    "confirmationMaintenance": 9,
+    "confirmationShortPrompts": 6,
+    "continuityHosts": 3,
+    "ownersClosed": true,
+    "automaticRetries": false
+  },
+  "totalExperimentReportedCostUSD": {
+    "claude": 1.2508926000000002,
+    "grok": 0.25617164000000003,
+    "codex": null
+  }
+}

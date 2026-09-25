@@ -1,0 +1,17 @@
+{
+  "name": "cache-keeper",
+  "owner": {
+    "name": "Cache Keeper contributors"
+  },
+  "plugins": [
+    {
+      "name": "cache-keeper",
+      "source": "./plugins/cache-keeper",
+      "description": "Keep an owned session active with bounded, hidden maintenance turns.",
+      "version": "0.2.0"
+    }
+  ],
+  "metadata": {
+    "description": "Bounded, quiet session keepalive for Claude Code, Codex, and Grok Build."
+  }
+}

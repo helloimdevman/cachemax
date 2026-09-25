@@ -1,0 +1,185 @@
+{
+  "at": "2026-09-24T20:03:56.330Z",
+  "limitation": "One observation per arm, unknown effective TTL; shared host prefixes can contaminate comparison. No causal savings claim.",
+  "results": [
+    {
+      "host": "claude",
+      "control": {
+        "idleMs": 364282,
+        "durationMs": 4278,
+        "continuity": true,
+        "seedUsage": {
+          "inputTokens": 2,
+          "cacheReadTokens": 10459,
+          "cacheWriteTokens": 22994,
+          "outputTokens": 4,
+          "reasoningTokens": null,
+          "costUSD": null,
+          "reportedSessionCostUSD": 0.18613180000000001
+        },
+        "nextUserUsage": {
+          "inputTokens": 2,
+          "cacheReadTokens": 12157,
+          "cacheWriteTokens": 23245,
+          "outputTokens": 10,
+          "reasoningTokens": null,
+          "costUSD": null,
+          "reportedSessionCostUSD": 0.3747312
+        },
+        "keeperRequests": 0,
+        "keeperUsage": []
+      },
+      "keeper": {
+        "idleMs": 364531,
+        "durationMs": 3972,
+        "continuity": true,
+        "seedUsage": {
+          "inputTokens": 2,
+          "cacheReadTokens": 10459,
+          "cacheWriteTokens": 23465,
+          "outputTokens": 4,
+          "reasoningTokens": null,
+          "costUSD": null,
+          "reportedSessionCostUSD": 0.1898998
+        },
+        "nextUserUsage": {
+          "inputTokens": 2,
+          "cacheReadTokens": 12158,
+          "cacheWriteTokens": 23238,
+          "outputTokens": 12,
+          "reasoningTokens": null,
+          "costUSD": null,
+          "reportedSessionCostUSD": 0.566511
+        },
+        "keeperRequests": 1,
+        "keeperUsage": [
+          {
+            "inputTokens": 2,
+            "cacheReadTokens": 12158,
+            "cacheWriteTokens": 23191,
+            "outputTokens": 3,
+            "reasoningTokens": null,
+            "costUSD": null,
+            "reportedSessionCostUSD": 0.3779274
+          }
+        ]
+      }
+    },
+    {
+      "host": "codex",
+      "control": {
+        "idleMs": 364073,
+        "durationMs": 4070,
+        "continuity": true,
+        "seedUsage": {
+          "inputTokens": 22086,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": null,
+          "outputTokens": 57,
+          "reasoningTokens": 50,
+          "costUSD": null
+        },
+        "nextUserUsage": {
+          "inputTokens": 28829,
+          "cacheReadTokens": 21888,
+          "cacheWriteTokens": null,
+          "outputTokens": 47,
+          "reasoningTokens": 32,
+          "costUSD": null
+        },
+        "keeperRequests": 0,
+        "keeperUsage": []
+      },
+      "keeper": {
+        "idleMs": 363450,
+        "durationMs": 3448,
+        "continuity": true,
+        "seedUsage": {
+          "inputTokens": 22097,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": null,
+          "outputTokens": 51,
+          "reasoningTokens": 44,
+          "costUSD": null
+        },
+        "nextUserUsage": {
+          "inputTokens": 28851,
+          "cacheReadTokens": 28672,
+          "cacheWriteTokens": null,
+          "outputTokens": 41,
+          "reasoningTokens": 24,
+          "costUSD": null
+        },
+        "keeperRequests": 1,
+        "keeperUsage": [
+          {
+            "inputTokens": 28827,
+            "cacheReadTokens": 21888,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        ]
+      }
+    },
+    {
+      "host": "grok",
+      "control": {
+        "idleMs": 368376,
+        "durationMs": 8373,
+        "continuity": true,
+        "seedUsage": {
+          "inputTokens": 42753,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "outputTokens": 42,
+          "reasoningTokens": null,
+          "costUSD": 0.02915772
+        },
+        "nextUserUsage": {
+          "inputTokens": 42829,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "outputTokens": 59,
+          "reasoningTokens": null,
+          "costUSD": 0.02924408
+        },
+        "keeperRequests": 0,
+        "keeperUsage": []
+      },
+      "keeper": {
+        "idleMs": 367192,
+        "durationMs": 7134,
+        "continuity": true,
+        "seedUsage": {
+          "inputTokens": 42110,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "outputTokens": 27,
+          "reasoningTokens": null,
+          "costUSD": 0.02868988
+        },
+        "nextUserUsage": {
+          "inputTokens": 42887,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "outputTokens": 80,
+          "reasoningTokens": null,
+          "costUSD": 0.02932636
+        },
+        "keeperRequests": 1,
+        "keeperUsage": [
+          {
+            "inputTokens": 42833,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0,
+            "outputTokens": 20,
+            "reasoningTokens": null,
+            "costUSD": 0.02916724
+          }
+        ]
+      }
+    }
+  ]
+}

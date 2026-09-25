@@ -1,0 +1,3608 @@
+{
+  "generatedAt": "2026-09-25T01:43:59.513Z",
+  "costMeaning": "Provider CLI estimates including maintenance; not subscription invoices or isolated quota measurements.",
+  "inputSensitivityMeaning": "Hypothetical noncached + weight * cached input only; excludes output and unknown cache-write premiums. Negative thresholds admit no positive cache weight. Not a price or quota estimate.",
+  "pairedMeaning": "Keeper minus control within each pair; negative latency deltas are faster. Descriptive, no independence or causal claim.",
+  "studies": [
+    {
+      "study": "controlled-claude-reset",
+      "host": "claude",
+      "model": "claude-opus-5-5[1m]",
+      "status": null,
+      "plannedPairs": null,
+      "completedValidPairs": 6,
+      "invalidPairs": [],
+      "idleMinutes": 70,
+      "intervalMinutes": 50,
+      "summary": {
+        "controlMedianCacheShare": 0.2200885061485923,
+        "keeperMedianCacheShare": 0.21992530499252852,
+        "comparableCostPairs": 6,
+        "pairsWithLowerReportedCost": 0,
+        "pairsWithHigherReportedCost": 6,
+        "medianReportedCostChangePercent": 100.07484557897817,
+        "controlMedianFirstTextMs": 3338.0278539997526,
+        "keeperMedianFirstTextMs": 3304.851041499991,
+        "controlMedianCompletionMs": 4395.37254199991,
+        "keeperMedianCompletionMs": 4260.462687499821,
+        "pairedCacheShareDelta": {
+          "n": 6,
+          "unknown": 0,
+          "median": -0.00019109025190090778,
+          "min": -0.003970067160384283,
+          "max": 0.00029000529606620917,
+          "negative": 5,
+          "zero": 0,
+          "positive": 1
+        },
+        "pairedFirstTextDeltaMs": {
+          "n": 6,
+          "unknown": 0,
+          "median": -92.74333300022408,
+          "min": -939.0844160001725,
+          "max": 1085.9785410007462,
+          "negative": 4,
+          "zero": 0,
+          "positive": 2
+        },
+        "pairedCompletionDeltaMs": {
+          "n": 6,
+          "unknown": 0,
+          "median": -157.58897900022566,
+          "min": -905.3102910006419,
+          "max": 1351.8856250001118,
+          "negative": 5,
+          "zero": 0,
+          "positive": 1
+        },
+        "medianPostSeedInputRatio": 2.0009050956581707,
+        "controlZeroCacheNextRequests": 0,
+        "keeperZeroCacheNextRequests": 0,
+        "controlAtLeast95PercentCachedNextRequests": 0,
+        "keeperAtLeast95PercentCachedNextRequests": 0
+      },
+      "pooled": {
+        "control": {
+          "requests": 6,
+          "inputTokens": 331604,
+          "cacheReadTokens": 72960,
+          "nonCachedInputTokens": 12,
+          "cacheWriteTokens": 258632,
+          "outputTokens": 99,
+          "reasoningTokens": 0,
+          "weightedCacheShare": 0.22002147139358993,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 0
+        },
+        "keeper": {
+          "requests": 12,
+          "inputTokens": 665267,
+          "cacheReadTokens": 145920,
+          "nonCachedInputTokens": 24,
+          "cacheWriteTokens": 519323,
+          "outputTokens": 121,
+          "reasoningTokens": 0,
+          "weightedCacheShare": 0.21934050539106856,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 0
+        }
+      },
+      "pooledCodexInputSensitivity": null,
+      "pairs": [
+        {
+          "trial": 0,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 12160,
+          "keeperCacheReadTokens": 12160,
+          "controlCacheShare": 0.22009846510280914,
+          "keeperCacheShare": 0.21992331621211025,
+          "controlFirstTextMs": 3485.0420840000734,
+          "keeperFirstTextMs": 3330.7252919999883,
+          "controlCompletionMs": 4422.658708999865,
+          "keeperCompletionMs": 4270.006958999671,
+          "controlReportedCostUSD": 0.347388,
+          "keeperReportedCostUSD": 0.6950320000000001,
+          "reportedCostChangeUSD": 0.3476440000000001,
+          "reportedCostChangePercent": 100.0736928161019,
+          "keeperRequests": 1,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55248,
+              "cacheReadTokens": 12160,
+              "nonCachedInputTokens": 2,
+              "cacheWriteTokens": 43086,
+              "outputTokens": 13,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.22009846510280914,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 1948,
+            "nextUserReportedCostUSD": 0.347388,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 2,
+              "inputTokens": 110538,
+              "cacheReadTokens": 24320,
+              "nonCachedInputTokens": 4,
+              "cacheWriteTokens": 86214,
+              "outputTokens": 22,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.22001483652680526,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 1,
+              "inputTokens": 55246,
+              "cacheReadTokens": 12160,
+              "nonCachedInputTokens": 2,
+              "cacheWriteTokens": 43084,
+              "outputTokens": 3,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.22010643304492633,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 1940,
+            "nextUserReportedCostUSD": 0.34786000000000006,
+            "maintenanceReportedCostUSD": 0.347172
+          },
+          "cacheShareDelta": -0.00017514889069888961,
+          "firstTextDeltaMs": -154.31679200008512,
+          "completionDeltaMs": -152.65175000019372,
+          "postSeedInputRatio": 2.0007602085143352,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 1,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 12160,
+          "keeperCacheReadTokens": 12160,
+          "controlCacheShare": 0.2200825309491059,
+          "keeperCacheShare": 0.21611246378872162,
+          "controlFirstTextMs": 3228.263458000496,
+          "keeperFirstTextMs": 3078.62220899947,
+          "controlCompletionMs": 4300.820125000551,
+          "keeperCompletionMs": 4138.293917000294,
+          "controlReportedCostUSD": 0.34752,
+          "keeperReportedCostUSD": 0.7056000000000001,
+          "reportedCostChangeUSD": 0.3580800000000001,
+          "reportedCostChangePercent": 103.03867403314922,
+          "keeperRequests": 1,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55252,
+              "cacheReadTokens": 12160,
+              "nonCachedInputTokens": 2,
+              "cacheWriteTokens": 43090,
+              "outputTokens": 18,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.2200825309491059,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 1948,
+            "nextUserReportedCostUSD": 0.34752,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 2,
+              "inputTokens": 111864,
+              "cacheReadTokens": 24320,
+              "nonCachedInputTokens": 4,
+              "cacheWriteTokens": 87540,
+              "outputTokens": 20,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.21740685117642852,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 1,
+              "inputTokens": 55597,
+              "cacheReadTokens": 12160,
+              "nonCachedInputTokens": 2,
+              "cacheWriteTokens": 43435,
+              "outputTokens": 3,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.2187168372394194,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 2293,
+            "nextUserReportedCostUSD": 0.35562000000000005,
+            "maintenanceReportedCostUSD": 0.34998000000000007
+          },
+          "cacheShareDelta": -0.003970067160384283,
+          "firstTextDeltaMs": -149.64124900102615,
+          "completionDeltaMs": -162.5262080002576,
+          "postSeedInputRatio": 2.024614493592992,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 2,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 12160,
+          "keeperCacheReadTokens": 12160,
+          "controlCacheShare": 0.2201343253860497,
+          "keeperCacheShare": 0.21992729377294679,
+          "controlFirstTextMs": 3280.2175409998745,
+          "keeperFirstTextMs": 3308.0953329997137,
+          "controlCompletionMs": 4485.263583000749,
+          "keeperCompletionMs": 4250.918415999971,
+          "controlReportedCostUSD": 0.3473759999999999,
+          "keeperReportedCostUSD": 0.6950160000000001,
+          "reportedCostChangeUSD": 0.34764000000000017,
+          "reportedCostChangePercent": 100.07599834185443,
+          "keeperRequests": 1,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55239,
+              "cacheReadTokens": 12160,
+              "nonCachedInputTokens": 2,
+              "cacheWriteTokens": 43077,
+              "outputTokens": 16,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.2201343253860497,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 1948,
+            "nextUserReportedCostUSD": 0.3473759999999999,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 2,
+              "inputTokens": 110536,
+              "cacheReadTokens": 24320,
+              "nonCachedInputTokens": 4,
+              "cacheWriteTokens": 86212,
+              "outputTokens": 22,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.22001881739885648,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 1,
+              "inputTokens": 55245,
+              "cacheReadTokens": 12160,
+              "nonCachedInputTokens": 2,
+              "cacheWriteTokens": 43083,
+              "outputTokens": 3,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.22011041723232871,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 1940,
+            "nextUserReportedCostUSD": 0.34785200000000005,
+            "maintenanceReportedCostUSD": 0.347164
+          },
+          "cacheShareDelta": -0.00020703161310292595,
+          "firstTextDeltaMs": 27.877791999839246,
+          "completionDeltaMs": -234.34516700077802,
+          "postSeedInputRatio": 2.0010499828020056,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 3,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 12160,
+          "keeperCacheReadTokens": 12160,
+          "controlCacheShare": 0.22009448134807869,
+          "keeperCacheShare": 0.21748461868650737,
+          "controlFirstTextMs": 3395.8381669996306,
+          "keeperFirstTextMs": 4481.816708000377,
+          "controlCompletionMs": 4368.086374999955,
+          "keeperCompletionMs": 5719.972000000067,
+          "controlReportedCostUSD": 0.34741600000000006,
+          "keeperReportedCostUSD": 0.7007880000000001,
+          "reportedCostChangeUSD": 0.353372,
+          "reportedCostChangePercent": 101.7143712436963,
+          "keeperRequests": 1,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55249,
+              "cacheReadTokens": 12160,
+              "nonCachedInputTokens": 2,
+              "cacheWriteTokens": 43087,
+              "outputTokens": 14,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.22009448134807869,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 1948,
+            "nextUserReportedCostUSD": 0.34741600000000006,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 2,
+              "inputTokens": 111265,
+              "cacheReadTokens": 24320,
+              "nonCachedInputTokens": 4,
+              "cacheWriteTokens": 86941,
+              "outputTokens": 19,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.21857727048038467,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 1,
+              "inputTokens": 55353,
+              "cacheReadTokens": 12160,
+              "nonCachedInputTokens": 2,
+              "cacheWriteTokens": 43191,
+              "outputTokens": 3,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.2196809567683775,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 2050,
+            "nextUserReportedCostUSD": 0.3527600000000001,
+            "maintenanceReportedCostUSD": 0.348028
+          },
+          "cacheShareDelta": -0.002609862661571316,
+          "firstTextDeltaMs": 1085.9785410007462,
+          "completionDeltaMs": 1351.8856250001118,
+          "postSeedInputRatio": 2.013882604210031,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 4,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 12160,
+          "keeperCacheReadTokens": 12160,
+          "controlCacheShare": 0.21964524403020122,
+          "keeperCacheShare": 0.21993524932626743,
+          "controlFirstTextMs": 4240.691166000441,
+          "keeperFirstTextMs": 3301.606750000268,
+          "controlCompletionMs": 5313.942708000541,
+          "keeperCompletionMs": 4408.632416999899,
+          "controlReportedCostUSD": 0.34840000000000004,
+          "keeperReportedCostUSD": 0.6949239999999999,
+          "reportedCostChangeUSD": 0.34652399999999983,
+          "reportedCostChangePercent": 99.4615384615384,
+          "keeperRequests": 1,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55362,
+              "cacheReadTokens": 12160,
+              "nonCachedInputTokens": 2,
+              "cacheWriteTokens": 43200,
+              "outputTokens": 18,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.21964524403020122,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 2058,
+            "nextUserReportedCostUSD": 0.34840000000000004,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 2,
+              "inputTokens": 110532,
+              "cacheReadTokens": 24320,
+              "nonCachedInputTokens": 4,
+              "cacheWriteTokens": 86208,
+              "outputTokens": 19,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.22002677957514566,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 1,
+              "inputTokens": 55243,
+              "cacheReadTokens": 12160,
+              "nonCachedInputTokens": 2,
+              "cacheWriteTokens": 43081,
+              "outputTokens": 3,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.22011838603986025,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 1940,
+            "nextUserReportedCostUSD": 0.34777599999999986,
+            "maintenanceReportedCostUSD": 0.34714799999999996
+          },
+          "cacheShareDelta": 0.00029000529606620917,
+          "firstTextDeltaMs": -939.0844160001725,
+          "completionDeltaMs": -905.3102910006419,
+          "postSeedInputRatio": 1.996531917199523,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 5,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 12160,
+          "keeperCacheReadTokens": 12160,
+          "controlCacheShare": 0.2200745647373946,
+          "keeperCacheShare": 0.21993524932626743,
+          "controlFirstTextMs": 3164.568416999653,
+          "keeperFirstTextMs": 3128.723000000231,
+          "controlCompletionMs": 4240.060333000496,
+          "keeperCompletionMs": 4136.040249999613,
+          "controlReportedCostUSD": 0.34757600000000005,
+          "keeperReportedCostUSD": 0.694924,
+          "reportedCostChangeUSD": 0.34734799999999993,
+          "reportedCostChangePercent": 99.93440283563879,
+          "keeperRequests": 1,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55254,
+              "cacheReadTokens": 12160,
+              "nonCachedInputTokens": 2,
+              "cacheWriteTokens": 43092,
+              "outputTokens": 20,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.2200745647373946,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 1948,
+            "nextUserReportedCostUSD": 0.34757600000000005,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 2,
+              "inputTokens": 110532,
+              "cacheReadTokens": 24320,
+              "nonCachedInputTokens": 4,
+              "cacheWriteTokens": 86208,
+              "outputTokens": 19,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.22002677957514566,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 1,
+              "inputTokens": 55243,
+              "cacheReadTokens": 12160,
+              "nonCachedInputTokens": 2,
+              "cacheWriteTokens": 43081,
+              "outputTokens": 3,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.22011838603986025,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 1940,
+            "nextUserReportedCostUSD": 0.347776,
+            "maintenanceReportedCostUSD": 0.347148
+          },
+          "cacheShareDelta": -0.00013931541112716106,
+          "firstTextDeltaMs": -35.845416999422014,
+          "completionDeltaMs": -104.02008300088346,
+          "postSeedInputRatio": 2.000434357693561,
+          "codexInputSensitivity": null
+        }
+      ],
+      "limitations": [
+        "Shared host system/tool prefixes may share cache; conversation markers differ at the first user message.",
+        "Estimates are not subscription invoices or isolated quota measurements.",
+        "Finite paired observations establish only this tested configuration."
+      ]
+    },
+    {
+      "study": "controlled-codex",
+      "host": "codex",
+      "model": "gpt-6-astra",
+      "status": null,
+      "plannedPairs": null,
+      "completedValidPairs": 6,
+      "invalidPairs": [],
+      "idleMinutes": 35,
+      "intervalMinutes": 9,
+      "summary": {
+        "controlMedianCacheShare": 0.838457160889398,
+        "keeperMedianCacheShare": 0.9945098029218244,
+        "comparableCostPairs": 0,
+        "pairsWithLowerReportedCost": 0,
+        "pairsWithHigherReportedCost": 0,
+        "medianReportedCostChangePercent": null,
+        "controlMedianFirstTextMs": 4411.23835349991,
+        "keeperMedianFirstTextMs": 4050.933750499971,
+        "controlMedianCompletionMs": 5085.968270499958,
+        "keeperMedianCompletionMs": 4711.142812500009,
+        "pairedCacheShareDelta": {
+          "n": 6,
+          "unknown": 0,
+          "median": 0.15596709389085905,
+          "min": -0.9921668167799339,
+          "max": 0.1587750866902461,
+          "negative": 1,
+          "zero": 0,
+          "positive": 5
+        },
+        "pairedFirstTextDeltaMs": {
+          "n": 6,
+          "unknown": 0,
+          "median": -502.6690205002669,
+          "min": -2394.2947499998845,
+          "max": 1356.1204989994876,
+          "negative": 4,
+          "zero": 0,
+          "positive": 2
+        },
+        "pairedCompletionDeltaMs": {
+          "n": 6,
+          "unknown": 0,
+          "median": -584.0228540000971,
+          "min": -2353.7315000002272,
+          "max": 1294.799583000131,
+          "negative": 4,
+          "zero": 0,
+          "positive": 2
+        },
+        "medianPostSeedInputRatio": 4.0038538728279836,
+        "controlZeroCacheNextRequests": 0,
+        "keeperZeroCacheNextRequests": 1,
+        "controlAtLeast95PercentCachedNextRequests": 2,
+        "keeperAtLeast95PercentCachedNextRequests": 5
+      },
+      "pooled": {
+        "control": {
+          "requests": 6,
+          "inputTokens": 245524,
+          "cacheReadTokens": 217088,
+          "nonCachedInputTokens": 28436,
+          "cacheWriteTokens": null,
+          "outputTokens": 370,
+          "reasoningTokens": 247,
+          "weightedCacheShare": 0.8841824017204021,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 2
+        },
+        "keeper": {
+          "requests": 24,
+          "inputTokens": 1008500,
+          "cacheReadTokens": 890624,
+          "nonCachedInputTokens": 117876,
+          "cacheWriteTokens": null,
+          "outputTokens": 440,
+          "reasoningTokens": 221,
+          "weightedCacheShare": 0.8831175012394645,
+          "zeroCacheRequests": 2,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 18
+        }
+      },
+      "pooledCodexInputSensitivity": {
+        "nonCachedDelta": 89440,
+        "cachedDelta": 673536,
+        "breakEvenCacheWeight": -0.13279171417711896,
+        "scenarios": [
+          {
+            "cacheWeight": 0,
+            "inputWeightedDelta": 89440,
+            "relativeChange": 3.145308763539176
+          },
+          {
+            "cacheWeight": 0.05,
+            "inputWeightedDelta": 123116.8,
+            "relativeChange": 3.1335084397206443
+          },
+          {
+            "cacheWeight": 0.1,
+            "inputWeightedDelta": 156793.6,
+            "relativeChange": 3.1268167387246533
+          },
+          {
+            "cacheWeight": 0.25,
+            "inputWeightedDelta": 257824,
+            "relativeChange": 3.117280069642598
+          }
+        ]
+      },
+      "pairs": [
+        {
+          "trial": 0,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 36096,
+          "keeperCacheReadTokens": 36480,
+          "controlCacheShare": 0.8384474228240923,
+          "keeperCacheShare": 0.9944932119295568,
+          "controlFirstTextMs": 4688.590792000294,
+          "keeperFirstTextMs": 6044.711290999781,
+          "controlCompletionMs": 5388.757749999873,
+          "keeperCompletionMs": 6683.557333000004,
+          "controlReportedCostUSD": null,
+          "keeperReportedCostUSD": null,
+          "reportedCostChangeUSD": null,
+          "reportedCostChangePercent": null,
+          "keeperRequests": 3,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 43051,
+              "cacheReadTokens": 36096,
+              "nonCachedInputTokens": 6955,
+              "cacheWriteTokens": null,
+              "outputTokens": 69,
+              "reasoningTokens": 48,
+              "weightedCacheShare": 0.8384474228240923,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 6734,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 4,
+              "inputTokens": 146608,
+              "cacheReadTokens": 145792,
+              "nonCachedInputTokens": 816,
+              "cacheWriteTokens": null,
+              "outputTokens": 67,
+              "reasoningTokens": 31,
+              "weightedCacheShare": 0.9944341372912802,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 4
+            },
+            "maintenance": {
+              "requests": 3,
+              "inputTokens": 109926,
+              "cacheReadTokens": 109312,
+              "nonCachedInputTokens": 614,
+              "cacheWriteTokens": null,
+              "outputTokens": 15,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.9944144242490403,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 3
+            },
+            "firstPostSeedInputGrowth": 43,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": null
+          },
+          "cacheShareDelta": 0.1560457891054644,
+          "firstTextDeltaMs": 1356.1204989994876,
+          "completionDeltaMs": 1294.799583000131,
+          "postSeedInputRatio": 3.405449350770017,
+          "codexInputSensitivity": {
+            "nonCachedDelta": -6139,
+            "cachedDelta": 109696,
+            "breakEvenCacheWeight": 0.055963754375729285,
+            "scenarios": [
+              {
+                "cacheWeight": 0,
+                "inputWeightedDelta": -6139,
+                "relativeChange": -0.8826743350107836
+              },
+              {
+                "cacheWeight": 0.05,
+                "inputWeightedDelta": -654.1999999999998,
+                "relativeChange": -0.07468207036690334
+              },
+              {
+                "cacheWeight": 0.1,
+                "inputWeightedDelta": 4830.6,
+                "relativeChange": 0.45724400355905576
+              },
+              {
+                "cacheWeight": 0.25,
+                "inputWeightedDelta": 21285,
+                "relativeChange": 1.3320608298391639
+              }
+            ]
+          }
+        },
+        {
+          "trial": 1,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 36352,
+          "keeperCacheReadTokens": 0,
+          "controlCacheShare": 0.9921668167799339,
+          "keeperCacheShare": 0,
+          "controlFirstTextMs": 4258.5456659998745,
+          "keeperFirstTextMs": 4216.813916999847,
+          "controlCompletionMs": 4923.462208000012,
+          "keeperCompletionMs": 4833.817249999847,
+          "controlReportedCostUSD": null,
+          "keeperReportedCostUSD": null,
+          "reportedCostChangeUSD": null,
+          "reportedCostChangePercent": null,
+          "keeperRequests": 3,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 36639,
+              "cacheReadTokens": 36352,
+              "nonCachedInputTokens": 287,
+              "cacheWriteTokens": null,
+              "outputTokens": 63,
+              "reasoningTokens": 43,
+              "weightedCacheShare": 0.9921668167799339,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 58,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 4,
+              "inputTokens": 172312,
+              "cacheReadTokens": 121856,
+              "nonCachedInputTokens": 50456,
+              "cacheWriteTokens": null,
+              "outputTokens": 84,
+              "reasoningTokens": 48,
+              "weightedCacheShare": 0.7071823204419889,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "maintenance": {
+              "requests": 3,
+              "inputTokens": 129204,
+              "cacheReadTokens": 121856,
+              "nonCachedInputTokens": 7348,
+              "cacheWriteTokens": null,
+              "outputTokens": 15,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.9431286957060153,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "firstPostSeedInputGrowth": 6733,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": null
+          },
+          "cacheShareDelta": -0.9921668167799339,
+          "firstTextDeltaMs": -41.731749000027776,
+          "completionDeltaMs": -89.64495800016448,
+          "postSeedInputRatio": 4.702966784027948,
+          "codexInputSensitivity": {
+            "nonCachedDelta": 50169,
+            "cachedDelta": 85504,
+            "breakEvenCacheWeight": -0.5867444797904192,
+            "scenarios": [
+              {
+                "cacheWeight": 0,
+                "inputWeightedDelta": 50169,
+                "relativeChange": 174.8048780487805
+              },
+              {
+                "cacheWeight": 0.05,
+                "inputWeightedDelta": 54444.2,
+                "relativeChange": 25.869143780290784
+              },
+              {
+                "cacheWeight": 0.1,
+                "inputWeightedDelta": 58719.4,
+                "relativeChange": 14.971036663097241
+              },
+              {
+                "cacheWeight": 0.25,
+                "inputWeightedDelta": 71545,
+                "relativeChange": 7.631466666666666
+              }
+            ]
+          }
+        },
+        {
+          "trial": 2,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 36352,
+          "keeperCacheReadTokens": 42880,
+          "controlCacheShare": 0.9922209787919316,
+          "keeperCacheShare": 0.9945263939140923,
+          "controlFirstTextMs": 3121.558749999851,
+          "keeperFirstTextMs": 3885.0535840000957,
+          "controlCompletionMs": 3697.3353749997914,
+          "keeperCompletionMs": 4588.468375000171,
+          "controlReportedCostUSD": null,
+          "keeperReportedCostUSD": null,
+          "reportedCostChangeUSD": null,
+          "reportedCostChangePercent": null,
+          "keeperRequests": 3,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 36637,
+              "cacheReadTokens": 36352,
+              "nonCachedInputTokens": 285,
+              "cacheWriteTokens": null,
+              "outputTokens": 57,
+              "reasoningTokens": 39,
+              "weightedCacheShare": 0.9922209787919316,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 58,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 4,
+              "inputTokens": 172344,
+              "cacheReadTokens": 164736,
+              "nonCachedInputTokens": 7608,
+              "cacheWriteTokens": null,
+              "outputTokens": 85,
+              "reasoningTokens": 48,
+              "weightedCacheShare": 0.9558557303996658,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 3
+            },
+            "maintenance": {
+              "requests": 3,
+              "inputTokens": 129228,
+              "cacheReadTokens": 121856,
+              "nonCachedInputTokens": 7372,
+              "cacheWriteTokens": null,
+              "outputTokens": 15,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.9429535394806079,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "firstPostSeedInputGrowth": 6741,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": null
+          },
+          "cacheShareDelta": 0.002305415122160648,
+          "firstTextDeltaMs": 763.4948340002447,
+          "completionDeltaMs": 891.13300000038,
+          "postSeedInputRatio": 4.704096951169583,
+          "codexInputSensitivity": {
+            "nonCachedDelta": 7323,
+            "cachedDelta": 128384,
+            "breakEvenCacheWeight": -0.05703981804586241,
+            "scenarios": [
+              {
+                "cacheWeight": 0,
+                "inputWeightedDelta": 7323,
+                "relativeChange": 25.694736842105264
+              },
+              {
+                "cacheWeight": 0.05,
+                "inputWeightedDelta": 13742.2,
+                "relativeChange": 6.535812803196042
+              },
+              {
+                "cacheWeight": 0.1,
+                "inputWeightedDelta": 20161.4,
+                "relativeChange": 5.142951890209683
+              },
+              {
+                "cacheWeight": 0.25,
+                "inputWeightedDelta": 39419,
+                "relativeChange": 4.2055905259788755
+              }
+            ]
+          }
+        },
+        {
+          "trial": 3,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 36096,
+          "keeperCacheReadTokens": 43008,
+          "controlCacheShare": 0.8379802669762043,
+          "keeperCacheShare": 0.9967553536664504,
+          "controlFirstTextMs": 4563.931040999945,
+          "keeperFirstTextMs": 3038.6211669999175,
+          "controlCompletionMs": 5248.474332999904,
+          "keeperCompletionMs": 3833.2627920000814,
+          "controlReportedCostUSD": null,
+          "keeperReportedCostUSD": null,
+          "reportedCostChangeUSD": null,
+          "reportedCostChangePercent": null,
+          "keeperRequests": 3,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 43075,
+              "cacheReadTokens": 36096,
+              "nonCachedInputTokens": 6979,
+              "cacheWriteTokens": null,
+              "outputTokens": 76,
+              "reasoningTokens": 55,
+              "weightedCacheShare": 0.8379802669762043,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 6757,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 4,
+              "inputTokens": 172472,
+              "cacheReadTokens": 128768,
+              "nonCachedInputTokens": 43704,
+              "cacheWriteTokens": null,
+              "outputTokens": 75,
+              "reasoningTokens": 37,
+              "weightedCacheShare": 0.7466023470476367,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 3
+            },
+            "maintenance": {
+              "requests": 3,
+              "inputTokens": 129324,
+              "cacheReadTokens": 85760,
+              "nonCachedInputTokens": 43564,
+              "cacheWriteTokens": null,
+              "outputTokens": 15,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.6631406390151867,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "firstPostSeedInputGrowth": 6771,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": null
+          },
+          "cacheShareDelta": 0.1587750866902461,
+          "firstTextDeltaMs": -1525.3098740000278,
+          "completionDeltaMs": -1415.2115409998223,
+          "postSeedInputRatio": 4.003993035403366,
+          "codexInputSensitivity": {
+            "nonCachedDelta": 36725,
+            "cachedDelta": 92672,
+            "breakEvenCacheWeight": -0.39629014157458564,
+            "scenarios": [
+              {
+                "cacheWeight": 0,
+                "inputWeightedDelta": 36725,
+                "relativeChange": 5.26221521707981
+              },
+              {
+                "cacheWeight": 0.05,
+                "inputWeightedDelta": 41358.6,
+                "relativeChange": 4.708508845829823
+              },
+              {
+                "cacheWeight": 0.1,
+                "inputWeightedDelta": 45992.2,
+                "relativeChange": 4.343558166329826
+              },
+              {
+                "cacheWeight": 0.25,
+                "inputWeightedDelta": 59893,
+                "relativeChange": 3.7426107604824095
+              }
+            ]
+          }
+        },
+        {
+          "trial": 4,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 36096,
+          "keeperCacheReadTokens": 42880,
+          "controlCacheShare": 0.8380386329866271,
+          "keeperCacheShare": 0.9939270316628808,
+          "controlFirstTextMs": 3603.3166670002975,
+          "keeperFirstTextMs": 2639.7103749997914,
+          "controlCompletionMs": 4358.385375000071,
+          "keeperCompletionMs": 3279.984625000041,
+          "controlReportedCostUSD": null,
+          "keeperReportedCostUSD": null,
+          "reportedCostChangeUSD": null,
+          "reportedCostChangePercent": null,
+          "keeperRequests": 3,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 43072,
+              "cacheReadTokens": 36096,
+              "nonCachedInputTokens": 6976,
+              "cacheWriteTokens": null,
+              "outputTokens": 44,
+              "reasoningTokens": 22,
+              "weightedCacheShare": 0.8380386329866271,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 6753,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 4,
+              "inputTokens": 172448,
+              "cacheReadTokens": 164736,
+              "nonCachedInputTokens": 7712,
+              "cacheWriteTokens": null,
+              "outputTokens": 61,
+              "reasoningTokens": 26,
+              "weightedCacheShare": 0.9552792725923177,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 3
+            },
+            "maintenance": {
+              "requests": 3,
+              "inputTokens": 129306,
+              "cacheReadTokens": 121856,
+              "nonCachedInputTokens": 7450,
+              "cacheWriteTokens": null,
+              "outputTokens": 15,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.9423847307936213,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "firstPostSeedInputGrowth": 6769,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": null
+          },
+          "cacheShareDelta": 0.1558883986762537,
+          "firstTextDeltaMs": -963.6062920005061,
+          "completionDeltaMs": -1078.4007500000298,
+          "postSeedInputRatio": 4.0037147102526,
+          "codexInputSensitivity": {
+            "nonCachedDelta": 736,
+            "cachedDelta": 128640,
+            "breakEvenCacheWeight": -0.0057213930348258705,
+            "scenarios": [
+              {
+                "cacheWeight": 0,
+                "inputWeightedDelta": 736,
+                "relativeChange": 0.10550458715596331
+              },
+              {
+                "cacheWeight": 0.05,
+                "inputWeightedDelta": 7168,
+                "relativeChange": 0.8163265306122449
+              },
+              {
+                "cacheWeight": 0.1,
+                "inputWeightedDelta": 13600,
+                "relativeChange": 1.284764207980653
+              },
+              {
+                "cacheWeight": 0.25,
+                "inputWeightedDelta": 32896,
+                "relativeChange": 2.056
+              }
+            ]
+          }
+        },
+        {
+          "trial": 5,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 36096,
+          "keeperCacheReadTokens": 42880,
+          "controlCacheShare": 0.8384668989547038,
+          "keeperCacheShare": 0.994687884200515,
+          "controlFirstTextMs": 6865.910958999768,
+          "keeperFirstTextMs": 4471.616208999883,
+          "controlCompletionMs": 7555.395084000193,
+          "keeperCompletionMs": 5201.663583999965,
+          "controlReportedCostUSD": null,
+          "keeperReportedCostUSD": null,
+          "reportedCostChangeUSD": null,
+          "reportedCostChangePercent": null,
+          "keeperRequests": 3,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 43050,
+              "cacheReadTokens": 36096,
+              "nonCachedInputTokens": 6954,
+              "cacheWriteTokens": null,
+              "outputTokens": 61,
+              "reasoningTokens": 40,
+              "weightedCacheShare": 0.8384668989547038,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 6732,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 4,
+              "inputTokens": 172316,
+              "cacheReadTokens": 164736,
+              "nonCachedInputTokens": 7580,
+              "cacheWriteTokens": null,
+              "outputTokens": 68,
+              "reasoningTokens": 31,
+              "weightedCacheShare": 0.9560110494672578,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 3
+            },
+            "maintenance": {
+              "requests": 3,
+              "inputTokens": 129207,
+              "cacheReadTokens": 121856,
+              "nonCachedInputTokens": 7351,
+              "cacheWriteTokens": null,
+              "outputTokens": 15,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.943106797619324,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "firstPostSeedInputGrowth": 6734,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": null
+          },
+          "cacheShareDelta": 0.15622098524581118,
+          "firstTextDeltaMs": -2394.2947499998845,
+          "completionDeltaMs": -2353.7315000002272,
+          "postSeedInputRatio": 4.002694541231127,
+          "codexInputSensitivity": {
+            "nonCachedDelta": 626,
+            "cachedDelta": 128640,
+            "breakEvenCacheWeight": -0.004866293532338309,
+            "scenarios": [
+              {
+                "cacheWeight": 0,
+                "inputWeightedDelta": 626,
+                "relativeChange": 0.09002013229795801
+              },
+              {
+                "cacheWeight": 0.05,
+                "inputWeightedDelta": 7058,
+                "relativeChange": 0.8058181486048318
+              },
+              {
+                "cacheWeight": 0.1,
+                "inputWeightedDelta": 13490,
+                "relativeChange": 1.2770267711764929
+              },
+              {
+                "cacheWeight": 0.25,
+                "inputWeightedDelta": 32786,
+                "relativeChange": 2.051946426336212
+              }
+            ]
+          }
+        }
+      ],
+      "limitations": [
+        "Shared host system/tool prefixes may share cache; conversation markers differ at the first user message.",
+        "Estimates are not subscription invoices or isolated quota measurements.",
+        "Finite paired observations establish only this tested configuration."
+      ]
+    },
+    {
+      "study": "controlled-codex-long25",
+      "host": "codex",
+      "model": "gpt-6-astra",
+      "status": null,
+      "plannedPairs": null,
+      "completedValidPairs": 6,
+      "invalidPairs": [],
+      "idleMinutes": 70,
+      "intervalMinutes": 25,
+      "summary": {
+        "controlMedianCacheShare": 0.8382040611840029,
+        "keeperMedianCacheShare": 0.9952358850727892,
+        "comparableCostPairs": 0,
+        "pairsWithLowerReportedCost": 0,
+        "pairsWithHigherReportedCost": 0,
+        "medianReportedCostChangePercent": null,
+        "controlMedianFirstTextMs": 4213.407187999692,
+        "keeperMedianFirstTextMs": 3867.82431250019,
+        "controlMedianCompletionMs": 4887.730499999598,
+        "keeperMedianCompletionMs": 4524.0183120006695,
+        "pairedCacheShareDelta": {
+          "n": 6,
+          "unknown": 0,
+          "median": 0.1572805450157836,
+          "min": 0.15610464321157347,
+          "max": 0.9952529055491898,
+          "negative": 0,
+          "zero": 0,
+          "positive": 6
+        },
+        "pairedFirstTextDeltaMs": {
+          "n": 6,
+          "unknown": 0,
+          "median": -252.6819379995577,
+          "min": -905.2507079998031,
+          "max": 261.75312500074506,
+          "negative": 5,
+          "zero": 0,
+          "positive": 1
+        },
+        "pairedCompletionDeltaMs": {
+          "n": 6,
+          "unknown": 0,
+          "median": -284.413896498736,
+          "min": -729.922416000627,
+          "max": 272.9525830000639,
+          "negative": 5,
+          "zero": 0,
+          "positive": 1
+        },
+        "medianPostSeedInputRatio": 3.0001394448116927,
+        "controlZeroCacheNextRequests": 1,
+        "keeperZeroCacheNextRequests": 0,
+        "controlAtLeast95PercentCachedNextRequests": 0,
+        "keeperAtLeast95PercentCachedNextRequests": 6
+      },
+      "pooled": {
+        "control": {
+          "requests": 6,
+          "inputTokens": 258303,
+          "cacheReadTokens": 161664,
+          "nonCachedInputTokens": 96639,
+          "cacheWriteTokens": null,
+          "outputTokens": 330,
+          "reasoningTokens": 207,
+          "weightedCacheShare": 0.6258696182390449,
+          "zeroCacheRequests": 1,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 0
+        },
+        "keeper": {
+          "requests": 18,
+          "inputTokens": 755874,
+          "cacheReadTokens": 718592,
+          "nonCachedInputTokens": 37282,
+          "cacheWriteTokens": null,
+          "outputTokens": 392,
+          "reasoningTokens": 210,
+          "weightedCacheShare": 0.9506769646792984,
+          "zeroCacheRequests": 0,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 13
+        }
+      },
+      "pooledCodexInputSensitivity": {
+        "nonCachedDelta": -59357,
+        "cachedDelta": 556928,
+        "breakEvenCacheWeight": 0.10657930648126868,
+        "scenarios": [
+          {
+            "cacheWeight": 0,
+            "inputWeightedDelta": -59357,
+            "relativeChange": -0.6142137232380301
+          },
+          {
+            "cacheWeight": 0.05,
+            "inputWeightedDelta": -31510.6,
+            "relativeChange": -0.3008970399781517
+          },
+          {
+            "cacheWeight": 0.1,
+            "inputWeightedDelta": -3664.199999999997,
+            "relativeChange": -0.03248248754049006
+          },
+          {
+            "cacheWeight": 0.25,
+            "inputWeightedDelta": 79875,
+            "relativeChange": 0.5827952281930612
+          }
+        ]
+      },
+      "pairs": [
+        {
+          "trial": 0,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 36096,
+          "keeperCacheReadTokens": 42880,
+          "controlCacheShare": 0.8383889998606401,
+          "keeperCacheShare": 0.9952188645963886,
+          "controlFirstTextMs": 4630.621124999598,
+          "keeperFirstTextMs": 3725.3704169997945,
+          "controlCompletionMs": 5194.174875000492,
+          "keeperCompletionMs": 4464.252458999865,
+          "controlReportedCostUSD": null,
+          "keeperReportedCostUSD": null,
+          "reportedCostChangeUSD": null,
+          "reportedCostChangePercent": null,
+          "keeperRequests": 2,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 43054,
+              "cacheReadTokens": 36096,
+              "nonCachedInputTokens": 6958,
+              "cacheWriteTokens": null,
+              "outputTokens": 51,
+              "reasoningTokens": 31,
+              "weightedCacheShare": 0.8383889998606401,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 6739,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 3,
+              "inputTokens": 129195,
+              "cacheReadTokens": 121856,
+              "nonCachedInputTokens": 7339,
+              "cacheWriteTokens": null,
+              "outputTokens": 60,
+              "reasoningTokens": 31,
+              "weightedCacheShare": 0.9431943960679593,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "maintenance": {
+              "requests": 2,
+              "inputTokens": 86109,
+              "cacheReadTokens": 78976,
+              "nonCachedInputTokens": 7133,
+              "cacheWriteTokens": null,
+              "outputTokens": 10,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.9171631304509401,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "firstPostSeedInputGrowth": 6733,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": null
+          },
+          "cacheShareDelta": 0.15682986473574856,
+          "firstTextDeltaMs": -905.2507079998031,
+          "completionDeltaMs": -729.922416000627,
+          "postSeedInputRatio": 3.000766479305059,
+          "codexInputSensitivity": {
+            "nonCachedDelta": 381,
+            "cachedDelta": 85760,
+            "breakEvenCacheWeight": -0.004442630597014926,
+            "scenarios": [
+              {
+                "cacheWeight": 0,
+                "inputWeightedDelta": 381,
+                "relativeChange": 0.05475711411325093
+              },
+              {
+                "cacheWeight": 0.05,
+                "inputWeightedDelta": 4669,
+                "relativeChange": 0.5328205596384717
+              },
+              {
+                "cacheWeight": 0.1,
+                "inputWeightedDelta": 8957,
+                "relativeChange": 0.8475907490821
+              },
+              {
+                "cacheWeight": 0.25,
+                "inputWeightedDelta": 21821,
+                "relativeChange": 1.365348517081717
+              }
+            ]
+          }
+        },
+        {
+          "trial": 1,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 36096,
+          "keeperCacheReadTokens": 42880,
+          "controlCacheShare": 0.838311115239909,
+          "keeperCacheShare": 0.9956810476942367,
+          "controlFirstTextMs": 4002.87616699934,
+          "keeperFirstTextMs": 3794.517667000182,
+          "controlCompletionMs": 4696.25116699934,
+          "keeperCompletionMs": 4488.197833000682,
+          "controlReportedCostUSD": null,
+          "keeperReportedCostUSD": null,
+          "reportedCostChangeUSD": null,
+          "reportedCostChangePercent": null,
+          "keeperRequests": 2,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 43058,
+              "cacheReadTokens": 36096,
+              "nonCachedInputTokens": 6962,
+              "cacheWriteTokens": null,
+              "outputTokens": 54,
+              "reasoningTokens": 30,
+              "weightedCacheShare": 0.838311115239909,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 6740,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 3,
+              "inputTokens": 129135,
+              "cacheReadTokens": 121856,
+              "nonCachedInputTokens": 7279,
+              "cacheWriteTokens": null,
+              "outputTokens": 74,
+              "reasoningTokens": 44,
+              "weightedCacheShare": 0.9436326325163589,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "maintenance": {
+              "requests": 2,
+              "inputTokens": 86069,
+              "cacheReadTokens": 78976,
+              "nonCachedInputTokens": 7093,
+              "cacheWriteTokens": null,
+              "outputTokens": 10,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.9175893759657949,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "firstPostSeedInputGrowth": 6711,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": null
+          },
+          "cacheShareDelta": 0.15736993245432773,
+          "firstTextDeltaMs": -208.35849999915808,
+          "completionDeltaMs": -208.05333399865776,
+          "postSeedInputRatio": 2.9990942449718982,
+          "codexInputSensitivity": {
+            "nonCachedDelta": 317,
+            "cachedDelta": 85760,
+            "breakEvenCacheWeight": -0.0036963619402985075,
+            "scenarios": [
+              {
+                "cacheWeight": 0,
+                "inputWeightedDelta": 317,
+                "relativeChange": 0.04553289284688308
+              },
+              {
+                "cacheWeight": 0.05,
+                "inputWeightedDelta": 4605,
+                "relativeChange": 0.5252771820960899
+              },
+              {
+                "cacheWeight": 0.1,
+                "inputWeightedDelta": 8893,
+                "relativeChange": 0.8412160883877559
+              },
+              {
+                "cacheWeight": 0.25,
+                "inputWeightedDelta": 21757,
+                "relativeChange": 1.3610033779557114
+              }
+            ]
+          }
+        },
+        {
+          "trial": 2,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 17280,
+          "keeperCacheReadTokens": 42880,
+          "controlCacheShare": 0.40157096047035856,
+          "keeperCacheShare": 0.9949648467410724,
+          "controlFirstTextMs": 4188.678041999228,
+          "keeperFirstTextMs": 4450.431166999973,
+          "controlCompletionMs": 4854.847749999724,
+          "keeperCompletionMs": 5127.800332999788,
+          "controlReportedCostUSD": null,
+          "keeperReportedCostUSD": null,
+          "reportedCostChangeUSD": null,
+          "reportedCostChangePercent": null,
+          "keeperRequests": 2,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 43031,
+              "cacheReadTokens": 17280,
+              "nonCachedInputTokens": 25751,
+              "cacheWriteTokens": null,
+              "outputTokens": 56,
+              "reasoningTokens": 37,
+              "weightedCacheShare": 0.40157096047035856,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 6717,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 3,
+              "inputTokens": 129228,
+              "cacheReadTokens": 121856,
+              "nonCachedInputTokens": 7372,
+              "cacheWriteTokens": null,
+              "outputTokens": 66,
+              "reasoningTokens": 34,
+              "weightedCacheShare": 0.9429535394806079,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "maintenance": {
+              "requests": 2,
+              "inputTokens": 86131,
+              "cacheReadTokens": 78976,
+              "nonCachedInputTokens": 7155,
+              "cacheWriteTokens": null,
+              "outputTokens": 10,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.916928864172017,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "firstPostSeedInputGrowth": 6741,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": null
+          },
+          "cacheShareDelta": 0.5933938862707139,
+          "firstTextDeltaMs": 261.75312500074506,
+          "completionDeltaMs": 272.9525830000639,
+          "postSeedInputRatio": 3.0031372731286745,
+          "codexInputSensitivity": {
+            "nonCachedDelta": -18379,
+            "cachedDelta": 104576,
+            "breakEvenCacheWeight": 0.17574778151774786,
+            "scenarios": [
+              {
+                "cacheWeight": 0,
+                "inputWeightedDelta": -18379,
+                "relativeChange": -0.7137198555395907
+              },
+              {
+                "cacheWeight": 0.05,
+                "inputWeightedDelta": -13150.2,
+                "relativeChange": -0.4940897989855345
+              },
+              {
+                "cacheWeight": 0.1,
+                "inputWeightedDelta": -7921.4,
+                "relativeChange": -0.28827104334218856
+              },
+              {
+                "cacheWeight": 0.25,
+                "inputWeightedDelta": 7765,
+                "relativeChange": 0.25822220744238633
+              }
+            ]
+          }
+        },
+        {
+          "trial": 3,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 0,
+          "keeperCacheReadTokens": 36480,
+          "controlCacheShare": 0,
+          "keeperCacheShare": 0.9952529055491898,
+          "controlFirstTextMs": 4238.136334000155,
+          "keeperFirstTextMs": 3941.130958000198,
+          "controlCompletionMs": 4920.613249999471,
+          "keeperCompletionMs": 4559.838791000657,
+          "controlReportedCostUSD": null,
+          "keeperReportedCostUSD": null,
+          "reportedCostChangeUSD": null,
+          "reportedCostChangePercent": null,
+          "keeperRequests": 2,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 43060,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 43060,
+              "cacheWriteTokens": null,
+              "outputTokens": 53,
+              "reasoningTokens": 34,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 6747,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 3,
+              "inputTokens": 109899,
+              "cacheReadTokens": 109312,
+              "nonCachedInputTokens": 587,
+              "cacheWriteTokens": null,
+              "outputTokens": 56,
+              "reasoningTokens": 27,
+              "weightedCacheShare": 0.9946587321085724,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 3
+            },
+            "maintenance": {
+              "requests": 2,
+              "inputTokens": 73245,
+              "cacheReadTokens": 72832,
+              "nonCachedInputTokens": 413,
+              "cacheWriteTokens": null,
+              "outputTokens": 10,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.9943613898559629,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "firstPostSeedInputGrowth": 36,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": null
+          },
+          "cacheShareDelta": 0.9952529055491898,
+          "firstTextDeltaMs": -297.0053759999573,
+          "completionDeltaMs": -360.7744589988142,
+          "postSeedInputRatio": 2.552229447282861,
+          "codexInputSensitivity": {
+            "nonCachedDelta": -42473,
+            "cachedDelta": 109312,
+            "breakEvenCacheWeight": 0.38854837529274006,
+            "scenarios": [
+              {
+                "cacheWeight": 0,
+                "inputWeightedDelta": -42473,
+                "relativeChange": -0.9863678588016721
+              },
+              {
+                "cacheWeight": 0.05,
+                "inputWeightedDelta": -37007.4,
+                "relativeChange": -0.8594379934974454
+              },
+              {
+                "cacheWeight": 0.1,
+                "inputWeightedDelta": -31541.8,
+                "relativeChange": -0.7325081281932188
+              },
+              {
+                "cacheWeight": 0.25,
+                "inputWeightedDelta": -15145,
+                "relativeChange": -0.3517185322805388
+              }
+            ]
+          }
+        },
+        {
+          "trial": 4,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 36096,
+          "keeperCacheReadTokens": 42880,
+          "controlCacheShare": 0.8380970071280968,
+          "keeperCacheShare": 0.9952881647053362,
+          "controlFirstTextMs": 4028.4139590002596,
+          "keeperFirstTextMs": 4020.5197499999776,
+          "controlCompletionMs": 4836.261125000194,
+          "keeperCompletionMs": 4727.064791999757,
+          "controlReportedCostUSD": null,
+          "keeperReportedCostUSD": null,
+          "reportedCostChangeUSD": null,
+          "reportedCostChangePercent": null,
+          "keeperRequests": 2,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 43069,
+              "cacheReadTokens": 36096,
+              "nonCachedInputTokens": 6973,
+              "cacheWriteTokens": null,
+              "outputTokens": 51,
+              "reasoningTokens": 29,
+              "weightedCacheShare": 0.8380970071280968,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 6752,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 3,
+              "inputTokens": 129186,
+              "cacheReadTokens": 121856,
+              "nonCachedInputTokens": 7330,
+              "cacheWriteTokens": null,
+              "outputTokens": 76,
+              "reasoningTokens": 45,
+              "weightedCacheShare": 0.9432601055841965,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "maintenance": {
+              "requests": 2,
+              "inputTokens": 86103,
+              "cacheReadTokens": 78976,
+              "nonCachedInputTokens": 7127,
+              "cacheWriteTokens": null,
+              "outputTokens": 10,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.9172270420310559,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "firstPostSeedInputGrowth": 6727,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": null
+          },
+          "cacheShareDelta": 0.15719115757723945,
+          "firstTextDeltaMs": -7.89420900028199,
+          "completionDeltaMs": -109.19633300043643,
+          "postSeedInputRatio": 2.9995124103183266,
+          "codexInputSensitivity": {
+            "nonCachedDelta": 357,
+            "cachedDelta": 85760,
+            "breakEvenCacheWeight": -0.004162779850746269,
+            "scenarios": [
+              {
+                "cacheWeight": 0,
+                "inputWeightedDelta": 357,
+                "relativeChange": 0.051197475978775275
+              },
+              {
+                "cacheWeight": 0.05,
+                "inputWeightedDelta": 4645,
+                "relativeChange": 0.5291758755041127
+              },
+              {
+                "cacheWeight": 0.1,
+                "inputWeightedDelta": 8933,
+                "relativeChange": 0.8441214824334284
+              },
+              {
+                "cacheWeight": 0.25,
+                "inputWeightedDelta": 21797,
+                "relativeChange": 1.3625679814965306
+              }
+            ]
+          }
+        },
+        {
+          "trial": 5,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 36096,
+          "keeperCacheReadTokens": 42880,
+          "controlCacheShare": 0.8388371174269712,
+          "keeperCacheShare": 0.9949417606385447,
+          "controlFirstTextMs": 4337.752125000581,
+          "keeperFirstTextMs": 3652.5847919993103,
+          "controlCompletionMs": 4942.89862500038,
+          "keeperCompletionMs": 4349.514124999754,
+          "controlReportedCostUSD": null,
+          "keeperReportedCostUSD": null,
+          "reportedCostChangeUSD": null,
+          "reportedCostChangePercent": null,
+          "keeperRequests": 2,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 43031,
+              "cacheReadTokens": 36096,
+              "nonCachedInputTokens": 6935,
+              "cacheWriteTokens": null,
+              "outputTokens": 65,
+              "reasoningTokens": 46,
+              "weightedCacheShare": 0.8388371174269712,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 6717,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 3,
+              "inputTokens": 129231,
+              "cacheReadTokens": 121856,
+              "nonCachedInputTokens": 7375,
+              "cacheWriteTokens": null,
+              "outputTokens": 60,
+              "reasoningTokens": 29,
+              "weightedCacheShare": 0.9429316495268163,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "maintenance": {
+              "requests": 2,
+              "inputTokens": 86133,
+              "cacheReadTokens": 78976,
+              "nonCachedInputTokens": 7157,
+              "cacheWriteTokens": null,
+              "outputTokens": 10,
+              "reasoningTokens": 0,
+              "weightedCacheShare": 0.9169075731717228,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "firstPostSeedInputGrowth": 6743,
+            "nextUserReportedCostUSD": null,
+            "maintenanceReportedCostUSD": null
+          },
+          "cacheShareDelta": 0.15610464321157347,
+          "firstTextDeltaMs": -685.1673330012709,
+          "completionDeltaMs": -593.3845000006258,
+          "postSeedInputRatio": 3.003206990309312,
+          "codexInputSensitivity": {
+            "nonCachedDelta": 440,
+            "cachedDelta": 85760,
+            "breakEvenCacheWeight": -0.005130597014925373,
+            "scenarios": [
+              {
+                "cacheWeight": 0,
+                "inputWeightedDelta": 440,
+                "relativeChange": 0.06344628695025234
+              },
+              {
+                "cacheWeight": 0.05,
+                "inputWeightedDelta": 4728,
+                "relativeChange": 0.540973477653951
+              },
+              {
+                "cacheWeight": 0.1,
+                "inputWeightedDelta": 9016,
+                "relativeChange": 0.8550348045445062
+              },
+              {
+                "cacheWeight": 0.25,
+                "inputWeightedDelta": 21880,
+                "relativeChange": 1.3710132213797857
+              }
+            ]
+          }
+        }
+      ],
+      "limitations": [
+        "Shared host system/tool prefixes may share cache; conversation markers differ at the first user message.",
+        "Estimates are not subscription invoices or isolated quota measurements.",
+        "Finite paired observations establish only this tested configuration."
+      ]
+    },
+    {
+      "study": "controlled-grok",
+      "host": "grok",
+      "model": "grok-4.7",
+      "status": null,
+      "plannedPairs": null,
+      "completedValidPairs": 6,
+      "invalidPairs": [],
+      "idleMinutes": 12,
+      "intervalMinutes": 3,
+      "summary": {
+        "controlMedianCacheShare": 0.9964589849073096,
+        "keeperMedianCacheShare": 0.9969312752213275,
+        "comparableCostPairs": 6,
+        "pairsWithLowerReportedCost": 0,
+        "pairsWithHigherReportedCost": 6,
+        "medianReportedCostChangePercent": 591.8398345808446,
+        "controlMedianFirstTextMs": 4357.810270499962,
+        "keeperMedianFirstTextMs": 5039.637187500019,
+        "controlMedianCompletionMs": 6525.944354000036,
+        "keeperMedianCompletionMs": 7160.496062499995,
+        "pairedCacheShareDelta": {
+          "n": 6,
+          "unknown": 0,
+          "median": 0.00030166531089503845,
+          "min": -0.9965757127924161,
+          "max": 0.9975578221519896,
+          "negative": 2,
+          "zero": 0,
+          "positive": 4
+        },
+        "pairedFirstTextDeltaMs": {
+          "n": 6,
+          "unknown": 0,
+          "median": 550.1654790000175,
+          "min": -3679.1036250001052,
+          "max": 4336.480292000109,
+          "negative": 3,
+          "zero": 0,
+          "positive": 3
+        },
+        "pairedCompletionDeltaMs": {
+          "n": 6,
+          "unknown": 0,
+          "median": 251.68960399995558,
+          "min": -3821.7532499999506,
+          "max": 4039.242750000092,
+          "negative": 3,
+          "zero": 0,
+          "positive": 3
+        },
+        "medianPostSeedInputRatio": 4.004712418433893,
+        "controlZeroCacheNextRequests": 1,
+        "keeperZeroCacheNextRequests": 2,
+        "controlAtLeast95PercentCachedNextRequests": 5,
+        "keeperAtLeast95PercentCachedNextRequests": 4
+      },
+      "pooled": {
+        "control": {
+          "requests": 6,
+          "inputTokens": 333154,
+          "cacheReadTokens": 276480,
+          "nonCachedInputTokens": 56674,
+          "cacheWriteTokens": 0,
+          "outputTokens": 413,
+          "reasoningTokens": null,
+          "weightedCacheShare": 0.829886478925662,
+          "zeroCacheRequests": 1,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 5
+        },
+        "keeper": {
+          "requests": 24,
+          "inputTokens": 1333875,
+          "cacheReadTokens": 996352,
+          "nonCachedInputTokens": 337523,
+          "cacheWriteTokens": 0,
+          "outputTokens": 831,
+          "reasoningTokens": null,
+          "weightedCacheShare": 0.7469605472776685,
+          "zeroCacheRequests": 6,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 18
+        }
+      },
+      "pooledCodexInputSensitivity": null,
+      "pairs": [
+        {
+          "trial": 0,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 0,
+          "keeperCacheReadTokens": 55552,
+          "controlCacheShare": 0,
+          "keeperCacheShare": 0.9975578221519896,
+          "controlFirstTextMs": 5952.014499999932,
+          "keeperFirstTextMs": 4804.416124999989,
+          "controlCompletionMs": 7891.736124999938,
+          "keeperCompletionMs": 6974.147332999972,
+          "controlReportedCostUSD": 0.03804192,
+          "keeperReportedCostUSD": 0.03872668,
+          "reportedCostChangeUSD": 0.0006847599999999995,
+          "reportedCostChangePercent": 1.8000143000143076,
+          "keeperRequests": 3,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55704,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 55704,
+              "cacheWriteTokens": 0,
+              "outputTokens": 80,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 272,
+            "nextUserReportedCostUSD": 0.03804192,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 4,
+              "inputTokens": 222410,
+              "cacheReadTokens": 221184,
+              "nonCachedInputTokens": 1226,
+              "cacheWriteTokens": 0,
+              "outputTokens": 143,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.9944876579290499,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 4
+            },
+            "maintenance": {
+              "requests": 3,
+              "inputTokens": 166722,
+              "cacheReadTokens": 165632,
+              "nonCachedInputTokens": 1090,
+              "cacheWriteTokens": 0,
+              "outputTokens": 80,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.9934621705593742,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 3
+            },
+            "firstPostSeedInputGrowth": 750,
+            "nextUserReportedCostUSD": 0.00966484,
+            "maintenanceReportedCostUSD": 0.02906184
+          },
+          "cacheShareDelta": 0.9975578221519896,
+          "firstTextDeltaMs": -1147.5983749999432,
+          "completionDeltaMs": -917.5887919999659,
+          "postSeedInputRatio": 3.992711474938963,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 1,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 55296,
+          "keeperCacheReadTokens": 0,
+          "controlCacheShare": 0.9965757127924161,
+          "keeperCacheShare": 0,
+          "controlFirstTextMs": 3629.258374999976,
+          "keeperFirstTextMs": 5422.551457999973,
+          "controlCompletionMs": 5686.275374999968,
+          "keeperCompletionMs": 7559.784499999951,
+          "controlReportedCostUSD": 0.00969272,
+          "keeperReportedCostUSD": 0.0667114,
+          "reportedCostChangeUSD": 0.05701868,
+          "reportedCostChangePercent": 588.262943735092,
+          "keeperRequests": 3,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55486,
+              "cacheReadTokens": 55296,
+              "nonCachedInputTokens": 190,
+              "cacheWriteTokens": 0,
+              "outputTokens": 80,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.9965757127924161,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 110,
+            "nextUserReportedCostUSD": 0.00969272,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 4,
+              "inputTokens": 222293,
+              "cacheReadTokens": 166144,
+              "nonCachedInputTokens": 56149,
+              "cacheWriteTokens": 0,
+              "outputTokens": 140,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.747409949930947,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 3
+            },
+            "maintenance": {
+              "requests": 3,
+              "inputTokens": 166634,
+              "cacheReadTokens": 166144,
+              "nonCachedInputTokens": 490,
+              "cacheWriteTokens": 0,
+              "outputTokens": 78,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.9970594236470348,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 3
+            },
+            "firstPostSeedInputGrowth": 118,
+            "nextUserReportedCostUSD": 0.0379746,
+            "maintenanceReportedCostUSD": 0.0287368
+          },
+          "cacheShareDelta": -0.9965757127924161,
+          "firstTextDeltaMs": 1793.2930829999968,
+          "completionDeltaMs": 1873.5091249999823,
+          "postSeedInputRatio": 4.006289874923404,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 2,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 55296,
+          "keeperCacheReadTokens": 55552,
+          "controlCacheShare": 0.9965218331561211,
+          "keeperCacheShare": 0.9967702576616665,
+          "controlFirstTextMs": 4315.61020799994,
+          "keeperFirstTextMs": 8652.09050000005,
+          "controlCompletionMs": 6761.993332999991,
+          "keeperCompletionMs": 10801.236083000083,
+          "controlReportedCostUSD": 0.00967232,
+          "keeperReportedCostUSD": 0.09487428,
+          "reportedCostChangeUSD": 0.08520196000000001,
+          "reportedCostChangePercent": 880.8844206974129,
+          "keeperRequests": 3,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55489,
+              "cacheReadTokens": 55296,
+              "nonCachedInputTokens": 193,
+              "cacheWriteTokens": 0,
+              "outputTokens": 69,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.9965218331561211,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 121,
+            "nextUserReportedCostUSD": 0.00967232,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 4,
+              "inputTokens": 222279,
+              "cacheReadTokens": 110848,
+              "nonCachedInputTokens": 111431,
+              "cacheWriteTokens": 0,
+              "outputTokens": 126,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.49868858506651553,
+              "zeroCacheRequests": 2,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "maintenance": {
+              "requests": 3,
+              "inputTokens": 166547,
+              "cacheReadTokens": 55296,
+              "nonCachedInputTokens": 111251,
+              "cacheWriteTokens": 0,
+              "outputTokens": 70,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.3320143863293845,
+              "zeroCacheRequests": 2,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "firstPostSeedInputGrowth": 95,
+            "nextUserReportedCostUSD": 0.00968048,
+            "maintenanceReportedCostUSD": 0.0851938
+          },
+          "cacheShareDelta": 0.0002484245055454082,
+          "firstTextDeltaMs": 4336.480292000109,
+          "completionDeltaMs": 4039.242750000092,
+          "postSeedInputRatio": 4.005820973526284,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 3,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 55296,
+          "keeperCacheReadTokens": 0,
+          "controlCacheShare": 0.9963961366584979,
+          "keeperCacheShare": 0,
+          "controlFirstTextMs": 3606.887667000061,
+          "keeperFirstTextMs": 5274.858250000048,
+          "controlCompletionMs": 6289.89537500008,
+          "keeperCompletionMs": 7346.844792000018,
+          "controlReportedCostUSD": 0.00965668,
+          "keeperReportedCostUSD": 0.09490352,
+          "reportedCostChangeUSD": 0.08524684,
+          "reportedCostChangePercent": 882.7758608548694,
+          "keeperRequests": 3,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55496,
+              "cacheReadTokens": 55296,
+              "nonCachedInputTokens": 200,
+              "cacheWriteTokens": 0,
+              "outputTokens": 59,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.9963961366584979,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 125,
+            "nextUserReportedCostUSD": 0.00965668,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 4,
+              "inputTokens": 222184,
+              "cacheReadTokens": 110720,
+              "nonCachedInputTokens": 111464,
+              "cacheWriteTokens": 0,
+              "outputTokens": 140,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.49832571202246784,
+              "zeroCacheRequests": 2,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "maintenance": {
+              "requests": 3,
+              "inputTokens": 166552,
+              "cacheReadTokens": 110720,
+              "nonCachedInputTokens": 55832,
+              "cacheWriteTokens": 0,
+              "outputTokens": 82,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.664777366828378,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "firstPostSeedInputGrowth": 92,
+            "nextUserReportedCostUSD": 0.03794808,
+            "maintenanceReportedCostUSD": 0.05695544
+          },
+          "cacheShareDelta": -0.9963961366584979,
+          "firstTextDeltaMs": 1667.9705829999875,
+          "completionDeltaMs": 1056.949416999938,
+          "postSeedInputRatio": 4.003603863341502,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 4,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 55296,
+          "keeperCacheReadTokens": 55552,
+          "controlCacheShare": 0.9962884220388455,
+          "keeperCacheShare": 0.998615829872908,
+          "controlFirstTextMs": 4400.010332999984,
+          "keeperFirstTextMs": 3832.3707080000313,
+          "controlCompletionMs": 6170.397166999988,
+          "keeperCompletionMs": 5616.826957999961,
+          "controlReportedCostUSD": 0.00967504,
+          "keeperReportedCostUSD": 0.03831052,
+          "reportedCostChangeUSD": 0.02863548,
+          "reportedCostChangePercent": 295.9727298285072,
+          "keeperRequests": 3,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55502,
+              "cacheReadTokens": 55296,
+              "nonCachedInputTokens": 206,
+              "cacheWriteTokens": 0,
+              "outputTokens": 66,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.9962884220388455,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 127,
+            "nextUserReportedCostUSD": 0.00967504,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 4,
+              "inputTokens": 222167,
+              "cacheReadTokens": 221696,
+              "nonCachedInputTokens": 471,
+              "cacheWriteTokens": 0,
+              "outputTokens": 148,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.9978799731733335,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 4
+            },
+            "maintenance": {
+              "requests": 3,
+              "inputTokens": 166538,
+              "cacheReadTokens": 166144,
+              "nonCachedInputTokens": 394,
+              "cacheWriteTokens": 0,
+              "outputTokens": 84,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.9976341735820053,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 3
+            },
+            "firstPostSeedInputGrowth": 82,
+            "nextUserReportedCostUSD": 0.00962676,
+            "maintenanceReportedCostUSD": 0.028683760000000003
+          },
+          "cacheShareDelta": 0.0023274078340624893,
+          "firstTextDeltaMs": -567.6396249999525,
+          "completionDeltaMs": -553.5702090000268,
+          "postSeedInputRatio": 4.002864761630211,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 5,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 55296,
+          "keeperCacheReadTokens": 55552,
+          "controlCacheShare": 0.996737386664744,
+          "keeperCacheShare": 0.9970922927809887,
+          "controlFirstTextMs": 7847.500875000027,
+          "keeperFirstTextMs": 4168.397249999922,
+          "controlCompletionMs": 9821.701374999946,
+          "keeperCompletionMs": 5999.948124999995,
+          "controlReportedCostUSD": 0.00964376,
+          "keeperReportedCostUSD": 0.06706432,
+          "reportedCostChangeUSD": 0.057420559999999995,
+          "reportedCostChangePercent": 595.416725426597,
+          "keeperRequests": 3,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55477,
+              "cacheReadTokens": 55296,
+              "nonCachedInputTokens": 181,
+              "cacheWriteTokens": 0,
+              "outputTokens": 59,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.996737386664744,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 106,
+            "nextUserReportedCostUSD": 0.00964376,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 4,
+              "inputTokens": 222542,
+              "cacheReadTokens": 165760,
+              "nonCachedInputTokens": 56782,
+              "cacheWriteTokens": 0,
+              "outputTokens": 134,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.744848163492734,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 3
+            },
+            "maintenance": {
+              "requests": 3,
+              "inputTokens": 166828,
+              "cacheReadTokens": 110208,
+              "nonCachedInputTokens": 56620,
+              "cacheWriteTokens": 0,
+              "outputTokens": 71,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.6606085309420481,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 2
+            },
+            "firstPostSeedInputGrowth": 785,
+            "nextUserReportedCostUSD": 0.00968252,
+            "maintenanceReportedCostUSD": 0.0573818
+          },
+          "cacheShareDelta": 0.0003549061162446687,
+          "firstTextDeltaMs": -3679.1036250001052,
+          "completionDeltaMs": -3821.7532499999506,
+          "postSeedInputRatio": 4.011428159417417,
+          "codexInputSensitivity": null
+        }
+      ],
+      "limitations": [
+        "Shared host system/tool prefixes may share cache; conversation markers differ at the first user message.",
+        "Estimates are not subscription invoices or isolated quota measurements.",
+        "Finite paired observations establish only this tested configuration."
+      ]
+    },
+    {
+      "study": "controlled-grok-long25",
+      "host": "grok",
+      "model": "grok-4.7",
+      "status": null,
+      "plannedPairs": null,
+      "completedValidPairs": 6,
+      "invalidPairs": [],
+      "idleMinutes": 70,
+      "intervalMinutes": 25,
+      "summary": {
+        "controlMedianCacheShare": 0,
+        "keeperMedianCacheShare": 0.026481488144496815,
+        "comparableCostPairs": 6,
+        "pairsWithLowerReportedCost": 0,
+        "pairsWithHigherReportedCost": 6,
+        "medianReportedCostChangePercent": 197.80399069625958,
+        "controlMedianFirstTextMs": 5591.155124999583,
+        "keeperMedianFirstTextMs": 5467.7453959998675,
+        "controlMedianCompletionMs": 7389.092728999909,
+        "keeperMedianCompletionMs": 7735.114792000037,
+        "pairedCacheShareDelta": {
+          "n": 6,
+          "unknown": 0,
+          "median": 0.026481488144496815,
+          "min": 0,
+          "max": 0.9973367883106601,
+          "negative": 0,
+          "zero": 3,
+          "positive": 3
+        },
+        "pairedFirstTextDeltaMs": {
+          "n": 6,
+          "unknown": 0,
+          "median": -504.7201039995998,
+          "min": -2460.223124999553,
+          "max": 1651.8987920004874,
+          "negative": 4,
+          "zero": 0,
+          "positive": 2
+        },
+        "pairedCompletionDeltaMs": {
+          "n": 6,
+          "unknown": 0,
+          "median": -52.52145799994469,
+          "min": -2750.9912910005078,
+          "max": 2451.225750000216,
+          "negative": 3,
+          "zero": 0,
+          "positive": 3
+        },
+        "medianPostSeedInputRatio": 3.002604689699663,
+        "controlZeroCacheNextRequests": 6,
+        "keeperZeroCacheNextRequests": 3,
+        "controlAtLeast95PercentCachedNextRequests": 0,
+        "keeperAtLeast95PercentCachedNextRequests": 2
+      },
+      "pooled": {
+        "control": {
+          "requests": 6,
+          "inputTokens": 332934,
+          "cacheReadTokens": 0,
+          "nonCachedInputTokens": 332934,
+          "cacheWriteTokens": 0,
+          "outputTokens": 514,
+          "reasoningTokens": null,
+          "weightedCacheShare": 0,
+          "zeroCacheRequests": 6,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 0
+        },
+        "keeper": {
+          "requests": 18,
+          "inputTokens": 1000210,
+          "cacheReadTokens": 113792,
+          "nonCachedInputTokens": 886418,
+          "cacheWriteTokens": 0,
+          "outputTokens": 721,
+          "reasoningTokens": null,
+          "weightedCacheShare": 0.11376810869717359,
+          "zeroCacheRequests": 15,
+          "unknownCacheRequests": 0,
+          "atLeast95PercentCachedRequests": 2
+        }
+      },
+      "pooledCodexInputSensitivity": null,
+      "pairs": [
+        {
+          "trial": 0,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 0,
+          "keeperCacheReadTokens": 0,
+          "controlCacheShare": 0,
+          "keeperCacheShare": 0,
+          "controlFirstTextMs": 5391.018582999706,
+          "keeperFirstTextMs": 6838.3887499999255,
+          "controlCompletionMs": 7315.801165999845,
+          "keeperCompletionMs": 9767.02691600006,
+          "controlReportedCostUSD": 0.03791,
+          "keeperReportedCostUSD": 0.11363004,
+          "reportedCostChangeUSD": 0.07572004,
+          "reportedCostChangePercent": 199.7363228699552,
+          "keeperRequests": 2,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55504,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 55504,
+              "cacheWriteTokens": 0,
+              "outputTokens": 82,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 126,
+            "nextUserReportedCostUSD": 0.03791,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 3,
+              "inputTokens": 166626,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 166626,
+              "cacheWriteTokens": 0,
+              "outputTokens": 159,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 3,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 2,
+              "inputTokens": 111021,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 111021,
+              "cacheWriteTokens": 0,
+              "outputTokens": 62,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 2,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 109,
+            "nextUserReportedCostUSD": 0.03800928,
+            "maintenanceReportedCostUSD": 0.07562076000000001
+          },
+          "cacheShareDelta": 0,
+          "firstTextDeltaMs": 1447.3701670002192,
+          "completionDeltaMs": 2451.225750000216,
+          "postSeedInputRatio": 3.002053906024791,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 1,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 0,
+          "keeperCacheReadTokens": 2944,
+          "controlCacheShare": 0,
+          "keeperCacheShare": 0.05296297628899363,
+          "controlFirstTextMs": 4560.196791999973,
+          "keeperFirstTextMs": 6212.095584000461,
+          "controlCompletionMs": 6637.3402080005035,
+          "keeperCompletionMs": 8175.117291999981,
+          "controlReportedCostUSD": 0.03785152,
+          "keeperReportedCostUSD": 0.11199192,
+          "reportedCostChangeUSD": 0.0741404,
+          "reportedCostChangePercent": 195.87165852256393,
+          "keeperRequests": 2,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55481,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 55481,
+              "cacheWriteTokens": 0,
+              "outputTokens": 61,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 107,
+            "nextUserReportedCostUSD": 0.03785152,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 3,
+              "inputTokens": 166599,
+              "cacheReadTokens": 2944,
+              "nonCachedInputTokens": 163655,
+              "cacheWriteTokens": 0,
+              "outputTokens": 101,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.01767117449684572,
+              "zeroCacheRequests": 2,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 2,
+              "inputTokens": 111013,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 111013,
+              "cacheWriteTokens": 0,
+              "outputTokens": 44,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 2,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 108,
+            "nextUserReportedCostUSD": 0.03641332,
+            "maintenanceReportedCostUSD": 0.0755786
+          },
+          "cacheShareDelta": 0.05296297628899363,
+          "firstTextDeltaMs": 1651.8987920004874,
+          "completionDeltaMs": 1537.7770839994773,
+          "postSeedInputRatio": 3.0028117733999027,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 2,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 0,
+          "keeperCacheReadTokens": 0,
+          "controlCacheShare": 0,
+          "keeperCacheShare": 0,
+          "controlFirstTextMs": 6153.639332999475,
+          "keeperFirstTextMs": 5495.697999999858,
+          "controlCompletionMs": 8112.888207999989,
+          "keeperCompletionMs": 7460.169166999869,
+          "controlReportedCostUSD": 0.03791748,
+          "keeperReportedCostUSD": 0.11400676,
+          "reportedCostChangeUSD": 0.07608928,
+          "reportedCostChangePercent": 200.67071967862842,
+          "keeperRequests": 2,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55503,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 55503,
+              "cacheWriteTokens": 0,
+              "outputTokens": 86,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 128,
+            "nextUserReportedCostUSD": 0.03791748,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 3,
+              "inputTokens": 167210,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 167210,
+              "cacheWriteTokens": 0,
+              "outputTokens": 149,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 3,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 2,
+              "inputTokens": 111415,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 111415,
+              "cacheWriteTokens": 0,
+              "outputTokens": 54,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 2,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 248,
+            "nextUserReportedCostUSD": 0.0381344,
+            "maintenanceReportedCostUSD": 0.07587236
+          },
+          "cacheShareDelta": 0,
+          "firstTextDeltaMs": -657.9413329996169,
+          "completionDeltaMs": -652.7190410001203,
+          "postSeedInputRatio": 3.0126299479307423,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 3,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 0,
+          "keeperCacheReadTokens": 55424,
+          "controlCacheShare": 0,
+          "keeperCacheShare": 0.9968524613752046,
+          "controlFirstTextMs": 5056.461374999955,
+          "keeperFirstTextMs": 3899.3043329995126,
+          "controlCompletionMs": 6800.898749999702,
+          "keeperCompletionMs": 6011.1901659993455,
+          "controlReportedCostUSD": 0.03785424,
+          "keeperReportedCostUSD": 0.08526792,
+          "reportedCostChangeUSD": 0.04741368,
+          "reportedCostChangePercent": 125.25328734641086,
+          "keeperRequests": 2,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55485,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 55485,
+              "cacheWriteTokens": 0,
+              "outputTokens": 61,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 108,
+            "nextUserReportedCostUSD": 0.03785424,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 3,
+              "inputTokens": 166638,
+              "cacheReadTokens": 55424,
+              "nonCachedInputTokens": 111214,
+              "cacheWriteTokens": 0,
+              "outputTokens": 108,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.3326012074076741,
+              "zeroCacheRequests": 2,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "maintenance": {
+              "requests": 2,
+              "inputTokens": 111039,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 111039,
+              "cacheWriteTokens": 0,
+              "outputTokens": 44,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 2,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 119,
+            "nextUserReportedCostUSD": 0.00967164,
+            "maintenanceReportedCostUSD": 0.07559628
+          },
+          "cacheShareDelta": 0.9968524613752046,
+          "firstTextDeltaMs": -1157.1570420004427,
+          "completionDeltaMs": -789.7085840003565,
+          "postSeedInputRatio": 3.0032981886996484,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 4,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "controlCacheReadTokens": 0,
+          "keeperCacheReadTokens": 0,
+          "controlCacheShare": 0,
+          "keeperCacheShare": 0,
+          "controlFirstTextMs": 5791.291666999459,
+          "keeperFirstTextMs": 5439.7927919998765,
+          "controlCompletionMs": 7462.384291999973,
+          "keeperCompletionMs": 8010.060417000204,
+          "controlReportedCostUSD": 0.03785492,
+          "keeperReportedCostUSD": 0.11346956,
+          "reportedCostChangeUSD": 0.07561464,
+          "reportedCostChangePercent": 199.74851353536081,
+          "keeperRequests": 2,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55489,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 55489,
+              "cacheWriteTokens": 0,
+              "outputTokens": 60,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 113,
+            "nextUserReportedCostUSD": 0.03785492,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 3,
+              "inputTokens": 166588,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 166588,
+              "cacheWriteTokens": 0,
+              "outputTokens": 93,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 3,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 2,
+              "inputTokens": 111007,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 111007,
+              "cacheWriteTokens": 0,
+              "outputTokens": 42,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 2,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 109,
+            "nextUserReportedCostUSD": 0.03789912,
+            "maintenanceReportedCostUSD": 0.07557044
+          },
+          "cacheShareDelta": 0,
+          "firstTextDeltaMs": -351.49887499958277,
+          "completionDeltaMs": 547.676125000231,
+          "postSeedInputRatio": 3.0021806123736234,
+          "codexInputSensitivity": null
+        },
+        {
+          "trial": 5,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "controlCacheReadTokens": 0,
+          "keeperCacheReadTokens": 55424,
+          "controlCacheShare": 0,
+          "keeperCacheShare": 0.9973367883106601,
+          "controlFirstTextMs": 6524.501416999847,
+          "keeperFirstTextMs": 4064.2782920002937,
+          "controlCompletionMs": 8667.373875000514,
+          "keeperCompletionMs": 5916.382584000006,
+          "controlReportedCostUSD": 0.03805552,
+          "keeperReportedCostUSD": 0.08521352,
+          "reportedCostChangeUSD": 0.047158,
+          "reportedCostChangePercent": 123.91894789507538,
+          "keeperRequests": 2,
+          "controlAnalysis": {
+            "postSeed": {
+              "requests": 1,
+              "inputTokens": 55472,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 55472,
+              "cacheWriteTokens": 0,
+              "outputTokens": 164,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 1,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "maintenance": {
+              "requests": 0,
+              "inputTokens": 0,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 0,
+              "reasoningTokens": 0,
+              "weightedCacheShare": null,
+              "zeroCacheRequests": 0,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 97,
+            "nextUserReportedCostUSD": 0.03805552,
+            "maintenanceReportedCostUSD": 0
+          },
+          "keeperAnalysis": {
+            "postSeed": {
+              "requests": 3,
+              "inputTokens": 166549,
+              "cacheReadTokens": 55424,
+              "nonCachedInputTokens": 111125,
+              "cacheWriteTokens": 0,
+              "outputTokens": 111,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0.3327789419330047,
+              "zeroCacheRequests": 2,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 1
+            },
+            "maintenance": {
+              "requests": 2,
+              "inputTokens": 110977,
+              "cacheReadTokens": 0,
+              "nonCachedInputTokens": 110977,
+              "cacheWriteTokens": 0,
+              "outputTokens": 48,
+              "reasoningTokens": null,
+              "weightedCacheShare": 0,
+              "zeroCacheRequests": 2,
+              "unknownCacheRequests": 0,
+              "atLeast95PercentCachedRequests": 0
+            },
+            "firstPostSeedInputGrowth": 85,
+            "nextUserReportedCostUSD": 0.00965124,
+            "maintenanceReportedCostUSD": 0.07556228000000001
+          },
+          "cacheShareDelta": 0.9973367883106601,
+          "firstTextDeltaMs": -2460.223124999553,
+          "completionDeltaMs": -2750.9912910005078,
+          "postSeedInputRatio": 3.0023976059994233,
+          "codexInputSensitivity": null
+        }
+      ],
+      "limitations": [
+        "Shared host system/tool prefixes may share cache; conversation markers differ at the first user message.",
+        "Estimates are not subscription invoices or isolated quota measurements.",
+        "Finite paired observations establish only this tested configuration."
+      ]
+    }
+  ],
+  "endurance": [
+    {
+      "host": "claude",
+      "minutes": 120,
+      "intervalMinutes": 50,
+      "completedRequests": 2,
+      "maintenance": {
+        "requests": 2,
+        "inputTokens": 66237,
+        "cacheReadTokens": 24316,
+        "nonCachedInputTokens": 4,
+        "cacheWriteTokens": 41917,
+        "outputTokens": 6,
+        "reasoningTokens": 0,
+        "weightedCacheShare": 0.36710599815812917,
+        "zeroCacheRequests": 0,
+        "unknownCacheRequests": 0,
+        "atLeast95PercentCachedRequests": 0
+      },
+      "cacheReadSequence": [
+        12158,
+        12158
+      ],
+      "firstMaintenanceInput": 32843,
+      "lastMaintenanceInput": 33394,
+      "inputGrowth": 551,
+      "maintenanceReportedCostUSD": 0.34033519999999995
+    },
+    {
+      "host": "codex",
+      "minutes": 120,
+      "intervalMinutes": 3,
+      "completedRequests": 39,
+      "maintenance": {
+        "requests": 39,
+        "inputTokens": 1048950,
+        "cacheReadTokens": 1034368,
+        "nonCachedInputTokens": 14582,
+        "cacheWriteTokens": null,
+        "outputTokens": 270,
+        "reasoningTokens": 61,
+        "weightedCacheShare": 0.9860984794318127,
+        "zeroCacheRequests": 0,
+        "unknownCacheRequests": 0,
+        "atLeast95PercentCachedRequests": 38
+      },
+      "cacheReadSequence": [
+        19584,
+        26368,
+        26368,
+        26368,
+        26368,
+        26368,
+        26496,
+        26496,
+        26496,
+        26496,
+        26496,
+        26496,
+        26624,
+        26624,
+        26624,
+        26624,
+        26624,
+        26624,
+        26624,
+        26752,
+        26752,
+        26752,
+        26752,
+        26752,
+        26752,
+        26752,
+        26880,
+        26880,
+        26880,
+        26880,
+        26880,
+        26880,
+        27008,
+        27008,
+        27008,
+        27008,
+        27008,
+        27008,
+        27008
+      ],
+      "firstMaintenanceInput": 26542,
+      "lastMaintenanceInput": 27253,
+      "inputGrowth": 711,
+      "maintenanceReportedCostUSD": null
+    },
+    {
+      "host": "grok",
+      "minutes": 120,
+      "intervalMinutes": 3,
+      "completedRequests": 38,
+      "maintenance": {
+        "requests": 38,
+        "inputTokens": 1571807,
+        "cacheReadTokens": 947968,
+        "nonCachedInputTokens": 623839,
+        "cacheWriteTokens": 0,
+        "outputTokens": 874,
+        "reasoningTokens": null,
+        "weightedCacheShare": 0.603107124475206,
+        "zeroCacheRequests": 15,
+        "unknownCacheRequests": 0,
+        "atLeast95PercentCachedRequests": 23
+      },
+      "cacheReadSequence": [
+        40320,
+        0,
+        0,
+        40448,
+        0,
+        40576,
+        40576,
+        40704,
+        0,
+        40832,
+        40832,
+        40832,
+        40960,
+        0,
+        0,
+        40960,
+        41088,
+        41216,
+        41216,
+        0,
+        41344,
+        0,
+        41472,
+        41472,
+        0,
+        41344,
+        41600,
+        0,
+        0,
+        0,
+        41856,
+        0,
+        0,
+        41984,
+        0,
+        42112,
+        42112,
+        42112
+      ],
+      "firstMaintenanceInput": 40424,
+      "lastMaintenanceInput": 42279,
+      "inputGrowth": 1855,
+      "maintenanceReportedCostUSD": 0.58714804
+    }
+  ]
+}

@@ -1,0 +1,1451 @@
+{
+  "generatedAt": "2026-09-25T01:37:56.757Z",
+  "scope": "Original local transcripts of explicitly selected synthetic Codex experiments; no new requests.",
+  "method": "Count developer skills_instructions blocks by task_started turn. Export hashes and counters only, not paths, session IDs or content.",
+  "catalogs": [
+    {
+      "characters": 22196,
+      "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+      "skillCount": 206,
+      "rootCount": 13
+    },
+    {
+      "characters": 22198,
+      "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+      "skillCount": 225,
+      "rootCount": 16
+    }
+  ],
+  "sessions": [
+    {
+      "study": "controlled-codex",
+      "trial": 0,
+      "arm": "control",
+      "transcriptSHA256": "2a2d3da39e212514ad4707c9a16793826294744106d747e7312d9806fbfdb767",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36317,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 22,
+            "reasoningTokens": 15,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43051,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 69,
+            "reasoningTokens": 48,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex",
+      "trial": 0,
+      "arm": "keeper",
+      "transcriptSHA256": "6510f0d718a3b8620ade61d36b0a2f0bd198cc507516736b54655105c50da67c",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36582,
+            "cacheReadTokens": 5632,
+            "cacheWriteTokens": null,
+            "outputTokens": 31,
+            "reasoningTokens": 24,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 36625,
+            "cacheReadTokens": 36352,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 36642,
+            "cacheReadTokens": 36480,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 36659,
+            "cacheReadTokens": 36480,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36682,
+            "cacheReadTokens": 36480,
+            "cacheWriteTokens": null,
+            "outputTokens": 52,
+            "reasoningTokens": 31,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": false
+    },
+    {
+      "study": "controlled-codex",
+      "trial": 1,
+      "arm": "control",
+      "transcriptSHA256": "2f67d044596d9424da1c30e29de813febb599a5e469c43c1ebfcd248576e5bfd",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36581,
+            "cacheReadTokens": 10624,
+            "cacheWriteTokens": null,
+            "outputTokens": 40,
+            "reasoningTokens": 33,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36639,
+            "cacheReadTokens": 36352,
+            "cacheWriteTokens": null,
+            "outputTokens": 63,
+            "reasoningTokens": 43,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": false
+    },
+    {
+      "study": "controlled-codex",
+      "trial": 1,
+      "arm": "keeper",
+      "transcriptSHA256": "de76ac703ccbdb001b3e9b0cb3e6fdcd4c13f701cbb3125b537ca7bdf2062772",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36318,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 27,
+            "reasoningTokens": 20,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43051,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43068,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43085,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43108,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 69,
+            "reasoningTokens": 48,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex",
+      "trial": 2,
+      "arm": "control",
+      "transcriptSHA256": "80db5301d4825670e03d52a983c79a834dd67cf654114715a08001c789ba6462",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36579,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 40,
+            "reasoningTokens": 33,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36637,
+            "cacheReadTokens": 36352,
+            "cacheWriteTokens": null,
+            "outputTokens": 57,
+            "reasoningTokens": 39,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": false
+    },
+    {
+      "study": "controlled-codex",
+      "trial": 2,
+      "arm": "keeper",
+      "transcriptSHA256": "ccfabe3a009c203538e3589ca80ee0178eea77338c9dc2bb5eaebcc7ceb6ee2a",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36318,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 35,
+            "reasoningTokens": 28,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43059,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43076,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43093,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43116,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 70,
+            "reasoningTokens": 48,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex",
+      "trial": 3,
+      "arm": "control",
+      "transcriptSHA256": "c4d991c2f6636e68f5b158af3046ee48bb6d5e7d81dc55e4ada3fcbac9d77cb1",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36318,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 45,
+            "reasoningTokens": 38,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43075,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 76,
+            "reasoningTokens": 55,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex",
+      "trial": 3,
+      "arm": "keeper",
+      "transcriptSHA256": "b720959a35d541701fdd4aba0a4e864321683bf0718f26cf1f01a52c153d232e",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36320,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 65,
+            "reasoningTokens": 58,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43091,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43108,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43125,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43148,
+            "cacheReadTokens": 43008,
+            "cacheWriteTokens": null,
+            "outputTokens": 60,
+            "reasoningTokens": 37,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex",
+      "trial": 4,
+      "arm": "control",
+      "transcriptSHA256": "d903e573763e1868b4028285d98f8917c719692f5eefac1b03bbe55889b7d2f9",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36319,
+            "cacheReadTokens": 17280,
+            "cacheWriteTokens": null,
+            "outputTokens": 41,
+            "reasoningTokens": 34,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43072,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 44,
+            "reasoningTokens": 22,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex",
+      "trial": 4,
+      "arm": "keeper",
+      "transcriptSHA256": "0bb6fbb9926a7f90e09954ceb043a247b77ca28ddf7b4b8f016debb509546a55",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36316,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 63,
+            "reasoningTokens": 56,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43085,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43102,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43119,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43142,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 46,
+            "reasoningTokens": 26,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex",
+      "trial": 5,
+      "arm": "control",
+      "transcriptSHA256": "24a33e5b14e1f8351618a29a966debe6f4fc298ddc8a8c458c1829c52993f35c",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36318,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 20,
+            "reasoningTokens": 13,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43050,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 61,
+            "reasoningTokens": 40,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex",
+      "trial": 5,
+      "arm": "keeper",
+      "transcriptSHA256": "029fedb3b5615f71b7ffde59f3747a0ea1df6714743861807081b96a37328b86",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36318,
+            "cacheReadTokens": 5632,
+            "cacheWriteTokens": null,
+            "outputTokens": 28,
+            "reasoningTokens": 21,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43052,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43069,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43086,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43109,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 53,
+            "reasoningTokens": 31,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex-long25",
+      "trial": 0,
+      "arm": "control",
+      "transcriptSHA256": "c3e2ff3ff06156beced31304830653a4dd36ffc17dfe4505fe1d55027882fd26",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36315,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 27,
+            "reasoningTokens": 20,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43054,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 51,
+            "reasoningTokens": 31,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex-long25",
+      "trial": 0,
+      "arm": "keeper",
+      "transcriptSHA256": "d0c795b11db8caa7867fa6edc6a3efc6c653739ac336b135d16c84a99f4c8f5d",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36313,
+            "cacheReadTokens": 17280,
+            "cacheWriteTokens": null,
+            "outputTokens": 27,
+            "reasoningTokens": 20,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43046,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43063,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43086,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 50,
+            "reasoningTokens": 31,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex-long25",
+      "trial": 1,
+      "arm": "control",
+      "transcriptSHA256": "f2ae1d7cc7e01dc64877489d8dcc5d78c880830e8ec34afc8d7b08fc22c43af9",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36318,
+            "cacheReadTokens": 10624,
+            "cacheWriteTokens": null,
+            "outputTokens": 28,
+            "reasoningTokens": 21,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43058,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 54,
+            "reasoningTokens": 30,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex-long25",
+      "trial": 1,
+      "arm": "keeper",
+      "transcriptSHA256": "44d8b37d6413afe1d1472d4fe912cde9a8e266ce97b27103a9b55fe341a9dac5",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36315,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43026,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43043,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43066,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 64,
+            "reasoningTokens": 44,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex-long25",
+      "trial": 2,
+      "arm": "control",
+      "transcriptSHA256": "7b4f1c51341ebaa27d874a4715888ac9ed701429e6c3944b816f427a9d1a4fcc",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36314,
+            "cacheReadTokens": 17280,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43031,
+            "cacheReadTokens": 17280,
+            "cacheWriteTokens": null,
+            "outputTokens": 56,
+            "reasoningTokens": 37,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex-long25",
+      "trial": 2,
+      "arm": "keeper",
+      "transcriptSHA256": "a7ed2a615a389f422e6821fc2e6c37ee75e1bb0598a96c078b57f6283d921ebd",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36316,
+            "cacheReadTokens": 17280,
+            "cacheWriteTokens": null,
+            "outputTokens": 35,
+            "reasoningTokens": 28,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43057,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43074,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43097,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 56,
+            "reasoningTokens": 34,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex-long25",
+      "trial": 3,
+      "arm": "control",
+      "transcriptSHA256": "ad6dbeab886106ff7c3e173bccb5d8e448b46f21df195d747adedfb41d8a13f7",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36313,
+            "cacheReadTokens": 17280,
+            "cacheWriteTokens": null,
+            "outputTokens": 35,
+            "reasoningTokens": 28,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43060,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 53,
+            "reasoningTokens": 34,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex-long25",
+      "trial": 3,
+      "arm": "keeper",
+      "transcriptSHA256": "9b58d93ce5d833d06c496a533e3000f84da82d6a5dfd4d2b7204a9c16e31c611",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36578,
+            "cacheReadTokens": 10624,
+            "cacheWriteTokens": null,
+            "outputTokens": 24,
+            "reasoningTokens": 17,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 36614,
+            "cacheReadTokens": 36352,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 36631,
+            "cacheReadTokens": 36480,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36654,
+            "cacheReadTokens": 36480,
+            "cacheWriteTokens": null,
+            "outputTokens": 46,
+            "reasoningTokens": 27,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": false
+    },
+    {
+      "study": "controlled-codex-long25",
+      "trial": 4,
+      "arm": "control",
+      "transcriptSHA256": "205971295ac566c0a157d10ae96d5c11de931cc51263a51eaf098556406fda9d",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36317,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 40,
+            "reasoningTokens": 33,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43069,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 51,
+            "reasoningTokens": 29,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex-long25",
+      "trial": 4,
+      "arm": "keeper",
+      "transcriptSHA256": "c28f98f4d9981f42c2062f901766f24525a4a3ca3b03076a88f854916ddd3f6e",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36316,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 21,
+            "reasoningTokens": 14,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43043,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43060,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43083,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 66,
+            "reasoningTokens": 45,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex-long25",
+      "trial": 5,
+      "arm": "control",
+      "transcriptSHA256": "3949fa0b49ff1c7d165c472bc61c4b3e699a3fb066e73907b710ea374ce29d4c",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36314,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43031,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 65,
+            "reasoningTokens": 46,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    },
+    {
+      "study": "controlled-codex-long25",
+      "trial": 5,
+      "arm": "keeper",
+      "transcriptSHA256": "b4ed511309fe4ef8df7b24ef448006a9ba58f938aedb3c7e132fd93b9962f4ad",
+      "skillBlocks": [
+        {
+          "turn": 0,
+          "characters": 22196,
+          "sha256": "2ebed46aac157ba9a0c4bb708509e7483c7dcd6ba99d52c5546523a2340aeafc",
+          "skillCount": 206,
+          "rootCount": 13
+        },
+        {
+          "turn": 1,
+          "characters": 22198,
+          "sha256": "aa791d3dca5d5c6f2db8e8592d9c9e1020920f1635b58649f00d27c94eb61d8f",
+          "skillCount": 225,
+          "rootCount": 16
+        }
+      ],
+      "turnUsage": [
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 36315,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": null,
+            "outputTokens": 37,
+            "reasoningTokens": 30,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43058,
+            "cacheReadTokens": 36096,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "keeper",
+          "usage": {
+            "inputTokens": 43075,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 5,
+            "reasoningTokens": 0,
+            "costUSD": null
+          }
+        },
+        {
+          "source": "user",
+          "usage": {
+            "inputTokens": 43098,
+            "cacheReadTokens": 42880,
+            "cacheWriteTokens": null,
+            "outputTokens": 50,
+            "reasoningTokens": 29,
+            "costUSD": null
+          }
+        }
+      ],
+      "injectedAfterSeed": true
+    }
+  ]
+}

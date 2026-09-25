@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cache Keeper</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><div><span class="eyebrow">BOUNDED SESSION MAINTENANCE</span><h1>Cache Keeper<span class="dot" aria-hidden="true"></span></h1></div><span id="connection">Connecting…</span></header>
+<main>
+  <section class="session" aria-label="Session details"><span id="host">Managed session</span><code id="session"></code><span id="phase">Off</span></section>
+  <section class="monitor" aria-labelledby="monitor-title">
+    <h2 id="monitor-title">Maintenance · current / last activation</h2>
+    <p id="active-settings" class="note">Off · no requests scheduled</p>
+    <dl class="metrics">
+      <div><dt>Last successful request</dt><dd id="last-success">None</dd></div>
+      <div><dt>Next request</dt><dd id="next-request">Not scheduled</dd></div>
+      <div><dt>Attempts / limit</dt><dd id="attempts">0 / 10</dd></div>
+      <div><dt>Success / failed / interrupted</dt><dd id="outcomes">0 / 0 / 0</dd></div>
+      <div><dt>Total maintenance tokens</dt><dd id="total-tokens">0</dd></div>
+      <div><dt>Estimated maintenance cost</dt><dd id="total-cost">Unknown</dd></div>
+    </dl>
+    <p id="usage-detail" class="note"></p><p id="stop-reason" role="status"></p>
+  </section>
+  <section class="controls" aria-label="Keepalive controls">
+    <form id="activate">
+      <div class="settings-grid">
+        <label for="duration">Keep ready for<input id="duration" value="30m" required pattern="[0-9]+([.][0-9]+)?[smh]" aria-describedby="settings-help"></label>
+        <label for="ttl">Cache TTL<select id="ttl" aria-describedby="ttl-help"><option value="">Unknown</option><option value="5m">5 minutes</option><option value="1h">1 hour</option><option value="custom">Custom</option></select></label>
+        <label id="custom-ttl-label" for="custom-ttl" hidden>Custom TTL<input id="custom-ttl" placeholder="e.g. 20m" pattern="[0-9]+([.][0-9]+)?[smh]"></label>
+        <label for="interval">Request interval<input id="interval" placeholder="Auto from TTL" pattern="[0-9]+([.][0-9]+)?[smh]"></label>
+        <label for="max-ticks">Maximum requests<input id="max-ticks" type="number" min="1" max="120" step="1" value="10" required></label>
+        <label for="max-tokens">Token stop threshold<input id="max-tokens" type="number" min="1" step="1" placeholder="Optional" aria-describedby="budget-help"></label>
+        <label for="max-cost">Cost stop threshold (USD)<input id="max-cost" type="number" min="0.000001" step="any" placeholder="Optional" aria-describedby="budget-help cost-help"></label>
+      </div>
+      <p id="settings-help" class="note">Durations use s, m or h, up to 24h. The first request waits for the interval; each completed turn resets that wait.</p>
+      <p id="ttl-help" class="note">Your selected TTL guides scheduling. Provider retention may differ. Auto interval: unknown / 5m → 3m; 1h → 50m; custom → 5/6 of TTL.</p>
+      <p id="budget-help" class="note">Thresholds count maintenance only, including cached input. Checked after each response; one request can exceed the threshold. Missing budget usage pauses maintenance.</p>
+      <p id="cost-help" class="note"></p>
+      <button type="submit">Keep ready</button>
+    </form>
+    <button id="off" class="secondary">Turn off</button><button id="logs" class="text-button">Activity</button><button id="hidden" class="text-button">Show hidden turns</button>
+  </section>
+  <p class="note">Short requests reuse this conversation and attempt to reuse its cache. Maintenance uses your signed-in account and can increase usage. Its messages are hidden here and retained in the original transcript.</p>
+  <p id="notice" role="status"></p><p id="error" role="alert" hidden></p>
+  <section id="conversation" aria-label="Conversation"><div id="empty"><h2>Continue where you left off.</h2><p>Your real conversation stays here.<br>Maintenance runs quietly in the background.</p></div></section>
+</main>
+<footer><form id="composer"><label for="input" class="sr-only">Message</label><textarea id="input" rows="2" placeholder="Continue the conversation…" required maxlength="100000"></textarea><button id="send" type="submit">Send <span aria-hidden="true">↗</span></button></form><div class="footer-note"><span id="working"></span><span>Ctrl / ⌘ + Enter to send · /cache-keeper status</span></div></footer>
+<dialog id="diagnostics"><div class="dialog-heading"><h2 id="dialog-title">Activity</h2><button id="dismiss" class="secondary">Close</button></div><pre id="details"></pre></dialog>
+<script type="module" src="/ui.mjs"></script></body></html>
