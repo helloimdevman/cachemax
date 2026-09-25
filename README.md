@@ -55,12 +55,12 @@ Requires Node.js 22.18+, macOS or Linux, and a signed-in host CLI.
 
 ```sh
 # 1. Plugin (pick your host)
-claude plugin marketplace add Oct7/cachemax && claude plugin install cachemax@cachemax
-codex plugin marketplace add Oct7/cachemax && codex plugin add cachemax@cachemax
-grok plugin install Oct7/cachemax#plugins/cachemax
+claude plugin marketplace add helloimdevman/cachemax && claude plugin install cachemax@cachemax
+codex plugin marketplace add helloimdevman/cachemax && codex plugin add cachemax@cachemax
+grok plugin install helloimdevman/cachemax#plugins/cachemax
 
 # 2. CLI, then start a managed session
-git clone https://github.com/Oct7/cachemax.git && cd cachemax
+git clone https://github.com/helloimdevman/cachemax.git && cd cachemax
 npm install --global .
 cachemax doctor
 cachemax run claude          # or: codex, grok

@@ -54,12 +54,12 @@ Node.js 22.18 이상, macOS 또는 Linux, 로그인된 호스트 CLI가 필요�
 
 ```sh
 # 1. 플러그인 (사용하는 호스트 하나)
-claude plugin marketplace add Oct7/cachemax && claude plugin install cachemax@cachemax
-codex plugin marketplace add Oct7/cachemax && codex plugin add cachemax@cachemax
-grok plugin install Oct7/cachemax#plugins/cachemax
+claude plugin marketplace add helloimdevman/cachemax && claude plugin install cachemax@cachemax
+codex plugin marketplace add helloimdevman/cachemax && codex plugin add cachemax@cachemax
+grok plugin install helloimdevman/cachemax#plugins/cachemax
 
 # 2. CLI 설치 후 관리 세션 시작
-git clone https://github.com/Oct7/cachemax.git && cd cachemax
+git clone https://github.com/helloimdevman/cachemax.git && cd cachemax
 npm install --global .
 cachemax doctor
 cachemax run claude          # 또는 codex, grok
