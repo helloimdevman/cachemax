@@ -1,7 +1,7 @@
 import { createInterface } from 'node:readline';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { homedir } from 'node:os';
-import { join, resolve } from 'node:path';
+import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { RPC, launch, terminate, shellQuote } from './protocol.mjs';
 
@@ -24,12 +24,25 @@ function findFile(root, predicate, depth = 5) {
   }
   return null;
 }
-export function transcript(host, sessionId) {
+function transcriptPath(host, sessionId) {
   const root = host === 'claude' ? join(process.env.CLAUDE_CONFIG_DIR || join(homedir(), '.claude'), 'projects') : join(process.env.GROK_HOME || join(homedir(), '.grok'), 'sessions');
-  if (!existsSync(root)) return [];
-  const path = host === 'grok'
+  if (!existsSync(root)) return null;
+  return (host === 'grok'
     ? readdirSync(root, { withFileTypes: true }).filter(d => d.isDirectory()).map(d => join(root, d.name, sessionId, 'chat_history.jsonl')).find(existsSync)
-    : findFile(root, n => n === `${sessionId}.jsonl` || n === `${sessionId}.json`);
+    : findFile(root, n => n === `${sessionId}.jsonl` || n === `${sessionId}.json`)) || null;
+}
+// Hosts append metadata after a turn (Claude on exit, Grok on MCP health checks), so file
+// mtimes run late. Read the last completed turn's own timestamp instead.
+function lastReplyAt(host, sessionId) {
+  let path = transcriptPath(host, sessionId);
+  if (host === 'grok' && path) path = join(dirname(path), 'events.jsonl');
+  if (!path?.endsWith('.jsonl') || !existsSync(path)) return null;
+  // The last line may be mid-write.
+  const rows = readFileSync(path, 'utf8').split('\n').flatMap(line => { try { return [JSON.parse(line)]; } catch { return []; } });
+  return Date.parse(host === 'grok' ? rows.findLast(r => r.type === 'turn_ended')?.ts : rows.findLast(r => r.type === 'assistant')?.timestamp) || null;
+}
+export function transcript(host, sessionId) {
+  const path = transcriptPath(host, sessionId);
   if (!path) return [];
   const raw = readFileSync(path, 'utf8');
   let rows;
@@ -65,6 +78,7 @@ export class HeadlessAdapter {
   }
   async init() { return { sessionId: this.sessionId, model: this.model || null }; }
   async history() { return transcript(this.host, this.sessionId); }
+  lastActivityAt() { return lastReplyAt(this.host, this.sessionId); }
   async run({ text, turn, signal, bind, event, admit = () => !signal.aborted }) {
     if (!admit()) return { text: '', usage: null, cancelled: true };
     const claude = this.host === 'claude';
@@ -172,6 +186,7 @@ export class CodexAdapter {
     const started = await this.rpc.request(this.sessionId ? 'thread/resume' : 'thread/start', params);
     this.sessionId = started.thread.id; this.model = started.model;
     if (started.thread.status?.type === 'active') throw Error('Codex thread is already active');
+    this.lastCompletedAt = Math.max(0, ...(started.thread.turns || []).map(t => t.completedAt || 0)) * 1000 || null;
     this.auth = await this.rpc.request('account/read', {});
     return { sessionId: this.sessionId, model: this.model, auth: this.auth.account?.type, plan: this.auth.account?.planType };
   }
@@ -249,5 +264,6 @@ export class CodexAdapter {
     } catch (e) { this.failed = true; await this.rpc.close(); throw e; }
     finally { clearTimeout(abortTimer); signal.removeEventListener('abort', cancel); this.rpc.off('message', listen); this.rpc.off('failure', failure); }
   }
+  lastActivityAt() { return this.lastCompletedAt; }
   async close() { await this.rpc?.close(); }
 }

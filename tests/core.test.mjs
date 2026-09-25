@@ -9,6 +9,7 @@ import { Store, visibleHistory, atomicJSON } from '../plugins/cachemax/scripts/s
 import { usage } from '../plugins/cachemax/scripts/adapters.mjs';
 
 const flush = () => new Promise(resolve => setImmediate(resolve));
+const seconds = async (clock, n) => { for (let i = 0; i < n; i++) await clock.advance(1000); };
 class Clock {
   time = 0; wallTime = 1000000; timers = new Map(); id = 0;
   now = () => this.time;
@@ -74,6 +75,23 @@ test('typing and queued user input suppress admission', async () => {
   keeper.onFor('20s', { interval: '1s' }); keeper.activity();
   await clock.advance(1000); assert.equal(calls.length, 0); assert.equal(updates.at(-1).nextDueAt, 1005000);
   await clock.advance(4000); assert.equal(calls.length, 1); keeper.off();
+});
+test('a user reply restarts the idle wait, so no keeper runs before the risk window', async () => {
+  const { keeper, clock, calls } = setup({ delayed: true });
+  keeper.onFor('10m', { ttl: '60s' }); assert.equal(keeper.state.intervalMs, 50000);
+  await seconds(clock, 25); const user = keeper.user('back at 25'); await seconds(clock, 2); calls[0].finish(); await user;
+  await seconds(clock, 49); assert.equal(calls.length, 1);
+  await seconds(clock, 1); assert.equal(calls.length, 2); assert.equal(calls[1].turn.source, 'keeper');
+  calls[1].finish(); await flush(); keeper.off();
+});
+test('the first keeper counts from the last reply, even one before activation', async () => {
+  const early = setup(); early.adapter.lastActivityAt = () => early.clock.wallTime - 40000;
+  early.keeper.onFor('10m', { ttl: '60s' });
+  await seconds(early.clock, 9); assert.equal(early.calls.length, 0);
+  await seconds(early.clock, 1); assert.equal(early.calls.length, 1); early.keeper.off();
+  const late = setup(); await late.keeper.user('replied'); await seconds(late.clock, 55);
+  late.keeper.onFor('10m', { ttl: '60s' }); await late.clock.advance(0);
+  assert.equal(late.calls.length, 2); assert.equal(late.calls[1].turn.source, 'keeper'); late.keeper.off();
 });
 test('maxTicks counts submissions and suppresses further requests', async () => {
   const { keeper, clock, calls } = setup(); keeper.onFor('20s', { interval: '1s', maxTicks: 1 });
