@@ -71,9 +71,11 @@ export class Keeper extends EventEmitter {
     this.failures = 0;
     const now = this.clock.now();
     this.deadline = now + durationMs;
-    this.due = now + intervalMs;
     this.lastClock = now;
     this.lastWall = this.clock.wall();
+    // The provider cache ages from the last reply, which can predate activation.
+    const lastReplyAt = Math.max(this.adapter.lastActivityAt?.() || 0, this.store.data.turns.findLast(t => t.status === 'completed')?.finishedAt || 0);
+    this.due = now + (lastReplyAt ? Math.max(0, intervalMs - Math.max(0, this.lastWall - lastReplyAt)) : intervalMs);
     const activation = { activationGeneration: this.state.generation + 1, startTurnIndex: this.store.data.turns.length, activatedAt: this.lastWall, expiresAt: this.lastWall + durationMs, durationMs, intervalMs, intervalOverride: interval ?? null, ttlMs: ttl, maxTicks, maxTokens, maxCostUSD };
     Object.assign(this.state, activation, { phase: this.active ? 'user_turn' : 'armed', generation: activation.activationGeneration, admittedTicks: 0, cache: 'cache_unknown', warning: null, stopReason: null, capMayEndEarly: Math.ceil(durationMs / intervalMs) - 1 > maxTicks });
     this.store.data.activation = activation;
