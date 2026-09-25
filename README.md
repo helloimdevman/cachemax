@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Node.js](https://img.shields.io/badge/node-%3E%3D22.18-339933?logo=node.js&logoColor=white)
-![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey)
+![Platform](https://img.shields.io/badge/platform-macOS-lightgrey)
 ![Version](https://img.shields.io/badge/version-0.2.0-orange)
 
 Keep a Claude Code, Codex, or Grok Build conversation warm while you step away.
@@ -24,34 +24,30 @@ stops at hard limits, and shows exactly what each request used.
 
 - **Same conversation, hidden turns.** The managed page hides maintenance turns. The host transcript keeps everything.
 - **You go first.** A running keeper request is cancelled before your message is sent.
+- **Only while you are away.** The wait counts from the last reply, including one from before **Keep ready** or from the native CLI. With a 1h TTL (50-minute interval), a message at minute 25 moves the next request to 50 minutes after its reply. If the interval has already passed, the first request goes right away.
 - **Bounded by default.** 30 minutes and 10 requests unless you change them. Errors or unexpected replies pause it, and it never restarts on its own.
 - **No extra setup.** No API key, no npm dependencies, no build step. It uses your existing CLI login.
 
-## Measured results
+## Does it keep the cache?
 
-From real runs on subscription accounts ([validation report](docs/validation-report.md)),
-including the cases where it did not help:
+From real runs on subscription accounts, on 0.1.1 unless noted
+([validation](docs/validation-report.md) · [analysis](docs/cache-analysis.md) · [follow-up](docs/reproducibility-report.md)):
 
-| Metric | Result | Conditions |
-| --- | --- | --- |
-| Reliability | **79 / 79** maintenance requests completed | 2-hour run, 3 hosts |
-| Schedule accuracy | **1.1–5.8 ms** late vs. plan | 27 timed requests, 3-minute interval |
-| Codex cache read on return | **83.8% → 99.5%** | 35 and 70 min idle, 6 pairs each |
-| First-token latency on return | No consistent change (−0.6 s to +2.5 s) | median paired difference, 8 conditions |
-| Reported cost (Claude, Grok) | **+100% to +592%** | every one of 18 pairs cost more |
-| Offline tests | **40 / 40** pass | `npm test`, no model calls |
+| Host | Cache kept while you are away? |
+| --- | --- |
+| Codex | **Yes.** After 35–70 minutes away, your next message read about 99.5% from cache, vs. about 84% without cachemax. Part of that gap came from warming newly added instructions. |
+| Claude Code | **Mixed.** On 0.1.1, most of the conversation cache was rewritten on every turn. A later short run at a 3-minute interval read it from cache. Not yet rechecked against a control. |
+| Grok Build | **Unreliable.** Maintenance turns often missed the cache, even at a 3-minute interval. |
 
-![Chart: next-message cache read per host with and without cachemax, and reported cost change](docs/assets/results.svg)
+Codex and Grok don't need it for short breaks: after about 12 minutes idle they read
+over 99.5% from cache without cachemax.
 
 **Bottom line:** it keeps a session active reliably and within the limits you set.
-It is not a proven way to save money. Part of the Codex gain came from warming
-newly added instructions ([analysis](docs/cache-analysis.md)). With a 12-minute idle,
-Codex and Grok already read over 99.5% from cache without it
-([follow-up](docs/reproducibility-report.md)).
+It is not a proven way to save money: every measured Claude and Grok pair cost more with it.
 
 ## Quick start
 
-Requires Node.js 22.18+, macOS or Linux, and a signed-in host CLI.
+Requires Node.js 22.18+, macOS (Linux and Windows are untested), and a signed-in host CLI.
 
 ```sh
 # 1. Plugin (pick your host)
