@@ -7,7 +7,7 @@ import { randomUUID } from 'node:crypto';
 import { once } from 'node:events';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { managed } from '../plugins/cache-keeper/scripts/server.mjs';
+import { managed } from '../plugins/cachemax/scripts/server.mjs';
 
 test('local API requires token and same origin, serves user periods, and hides keeper history', async () => {
   const home = mkdtempSync(join(tmpdir(), 'keeper-http-'));
@@ -45,8 +45,8 @@ test('local API requires token and same origin, serves user periods, and hides k
     assert.ok(logs.events.some(e => e.kind === 'request_ok'));
     assert.ok(!JSON.stringify(logs).includes('Only'));
     assert.equal((await post('/off', {})).status, 200);
-    const cli = await promisify(execFile)(process.execPath, ['plugins/cache-keeper/scripts/cli.mjs', 'on', '--host', 'codex', '--session', session.sessionId,
-      '--ttl', '12m', '--max-tokens', '50000', '--max-ticks', '3'], { env: { ...process.env, CACHE_KEEPER_HOME: home } });
+    const cli = await promisify(execFile)(process.execPath, ['plugins/cachemax/scripts/cli.mjs', 'on', '--host', 'codex', '--session', session.sessionId,
+      '--ttl', '12m', '--max-tokens', '50000', '--max-ticks', '3'], { env: { ...process.env, CACHEMAX_HOME: home } });
     assert.match(cli.stdout, /"ttlMs": 720000/);
     const configured = await (await fetch(origin + '/snapshot', { headers: auth })).json();
     assert.equal(configured.status.intervalMs, 600000);

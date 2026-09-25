@@ -1,13 +1,13 @@
 ---
-name: cache-keeper
-description: Enable, inspect, or stop bounded keepalive for Claude Code, Codex, and Grok sessions in Cache Keeper's managed conversation screen. Use when the user asks to keep a session or its cache ready while away.
+name: cachemax
+description: Enable, inspect, or stop bounded keepalive for Claude Code, Codex, and Grok sessions in cachemax's managed conversation screen. Use when the user asks to keep a session or its cache ready while away.
 argument-hint: "[30m|off|status|logs|show-hidden]"
 disable-model-invocation: true
 user-invocable: true
 license: MIT
 ---
 
-# Cache Keeper
+# cachemax
 
 Use the bundled `scripts/cli.mjs`, resolved from this skill's directory as
 `../../scripts/cli.mjs`. It requires Node.js 22.18 or newer and the host CLI's

@@ -1,9 +1,9 @@
 {
-  "name": "cache-keeper",
+  "name": "cachemax",
   "version": "0.2.0",
   "description": "Keep an owned session active with bounded, hidden maintenance turns.",
   "author": {
-    "name": "Cache Keeper contributors"
+    "name": "cachemax contributors"
   },
   "license": "MIT",
   "keywords": [

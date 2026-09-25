@@ -4,9 +4,9 @@ import { mkdtempSync, rmSync, readFileSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { Keeper, duration } from '../plugins/cache-keeper/scripts/core.mjs';
-import { Store, visibleHistory, atomicJSON } from '../plugins/cache-keeper/scripts/store.mjs';
-import { usage } from '../plugins/cache-keeper/scripts/adapters.mjs';
+import { Keeper, duration } from '../plugins/cachemax/scripts/core.mjs';
+import { Store, visibleHistory, atomicJSON } from '../plugins/cachemax/scripts/store.mjs';
+import { usage } from '../plugins/cachemax/scripts/adapters.mjs';
 
 const flush = () => new Promise(resolve => setImmediate(resolve));
 class Clock {
@@ -159,7 +159,7 @@ test('failed activation persistence cannot arm paid maintenance after an active 
 });
 test('bundled guard denies keeper tools and malformed state, grants nothing for user tools', () => {
   const home = mkdtempSync(join(tmpdir(), 'keeper-guard-')); const state = join(home, 'guard.json');
-  const run = input => spawnSync(process.execPath, ['plugins/cache-keeper/scripts/guard.mjs'], { input: JSON.stringify(input), encoding: 'utf8', env: { ...process.env, CACHE_KEEPER_GUARD: state } });
+  const run = input => spawnSync(process.execPath, ['plugins/cachemax/scripts/guard.mjs'], { input: JSON.stringify(input), encoding: 'utf8', env: { ...process.env, CACHEMAX_GUARD: state } });
   try {
     atomicJSON(state, { source: 'keeper' });
     for (const tool_name of ['Bash', 'Read', 'mcp__example__run', 'apply_patch', 'Agent']) assert.equal(JSON.parse(run({ tool_name }).stdout).hookSpecificOutput.permissionDecision, 'deny');

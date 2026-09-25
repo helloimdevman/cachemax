@@ -6,9 +6,9 @@ import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { once } from 'node:events';
 import { setTimeout as delay } from 'node:timers/promises';
-import { managed } from '../plugins/cache-keeper/scripts/server.mjs';
-import { visibleHistory } from '../plugins/cache-keeper/scripts/store.mjs';
-import { PROMPT } from '../plugins/cache-keeper/scripts/core.mjs';
+import { managed } from '../plugins/cachemax/scripts/server.mjs';
+import { visibleHistory } from '../plugins/cachemax/scripts/store.mjs';
+import { PROMPT } from '../plugins/cachemax/scripts/core.mjs';
 
 if (!process.argv.includes('--confirm-usage')) throw Error('Add --confirm-usage to authorize up to 3 model turns per selected host');
 const selected = process.argv.filter(x => ['claude', 'codex', 'grok'].includes(x));
@@ -16,7 +16,7 @@ const hosts = selected.length ? selected : ['claude', 'codex', 'grok'];
 const results = [];
 const cancellation = process.argv.includes('--cancel');
 for (const host of hosts) {
-  const dir = mkdtempSync(join(tmpdir(), 'cache-keeper-live-'));
+  const dir = mkdtempSync(join(tmpdir(), 'cachemax-live-'));
   const cwd = join(dir, 'project'); mkdirSync(cwd);
   let session;
   try {

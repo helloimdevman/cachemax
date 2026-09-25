@@ -1,12 +1,12 @@
 {
-  "name": "cache-keeper",
+  "name": "cachemax",
   "owner": {
-    "name": "Cache Keeper contributors"
+    "name": "cachemax contributors"
   },
   "plugins": [
     {
-      "name": "cache-keeper",
-      "source": "./plugins/cache-keeper",
+      "name": "cachemax",
+      "source": "./plugins/cachemax",
       "description": "Keep an owned session active with bounded, hidden maintenance turns.",
       "version": "0.2.0"
     }

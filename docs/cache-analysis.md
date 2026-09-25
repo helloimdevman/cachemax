@@ -158,7 +158,7 @@ Grok의 70분·25분 조건은 **유지 요청 12개 모두 캐시 읽기 0**이
 같은 대화로 라우팅하더라도 서버 부하·재시작 등으로 캐시가 사라질 수 있다고 설명합니다.
 
 실행 코드의 상태 표시도 해석 범위를 좁혀야 합니다.
-[Keeper.execute](../plugins/cache-keeper/scripts/core.mjs)의 `cache_observed`는
+[Keeper.execute](../plugins/cachemax/scripts/core.mjs)의 `cache_observed`는
 해당 요청의 `cacheReadTokens > 0`이라는 뜻입니다. 전체 문맥 적중, 다음 요청의 적중,
 비용 절감, 서버 TTL 확인을 뜻하지 않습니다. 현재 `--ttl`은 로컬 유지 간격을
 검사하기 위한 값이며, 어댑터가 공급자에게 캐시 TTL 설정을 전달하는 옵션이 아닙니다.

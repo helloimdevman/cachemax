@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-          "command": "node \"${CACHE_KEEPER_PLUGIN_ROOT:-${CLAUDE_PLUGIN_ROOT:-$GROK_PLUGIN_ROOT}}/scripts/guard.mjs\"",
+          "command": "node \"${CACHEMAX_PLUGIN_ROOT:-${CLAUDE_PLUGIN_ROOT:-$GROK_PLUGIN_ROOT}}/scripts/guard.mjs\"",
             "timeout": 5
           }
         ]

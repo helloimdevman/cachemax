@@ -58,9 +58,9 @@ Grok의 출력 22~38토큰은 CLI 보고값이며 표시된 글자 수가 아닙
 **직전 요청 완료 시각 + 180초**입니다. 시작 간격이 정확히 180초인 방식은 아닙니다. ms 값은 로컬 실행기의
 요청 시작 계측이며 제공자 서버의 수신 시각을 측정한 값은 아닙니다.
 
-실행 중에는 `cache-keeper status --host HOST --session ID`의 `nextDueAt`,
+실행 중에는 `cachemax status --host HOST --session ID`의 `nextDueAt`,
 `intervalMs`, `admittedTicks`로 예약·제출 상태를 확인하고,
-`cache-keeper logs --host HOST --session ID` 또는 화면의 **Activity**에서
+`cachemax logs --host HOST --session ID` 또는 화면의 **Activity**에서
 `source: keeper`인 요청의 `startedAt`, `finishedAt`, `status`, `usage`와
 `request_ok` 이벤트로 실제 완료를 확인합니다. `admittedTicks`는 완료 횟수가 아니고,
 `cache_observed`는 전체 캐시 유지나 저비용을 보장하지 않습니다. 이 조회는 추가

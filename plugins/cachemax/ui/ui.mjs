@@ -130,7 +130,7 @@ $('composer').onsubmit = async e => {
   e.preventDefault(); const text = $('input').value; if (!text.trim()) return;
   error(''); $('send').disabled = true;
   try {
-    if (text.startsWith('/cache-keeper')) {
+    if (text.startsWith('/cachemax')) {
       const command = text.split(/\s+/).slice(1).join(' ') || 'status';
       if (command === 'off') await api('/off', {});
       else if (command === 'status') $('notice').textContent = JSON.stringify(status);
@@ -143,4 +143,4 @@ $('composer').onsubmit = async e => {
 };
 $('input').oninput = () => { if (Date.now() - activityAt > 1000) { activityAt = Date.now(); void api('/activity', {}).catch(() => {}); } };
 $('input').onkeydown = e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) $('composer').requestSubmit(); };
-if (!token) error('Open the private URL printed by cache-keeper run.'); else void stream();
+if (!token) error('Open the private URL printed by cachemax run.'); else void stream();
