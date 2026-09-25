@@ -1,4 +1,4 @@
-# Cache Keeper — Loop 기반 플러그인 개발 계획
+# cachemax — Loop 기반 플러그인 개발 계획
 
 > **목표:** Claude Code · Codex · Grok Build의 기존 세션에 아주 짧은 프롬프트를 반복 전송하되, 사용자 화면에는 유지용 요청과 `.` 응답이 나타나지 않게 한다. 사용자는 마지막 실제 답변 바로 아래에서 작업을 이어간다.
 >
@@ -28,7 +28,7 @@
 
 또한 “loop 방식”을 “세 제품 모두 동일한 내장 `/loop` 명령 사용”으로 해석하지 않는다. Claude Code와 Grok Build에는 내장 반복 기능이 확인되지만, 확인한 Codex CLI 명령 목록에서는 동등한 `/loop`를 찾지 못했다. Codex는 자체 타이머와 App Server를 연결한다.[^claude-loop][^grok-loop][^codex-commands][^codex-server]
 
-**단순 플러그인 설치만으로 세 제품의 기존 기본 화면을 모두 완벽하게 제어한다고 약속하지 않는다.** 완전한 숨김이 필요한 경로에는 Cache Keeper가 소유하는 표시 계층을 사용한다.
+**단순 플러그인 설치만으로 세 제품의 기존 기본 화면을 모두 완벽하게 제어한다고 약속하지 않는다.** 완전한 숨김이 필요한 경로에는 cachemax가 소유하는 표시 계층을 사용한다.
 
 ## 2. 범위와 비범위
 
@@ -72,7 +72,7 @@ API 요청 재작성 프록시, `max_tokens: 0`, prewarm API, prefix 재배치, 
 
 **`managed-quiet`: 기본 제품 경험**
 
-Cache Keeper가 세션의 입력·출력을 소유한다. 화면은 실제 대화만 렌더링하고, 반복 실행은 로컬 `LoopRunner` 또는 검증된 네이티브 스케줄러에 맡긴다. 유지용 턴이 화면에 한 번 나타난 뒤 지워지는 것이 아니라 **처음부터 렌더링되지 않아야 한다.**
+cachemax가 세션의 입력·출력을 소유한다. 화면은 실제 대화만 렌더링하고, 반복 실행은 로컬 `LoopRunner` 또는 검증된 네이티브 스케줄러에 맡긴다. 유지용 턴이 화면에 한 번 나타난 뒤 지워지는 것이 아니라 **처음부터 렌더링되지 않아야 한다.**
 
 **`native`: 조건부 호환 모드**
 
@@ -86,34 +86,34 @@ Cache Keeper가 세션의 입력·출력을 소유한다. 화면은 실제 대�
 
 ### 4.1 제안 명령
 
-아래 슬래시 명령은 **Cache Keeper의 공통 화면에서 제공할 명령**이다. 각 제품의 기본 CLI에 동일한 문법이 이미 있다는 뜻은 아니다. 네이티브 플러그인은 해당 호스트의 스킬·명령 체계로 연결한다.
+아래 슬래시 명령은 **cachemax의 공통 화면에서 제공할 명령**이다. 각 제품의 기본 CLI에 동일한 문법이 이미 있다는 뜻은 아니다. 네이티브 플러그인은 해당 호스트의 스킬·명령 체계로 연결한다.
 
 ```text
-/cache-keeper 2h
-/cache-keeper off
-/cache-keeper status
-/cache-keeper logs
-/cache-keeper show-hidden
+/cachemax 2h
+/cachemax off
+/cachemax status
+/cachemax logs
+/cachemax show-hidden
 ```
 
 공통 로컬 실행기에는 다음 진입점을 제안한다.
 
 ```bash
-cache-keeper run claude
-cache-keeper run codex
-cache-keeper run grok
+cachemax run claude
+cachemax run codex
+cachemax run grok
 
-cache-keeper on --session <id> --duration 2h
-cache-keeper off --session <id>
-cache-keeper status --session <id>
+cachemax on --session <id> --duration 2h
+cachemax off --session <id>
+cachemax status --session <id>
 ```
 
-`on --session`은 **이미 Cache Keeper가 소유하거나 안전하게 인계받은 세션**만 받는다. 임의의 실행 중인 CLI에 두 번째 작성자로 붙지 않는다.
+`on --session`은 **이미 cachemax가 소유하거나 안전하게 인계받은 세션**만 받는다. 임의의 실행 중인 CLI에 두 번째 작성자로 붙지 않는다.
 
 ### 4.2 활성화 시 한 번만 안내
 
 ```text
-Cache Keeper 켜짐 · 지금부터 2시간 · 대화 숨김 켜짐
+cachemax 켜짐 · 지금부터 2시간 · 대화 숨김 켜짐
 반복 요청은 사용량을 소비합니다. 캐시 효과는 관측 가능한 지표로 확인합니다.
 ```
 
@@ -145,7 +145,7 @@ Cache Keeper 켜짐 · 지금부터 2시간 · 대화 숨김 켜짐
 
 “끝난 대화부터 시작”은 **화면과 입력 위치의 연속성**을 의미한다. 세션을 과거 시점으로 rewind하거나 모델 기록에서 유지용 턴을 삭제하는 동작은 아니다.
 
-다른 기본 CLI나 원본 transcript 뷰어로 같은 세션을 열면 유지용 턴이 보일 수 있다. 숨김 보장은 Cache Keeper가 제어하는 지원 화면에 한정한다.
+다른 기본 CLI나 원본 transcript 뷰어로 같은 세션을 열면 유지용 턴이 보일 수 있다. 숨김 보장은 cachemax가 제어하는 지원 화면에 한정한다.
 
 ## 5. 최소 프롬프트 사양
 
@@ -337,13 +337,13 @@ Claude Code의 TTL은 요청·과금 경로에 따라 달라진다. 구독 이�
 
 확인할 항목은 예약 요청이 어떤 훅을 거치는지, 예약과 `turn_id`를 연결할 수 있는지, 만료 요청을 모델 실행 전에 막을 수 있는지다. `MessageDisplay`는 assistant 표시만 바꾸므로 사용자 프롬프트·빈 행·예약 안내까지 숨겨졌다고 가정하지 않는다.[^claude-hooks]
 
-**완전 숨김 경로:** 구조화된 출력·resume 인터페이스를 이용해 Cache Keeper가 입력과 화면을 소유한다. 기존 네이티브 세션은 작업을 끝내고 안전하게 소유권을 넘긴 후 재개한다. 두 프로세스가 동시에 같은 기록에 쓰지 않는다.[^claude-headless]
+**완전 숨김 경로:** 구조화된 출력·resume 인터페이스를 이용해 cachemax가 입력과 화면을 소유한다. 기존 네이티브 세션은 작업을 끝내고 안전하게 소유권을 넘긴 후 재개한다. 두 프로세스가 동시에 같은 기록에 쓰지 않는다.[^claude-headless]
 
 설치 전부터 진행하던 세션을 다시 열 때 설정·도구·시작 정보가 바뀌어 prefix가 달라질 수 있으므로, 세션 ID 유지와 캐시 유지 효과는 별도로 검증한다.
 
 ### 9.2 Codex
 
-공통 `LoopRunner`가 동일 `threadId`에 `turn/start`를 반복 호출한다. Cache Keeper가 App Server 클라이언트와 렌더러를 소유하며, 반환된 턴 ID로 유지용 이벤트만 제외한다.[^codex-server]
+공통 `LoopRunner`가 동일 `threadId`에 `turn/start`를 반복 호출한다. cachemax가 App Server 클라이언트와 렌더러를 소유하며, 반환된 턴 ID로 유지용 이벤트만 제외한다.[^codex-server]
 
 사용자가 복귀하면 활성 keeper 턴에 `turn/interrupt`를 요청하고 종료 이벤트를 확인한 다음 **별도의 실제 사용자 턴**을 시작한다. 사용자의 메시지를 유지용 턴에 `turn/steer`로 합치지 않는다.[^codex-server]
 
@@ -575,7 +575,7 @@ Codex App Server의 턴 이벤트와 Grok ACP의 세션 이벤트를 공통 계�
 ## 17. 제안 저장소 구조
 
 ```text
-cache-keeper/
+cachemax/
 ├── packages/
 │   ├── core/                  # 상태·스케줄·잠금·예산
 │   ├── runner/                # 로컬 프로세스와 세션 소유권

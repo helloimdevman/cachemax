@@ -3,7 +3,7 @@
 const fs = await import('node:fs/promises');
 const { join } = await import('node:path');
 if (process.argv.includes('--server')) {
-  const { managed } = await import('../plugins/cache-keeper/scripts/server.mjs');
+  const { managed } = await import('../plugins/cachemax/scripts/server.mjs');
   const { tmpdir } = await import('node:os');
   const { randomUUID } = await import('node:crypto');
   const rows = Array.from({ length: 30 }, (_, i) => ({ id: `history-${i}`, role: i % 2 ? 'assistant' : 'user', text: `Conversation ${i}\n` + 'A preserved line of conversation.\n'.repeat(5) }));
@@ -41,7 +41,7 @@ if (process.argv.includes('--server')) {
   try {
     const [line] = await once(lines, 'line', { signal: AbortSignal.timeout(10000) });
     const { url } = JSON.parse(line);
-    const task = await taskSpace('Cache Keeper reconnect regression');
+    const task = await taskSpace('cachemax reconnect regression');
     console.log({ taskSpaceId: task.spaceId });
     const page = task.page('p1');
     await page.goto(url); console.log(await page.snapshot());

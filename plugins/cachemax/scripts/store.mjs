@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { homedir } from 'node:os';
 import { createHash, randomUUID } from 'node:crypto';
 
-export const dataHome = () => process.env.CACHE_KEEPER_HOME || join(homedir(), '.cache-keeper');
+export const dataHome = () => process.env.CACHEMAX_HOME || join(homedir(), '.cachemax');
 export function atomicJSON(path, data) {
   const temp = `${path}.${randomUUID()}.tmp`;
   try {
@@ -31,7 +31,7 @@ export class Store {
     this.nonce = randomUUID();
     // A stale lock is never deleted automatically: two reclaimers could both become writers.
     try { const fd = openSync(this.lockPath, 'wx', 0o600); closeSync(fd); }
-    catch (e) { if (e.code === 'EEXIST') throw Error('Session already owned, or stale lock. Run cache-keeper unlock after its owner exits.'); throw e; }
+    catch (e) { if (e.code === 'EEXIST') throw Error('Session already owned, or stale lock. Run cachemax unlock after its owner exits.'); throw e; }
     writeFileSync(this.lockPath, JSON.stringify({ pid: process.pid, nonce: this.nonce }), { mode: 0o600 });
   }
   owns() {

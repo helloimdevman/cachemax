@@ -7,8 +7,8 @@ import { tmpdir } from 'node:os';
 import { randomBytes } from 'node:crypto';
 import { createInterface } from 'node:readline';
 import { createInterface as prompt } from 'node:readline/promises';
-import { managed } from '../plugins/cache-keeper/scripts/server.mjs';
-import { launch } from '../plugins/cache-keeper/scripts/protocol.mjs';
+import { managed } from '../plugins/cachemax/scripts/server.mjs';
+import { launch } from '../plugins/cachemax/scripts/protocol.mjs';
 import { measure, armSummary, save } from './validation-support.mjs';
 
 const { values: v } = parseArgs({ options: { 'confirm-usage': { type: 'boolean' }, 'sleep-now': { type: 'boolean' }, host: { type: 'string' }, model: { type: 'string' } } });

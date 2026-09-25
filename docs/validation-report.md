@@ -256,7 +256,7 @@ node tests/manual-sleep.mjs --confirm-usage --host codex --model gpt-6-astra
 공개 측정 데이터에서는 대화 본문과 세션·계정 식별자를 제외합니다. 원본 대화 기록은
 각 호스트 CLI가 관리하며, 플러그인은 이를 수정·삭제하지 않습니다.
 
-완전한 숨김은 Cache Keeper 관리 화면의 기능입니다. 기존 기본 CLI는 종료한 뒤
+완전한 숨김은 cachemax 관리 화면의 기능입니다. 기존 기본 CLI는 종료한 뒤
 세션을 인계해야 하며, 별도로 열린 기본 CLI까지 로컬 잠금에 참여시키지는 못합니다.
 도구 차단의 지원 범위와 공개 설치 방법은 [호환성 표](compatibility-matrix.md)와
 [README](../README.md)에 기록합니다. 이번 산출물은 공개 설치 가능한 패키지이며,

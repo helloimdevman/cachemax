@@ -77,7 +77,7 @@ export class HeadlessAdapter {
     if (this.model) args.push('--model', this.model);
     const before = new Set((await this.history()).map(m => m.id));
     if (!admit()) return { text: '', usage: null, cancelled: true };
-    const child = this.child = launch(this.host, args, { cwd: this.cwd, env: { ...process.env, CACHE_KEEPER_GUARD: this.guardPath, CACHE_KEEPER_PLUGIN_ROOT: pluginRoot } });
+    const child = this.child = launch(this.host, args, { cwd: this.cwd, env: { ...process.env, CACHEMAX_GUARD: this.guardPath, CACHEMAX_PLUGIN_ROOT: pluginRoot } });
     bind({ childPid: child.pid });
     let result, output = '', toolAttempt = false, protocolError, seenSession = false, measuredUsage = null;
     const ids = new Set([turn.requestKey]);
@@ -98,7 +98,7 @@ export class HeadlessAdapter {
           if (this.observedModel && this.observedModel !== msg.model) throw Error('Host model changed; keeper paused');
           this.observedModel = msg.model;
           bind({ model: msg.model });
-          if (claude && (msg.plugin_errors?.length || !(msg.plugins || []).some(p => p.name.includes('cache-keeper')))) throw Error('Cache Keeper guard plugin did not load');
+          if (claude && (msg.plugin_errors?.length || !(msg.plugins || []).some(p => p.name.includes('cachemax')))) throw Error('cachemax guard plugin did not load');
         }
         if (msg.type === 'system' && ['api_retry', 'compact_boundary'].includes(msg.subtype) && turn.source === 'keeper') throw Error(`Host ${msg.subtype}; keeper paused`);
         const e = msg.type === 'stream_event' ? msg.event : msg;
@@ -152,8 +152,8 @@ export class CodexAdapter {
     const hooks = `[{ hooks = [{ type = "command", command = ${JSON.stringify(command)}, timeout = 5 }] }]`;
     const args = ['app-server', '--listen', 'stdio://', '-c', `hooks.PreToolUse=${hooks}`, '-c', 'features.hooks=true', '-c', 'features.multi_agent=false', '-c', 'web_search="disabled"'];
     const start = async extra => {
-      this.rpc = new RPC('codex', [...args, ...extra], { cwd: this.cwd, env: { ...process.env, CACHE_KEEPER_GUARD: this.guardPath || '' } });
-      await this.rpc.request('initialize', { clientInfo: { name: 'cache-keeper', version: '0.2.0' }, capabilities: { experimentalApi: true } });
+      this.rpc = new RPC('codex', [...args, ...extra], { cwd: this.cwd, env: { ...process.env, CACHEMAX_GUARD: this.guardPath || '' } });
+      await this.rpc.request('initialize', { clientInfo: { name: 'cachemax', version: '0.2.0' }, capabilities: { experimentalApi: true } });
       this.rpc.send({ method: 'initialized', params: {} });
       return this.rpc.request('hooks/list', { cwds: [this.cwd] });
     };

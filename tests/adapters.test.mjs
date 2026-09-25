@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { EventEmitter } from 'node:events';
-import { CodexAdapter, transcript } from '../plugins/cache-keeper/scripts/adapters.mjs';
+import { CodexAdapter, transcript } from '../plugins/cachemax/scripts/adapters.mjs';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';

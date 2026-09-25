@@ -9,7 +9,7 @@ test('real SIGSTOP/SIGCONT: in-flight cancellation, no burst, and expiry while s
   const results = [];
   for (const mode of ['gap', 'expired']) {
     const child = spawn(process.execPath, ['--input-type=module', '-e', `
-      import { Keeper } from './plugins/cache-keeper/scripts/core.mjs';
+      import { Keeper } from './plugins/cachemax/scripts/core.mjs';
       const turns = [], events = [];
       const store = { data: { host: 'codex', sessionId: 'test', turns }, owns: () => true, save() {}, guard() {}, event(kind, data) { events.push({ kind, ...data }); } };
       const adapter = { capabilities: { verifiedToolBlocking: true }, async run({ signal }) {

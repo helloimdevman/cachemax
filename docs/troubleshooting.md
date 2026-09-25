@@ -1,11 +1,11 @@
 # Troubleshooting
 
-- **No runner owns this session:** start `cache-keeper run HOST`. The `on` command
+- **No runner owns this session:** start `cachemax run HOST`. The `on` command
   only controls a running owner; it cannot attach to an arbitrary native window.
 - **Existing native conversation:** finish the native turn, exit that client,
   and use `run HOST --session ID --cwd ORIGINAL_DIRECTORY --handoff`.
 - **Already owned / stale lock:** stop the existing runner. After an abnormal
-  exit, `cache-keeper unlock --host HOST --session ID` checks that the recorded
+  exit, `cachemax unlock --host HOST --session ID` checks that the recorded
   parent and active child processes have exited. Reopen the session afterward;
   keepalive remains off.
 - **Guard not activated:** confirm the tested Codex version with `doctor`.
@@ -37,7 +37,7 @@
   --session ID` to inspect `intervalMs`, `nextDueAt`, and `admittedTicks`. Use
   `logs --host HOST --session ID` or Activity to check keeper turns' timestamps,
   completion status, usage, and `request_ok` events. Prefix CLI commands with
-  `cache-keeper`. These reads do not send model requests. Admitted counts alone
+  `cachemax`. These reads do not send model requests. Admitted counts alone
   do not prove completion. The interval starts after the previous request finishes.
 - **Check minimal usage:** count cached input, new cache writes, and output as
   well as ordinary input. A dot response does not mean one total token. Claude
@@ -62,4 +62,4 @@
 
 The public package has no external runtime dependencies. To diagnose packaging,
 run `npm run check`, then the native `claude plugin validate` and
-`grok plugin validate` commands on `plugins/cache-keeper`.
+`grok plugin validate` commands on `plugins/cachemax`.

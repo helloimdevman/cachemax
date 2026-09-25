@@ -1,14 +1,14 @@
 {
-  "name": "cache-keeper",
+  "name": "cachemax",
   "version": "0.2.0",
   "description": "Quiet, bounded session keepalive for Claude Code, Codex, and Grok Build",
   "type": "module",
   "license": "MIT",
   "engines": { "node": ">=22.18.0" },
-  "bin": { "cache-keeper": "plugins/cache-keeper/scripts/cli.mjs" },
-  "files": [".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json", "plugins/cache-keeper", "scripts", "tests", "README.md", "LICENSE", "docs"],
+  "bin": { "cachemax": "plugins/cachemax/scripts/cli.mjs" },
+  "files": [".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json", "plugins/cachemax", "scripts", "tests", "README.md", "LICENSE", "docs"],
   "scripts": {
-    "start": "node plugins/cache-keeper/scripts/cli.mjs",
+    "start": "node plugins/cachemax/scripts/cli.mjs",
     "test": "node --test tests/*.test.mjs",
     "test:live": "node tests/live.mjs",
     "check": "node scripts/check.mjs"

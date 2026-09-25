@@ -82,7 +82,7 @@ export async function managed({ host, cwd = process.cwd(), sessionId, model, han
         const name = url.pathname === '/' ? 'index.html' : url.pathname.slice(1);
         res.setHeader('Content-Type', { 'index.html': 'text/html; charset=utf-8', 'ui.mjs': 'text/javascript', 'style.css': 'text/css' }[name]); res.end(assets.get(name)); return;
       }
-      if (!authorize(req)) { json(res, 401, { error: 'Open the private URL printed by cache-keeper run' }); return; }
+      if (!authorize(req)) { json(res, 401, { error: 'Open the private URL printed by cachemax run' }); return; }
       try {
         if (req.method === 'GET' && url.pathname === '/snapshot') { json(res, 200, { status: keeper.status(), messages, capabilities: adapter.capabilities, cwd }); return; }
         if (req.method === 'GET' && url.pathname === '/events') {

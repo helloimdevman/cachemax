@@ -1,6 +1,6 @@
 # Privacy
 
-Cache Keeper launches installed CLIs using their normal login and configuration.
+cachemax launches installed CLIs using their normal login and configuration.
 It never reads, copies, exports, logs, or distributes credential files. The CLIs
 still send model requests to their providers under their own privacy policies.
 
@@ -16,7 +16,7 @@ files are `0600`; a newly created metadata directory is `0700`.
 
 The HTTP listener is loopback-only, checks Host and Origin, and requires a random
 token for session data and mutations. The page loads no third-party assets and
-renders model text with `textContent`. Cache Keeper sends no telemetry.
+renders model text with `textContent`. cachemax sends no telemetry.
 
 Use `forget` on a stopped session to erase its metadata. Its original host
 history remains, including maintenance turns. Erasing the mapping removes the

@@ -7,14 +7,14 @@ import { managed } from './server.mjs';
 import { Store, listStores, alive } from './store.mjs';
 import { pluginRoot } from './adapters.mjs';
 
-const help = `Cache Keeper 0.2.0 — quiet, bounded session keepalive
+const help = `cachemax 0.2.0 — quiet, bounded session keepalive
 
-  cache-keeper run claude|codex|grok [--cwd PATH] [--session ID --handoff]
-  cache-keeper on --host HOST --session ID [--duration 30m] [--ttl 5m|1h|DURATION]
+  cachemax run claude|codex|grok [--cwd PATH] [--session ID --handoff]
+  cachemax on --host HOST --session ID [--duration 30m] [--ttl 5m|1h|DURATION]
       [--interval DURATION] [--max-ticks 10] [--max-tokens N] [--max-cost-usd N]
-  cache-keeper off|status|logs|show-hidden --host HOST --session ID
-  cache-keeper doctor
-  cache-keeper unlock|forget --host HOST --session ID
+  cachemax off|status|logs|show-hidden --host HOST --session ID
+  cachemax doctor
+  cachemax unlock|forget --host HOST --session ID
 
 Run opens a managed local conversation; keeper starts OFF.
 Existing native sessions must be closed before --handoff.
@@ -46,7 +46,7 @@ try {
   } else if (command === 'run') {
     if (v['require-native-loop']) throw Error('No native loop path has verified hidden input, output, and strict dispatch guards. Use managed-quiet.');
     const session = await managed({ host: p[1] || v.host, sessionId: v.session, cwd: v.cwd, model: v.model, handoff: v.handoff });
-    console.log(`Cache Keeper · ${p[1] || v.host} · ${session.sessionId}\n${session.url}\nKeepalive is OFF. Enable it in the page. Ctrl+C stops this runner.`);
+    console.log(`cachemax · ${p[1] || v.host} · ${session.sessionId}\n${session.url}\nKeepalive is OFF. Enable it in the page. Ctrl+C stops this runner.`);
     if (!v['no-open']) {
       const browser = process.platform === 'darwin' ? ['open', [session.url]] : process.platform === 'win32' ? ['explorer.exe', [session.url]] : ['xdg-open', [session.url]];
       const opener = spawn(browser[0], browser[1], { stdio: 'ignore' }); opener.on('error', () => {}); opener.unref();
@@ -71,7 +71,7 @@ try {
       const endpoint = store.data.endpoint;
       if (!endpoint || !alive(endpoint.pid)) {
         if (command === 'status') console.log(JSON.stringify({ host: v.host, sessionId: v.session, phase: 'off', running: false }));
-        else throw Error('This session has no running owner. Start cache-keeper run first.');
+        else throw Error('This session has no running owner. Start cachemax run first.');
       } else {
         const path = { status: '/snapshot', 'show-hidden': '/hidden' }[command] || '/' + command;
         const data = command === 'on' ? { duration: v.duration, interval: v.interval, maxTicks: v['max-ticks'] === undefined ? 10 : Number(v['max-ticks']), ttl: v.ttl ?? null,
@@ -85,4 +85,4 @@ try {
       }
     }
   } else throw Error(`Unknown command: ${command}\n${help}`);
-} catch (e) { console.error(`cache-keeper: ${e.message}`); process.exitCode = 1; }
+} catch (e) { console.error(`cachemax: ${e.message}`); process.exitCode = 1; }

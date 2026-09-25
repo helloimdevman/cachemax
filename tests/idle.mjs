@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { randomBytes } from 'node:crypto';
 import { setTimeout as delay } from 'node:timers/promises';
-import { managed } from '../plugins/cache-keeper/scripts/server.mjs';
+import { managed } from '../plugins/cachemax/scripts/server.mjs';
 
 if (!process.argv.includes('--confirm-usage')) throw Error('Add --confirm-usage: at most five model turns per selected host, six-minute idle window');
 const selected = process.argv.filter(a => ['claude', 'codex', 'grok'].includes(a));

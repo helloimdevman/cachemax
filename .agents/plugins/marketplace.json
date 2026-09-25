@@ -1,14 +1,14 @@
 {
-  "name": "cache-keeper",
+  "name": "cachemax",
   "interface": {
-    "displayName": "Cache Keeper"
+    "displayName": "cachemax"
   },
   "plugins": [
     {
-      "name": "cache-keeper",
+      "name": "cachemax",
       "source": {
         "source": "local",
-        "path": "./plugins/cache-keeper"
+        "path": "./plugins/cachemax"
       },
       "policy": {
         "installation": "AVAILABLE",

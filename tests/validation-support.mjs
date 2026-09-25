@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { homedir } from 'node:os';
 import { execFileSync } from 'node:child_process';
-import { atomicJSON } from '../plugins/cache-keeper/scripts/store.mjs';
+import { atomicJSON } from '../plugins/cachemax/scripts/store.mjs';
 import assert from 'node:assert/strict';
 
 export function fingerprint(host) {
@@ -14,7 +14,7 @@ export function fingerprint(host) {
       if (e.isDirectory()) walk(p); else hash.update(p).update(readFileSync(p));
     }
   };
-  walk('plugins/cache-keeper');
+  walk('plugins/cachemax');
   const settings = ['.claude/settings.json', '.claude/plugins/installed_plugins.json', '.codex/config.toml', '.grok/config.toml'].map(name => {
     const p = join(homedir(), name), s = existsSync(p) && statSync(p);
     return { name, size: s ? s.size : null, sha256: s ? createHash('sha256').update(readFileSync(p)).digest('hex') : null };

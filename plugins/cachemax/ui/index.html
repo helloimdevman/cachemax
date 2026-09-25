@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cache Keeper</title><link rel="stylesheet" href="/style.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>cachemax</title><link rel="stylesheet" href="/style.css"></head>
 <body>
-<header><div><span class="eyebrow">BOUNDED SESSION MAINTENANCE</span><h1>Cache Keeper<span class="dot" aria-hidden="true"></span></h1></div><span id="connection">Connecting…</span></header>
+<header><div><span class="eyebrow">BOUNDED SESSION MAINTENANCE</span><h1>cachemax<span class="dot" aria-hidden="true"></span></h1></div><span id="connection">Connecting…</span></header>
 <main>
   <section class="session" aria-label="Session details"><span id="host">Managed session</span><code id="session"></code><span id="phase">Off</span></section>
   <section class="monitor" aria-labelledby="monitor-title">
@@ -41,6 +41,6 @@
   <p id="notice" role="status"></p><p id="error" role="alert" hidden></p>
   <section id="conversation" aria-label="Conversation"><div id="empty"><h2>Continue where you left off.</h2><p>Your real conversation stays here.<br>Maintenance runs quietly in the background.</p></div></section>
 </main>
-<footer><form id="composer"><label for="input" class="sr-only">Message</label><textarea id="input" rows="2" placeholder="Continue the conversation…" required maxlength="100000"></textarea><button id="send" type="submit">Send <span aria-hidden="true">↗</span></button></form><div class="footer-note"><span id="working"></span><span>Ctrl / ⌘ + Enter to send · /cache-keeper status</span></div></footer>
+<footer><form id="composer"><label for="input" class="sr-only">Message</label><textarea id="input" rows="2" placeholder="Continue the conversation…" required maxlength="100000"></textarea><button id="send" type="submit">Send <span aria-hidden="true">↗</span></button></form><div class="footer-note"><span id="working"></span><span>Ctrl / ⌘ + Enter to send · /cachemax status</span></div></footer>
 <dialog id="diagnostics"><div class="dialog-heading"><h2 id="dialog-title">Activity</h2><button id="dismiss" class="secondary">Close</button></div><pre id="details"></pre></dialog>
 <script type="module" src="/ui.mjs"></script></body></html>
