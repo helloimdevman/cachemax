@@ -8,7 +8,7 @@
 ![Version](https://img.shields.io/badge/version-0.2.0-orange)
 
 Keep a Claude Code, Codex, or Grok Build conversation warm while you step away.
-cachemax sends a tiny hidden `Only .` turn to the **same session** on a timer,
+cachemax sends a hidden `Only ".". No tools.` turn to the **same session** on a timer,
 stops at hard limits, and shows exactly what each request used.
 
 ![cachemax managed page showing maintenance status and usage](docs/assets/screenshot.png)
@@ -20,7 +20,7 @@ stops at hard limits, and shows exactly what each request used.
 
 ## How it works
 
-![Timeline: Keep ready, hidden Only . turns every interval, your message goes first, hard stop](docs/assets/how-it-works.svg)
+![Timeline: Keep ready, hidden period requests every interval, your message goes first, hard stop](docs/assets/how-it-works.svg)
 
 - **Same conversation, hidden turns.** The managed page hides maintenance turns. The host transcript keeps everything.
 - **You go first.** A running keeper request is cancelled before your message is sent.
@@ -30,20 +30,15 @@ stops at hard limits, and shows exactly what each request used.
 
 ## Does it keep the cache?
 
-From real runs on subscription accounts, on 0.1.1 unless noted
-([validation](docs/validation-report.md) · [analysis](docs/cache-analysis.md) · [follow-up](docs/reproducibility-report.md)):
+How much of your next message was read from cache after you stepped away
+(real subscription-account runs on 2026-09-27, two per host):
 
-| Host | Cache kept while you are away? |
-| --- | --- |
-| Codex | **Yes.** After 35–70 minutes away, your next message read about 99.5% from cache, vs. about 84% without cachemax. Part of that gap came from warming newly added instructions. |
-| Claude Code | **Mixed.** On 0.1.1, most of the conversation cache was rewritten on every turn. A later short run at a 3-minute interval read it from cache. Not yet rechecked against a control. |
-| Grok Build | **Unreliable.** Maintenance turns often missed the cache, even at a 3-minute interval. |
+![Cache read on return: 98.5–99.9% with cachemax on all three hosts, 0–99.5% without](docs/assets/cache-retention.svg)
 
-Codex and Grok don't need it for short breaks: after about 12 minutes idle they read
-over 99.5% from cache without cachemax.
+Maintenance turns that read the cache: Claude Code 6/6 · Codex 6/6 · Grok Build 5/6.
 
-**Bottom line:** it keeps a session active reliably and within the limits you set.
-It is not a proven way to save money: every measured Claude and Grok pair cost more with it.
+\* The 0% Grok session never read the cache, even on its warmup before the wait.
+Codex and Grok used the previous `Only .` prompt. [Raw data](docs/remeasurement-2026-09-27.md)
 
 ## Quick start
 
@@ -98,8 +93,8 @@ cachemax forget --host codex --session ID      # delete metadata of a stopped se
 
 | Host | Tested | Transport | Tool guard on maintenance |
 | --- | --- | --- | --- |
-| Claude Code | 2.1.282 | Structured print + resume | Bundled PreToolUse deny hook |
-| Codex | 0.156.1 | App Server thread/turn API | Bundled hook; hosted web search off |
+| Claude Code | 2.1.283 | Structured print + resume | Bundled PreToolUse deny hook |
+| Codex | 0.157.1 | App Server thread/turn API | Bundled hook; hosted web search off |
 | Grok Build | 1.0.41 | Structured headless + resume | Native `--deny '*'` |
 
 Maintenance uses the session's own model, with no cheaper model or subagent. Turns are
@@ -126,7 +121,8 @@ npm run test:live -- --confirm-usage       # 3 real model turns per host
 
 Docs: [Troubleshooting](docs/troubleshooting.md) · [Privacy](docs/privacy.md) ·
 [Validation](docs/validation-report.md) · [Cache analysis](docs/cache-analysis.md) ·
-[Three-host follow-up](docs/reproducibility-report.md) · [Usage reduction](docs/usage-minimization.md)
+[Three-host follow-up](docs/reproducibility-report.md) · [Remeasurement](docs/remeasurement-2026-09-27.md) ·
+[Usage reduction](docs/usage-minimization.md)
 
 ## License
 

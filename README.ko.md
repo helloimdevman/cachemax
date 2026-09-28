@@ -8,7 +8,7 @@
 ![Version](https://img.shields.io/badge/version-0.2.0-orange)
 
 자리를 비운 동안 Claude Code, Codex, Grok Build 대화를 준비된 상태로 유지합니다.
-cachemax는 **같은 세션**에 숨겨진 짧은 `Only .` 턴을 주기적으로 보내고, 정한 한도에서
+cachemax는 **같은 세션**에 숨겨진 `Only ".". No tools.` 턴을 주기적으로 보내고, 정한 한도에서
 확실히 멈추며, 요청마다 실제로 쓴 사용량을 보여 줍니다.
 
 ![유지 상태와 사용량을 보여 주는 cachemax 관리 페이지](docs/assets/screenshot.png)
@@ -20,7 +20,7 @@ cachemax는 **같은 세션**에 숨겨진 짧은 `Only .` 턴을 주기적으�
 
 ## 동작 방식
 
-![타임라인: Keep ready, 간격마다 숨겨진 Only . 턴, 사용자 메시지 우선, 한도에서 정지](docs/assets/how-it-works.svg)
+![타임라인: Keep ready, 간격마다 숨겨진 점 하나 요청, 사용자 메시지 우선, 한도에서 정지](docs/assets/how-it-works.svg)
 
 - **같은 대화, 숨겨진 턴.** 관리 페이지에서는 유지 턴이 보이지 않고, 호스트 원본 기록에는 모두 남습니다.
 - **사용자가 먼저.** 진행 중인 유지 요청을 취소한 뒤 사용자 메시지를 보냅니다.
@@ -30,20 +30,15 @@ cachemax는 **같은 세션**에 숨겨진 짧은 `Only .` 턴을 주기적으�
 
 ## 캐시가 유지되나요?
 
-구독 계정으로 실제 실행한 결과입니다. 따로 적지 않은 결과는 0.1.1에서 측정했습니다
-([검증](docs/validation-report.md) · [분석](docs/cache-analysis.md) · [후속 검증](docs/reproducibility-report.md)).
+자리를 비운 뒤 보낸 다음 메시지를 캐시에서 읽은 비율입니다
+(2026-09-27 구독 계정 실측, 호스트당 2회).
 
-| 호스트 | 자리를 비운 동안 캐시 유지 |
-| --- | --- |
-| Codex | **유지됨.** 35–70분 뒤 보낸 다음 메시지가 약 99.5%를 캐시에서 읽었습니다(cachemax 없이 약 84%). 차이의 일부는 새로 추가된 지시문을 미리 처리한 효과입니다. |
-| Claude Code | **엇갈림.** 0.1.1에서는 매 턴 대화 캐시 대부분을 새로 썼습니다. 이후 3분 간격의 짧은 실행에서는 캐시에서 읽었습니다. 대조군과 다시 비교하지는 않았습니다. |
-| Grok Build | **불안정.** 3분 간격에서도 유지 요청이 캐시를 자주 놓쳤습니다. |
+![복귀 요청의 캐시 읽기 비율: cachemax 사용 시 세 호스트 모두 98.5–99.9%, 미사용 시 0–99.5%](docs/assets/cache-retention.ko.svg)
 
-Codex와 Grok은 짧은 휴식에는 필요 없습니다. 12분 정도 쉬었을 때는 cachemax 없이도
-99.5% 이상을 캐시에서 읽었습니다.
+캐시를 읽은 유지 요청: Claude Code 6/6 · Codex 6/6 · Grok Build 5/6.
 
-**결론:** 정한 한도 안에서 세션을 안정적으로 유지합니다. 다만 비용을 줄인다는 근거는
-없습니다. 측정한 Claude·Grok 쌍은 모두 cachemax를 쓴 쪽의 비용이 더 컸습니다.
+\* 0%인 Grok 세션은 자리를 비우기 전 예열부터 캐시를 읽지 못했습니다.
+Codex·Grok은 이전 문구 `Only .`로 측정했습니다. [원자료](docs/remeasurement-2026-09-27.md)
 
 ## 빠른 시작
 
@@ -98,8 +93,8 @@ cachemax forget --host codex --session ID      # 중지된 세션의 메타데�
 
 | 호스트 | 테스트 버전 | 전송 방식 | 유지 요청 도구 차단 |
 | --- | --- | --- | --- |
-| Claude Code | 2.1.282 | Structured print + resume | 번들 PreToolUse deny hook |
-| Codex | 0.156.1 | App Server thread/turn API | 번들 hook, 호스팅 웹 검색 끔 |
+| Claude Code | 2.1.283 | Structured print + resume | 번들 PreToolUse deny hook |
+| Codex | 0.157.1 | App Server thread/turn API | 번들 hook, 호스팅 웹 검색 끔 |
 | Grok Build | 1.0.41 | Structured headless + resume | 네이티브 `--deny '*'` |
 
 유지 요청은 세션의 모델을 그대로 쓰며, 저가 모델이나 서브에이전트를 쓰지 않습니다. 숨김은
@@ -126,7 +121,8 @@ npm run test:live -- --confirm-usage       # 호스트당 실제 모델 턴 3회
 
 문서(일부 영문): [문제 해결](docs/troubleshooting.md) · [개인정보](docs/privacy.md) ·
 [검증](docs/validation-report.md) · [캐시 분석](docs/cache-analysis.md) ·
-[3개 호스트 후속 검증](docs/reproducibility-report.md) · [사용량 절감](docs/usage-minimization.md)
+[3개 호스트 후속 검증](docs/reproducibility-report.md) · [후속 재측정](docs/remeasurement-2026-09-27.md) ·
+[사용량 절감](docs/usage-minimization.md)
 
 ## 라이선스
 
