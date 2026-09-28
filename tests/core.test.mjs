@@ -45,7 +45,7 @@ test('no immediate tick, no tick at or after expiry, and immutable deadline', as
   const { keeper, clock, calls } = setup(); keeper.onFor('3s', { interval: '1s' });
   const expires = keeper.state.expiresAt;
   assert.equal(calls.length, 0); await clock.advance(1000); assert.equal(calls.length, 1);
-  assert.equal(calls[0].text, 'Only .'); assert.equal(calls[0].turn.source, 'keeper');
+  assert.equal(calls[0].text, 'Only ".". No tools.'); assert.equal(calls[0].turn.source, 'keeper');
   await keeper.user('actual work'); assert.equal(keeper.state.expiresAt, expires);
   await clock.advance(2000); assert.equal(calls.length, 2); assert.equal(keeper.enabled, false);
 });

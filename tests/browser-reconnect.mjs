@@ -94,7 +94,7 @@ if (process.argv.includes('--server')) {
       outcomes: document.getElementById('outcomes').textContent, attempts: document.getElementById('attempts').textContent,
       lastSuccess: document.getElementById('last-success').textContent, next: document.getElementById('next-request').textContent,
       costDisabled: document.getElementById('max-cost').disabled, customTTL: document.getElementById('custom-ttl').value,
-      hiddenPrompts: [...document.querySelectorAll('.message pre')].some(n => n.textContent === 'Only .') }));
+      hiddenPrompts: [...document.querySelectorAll('.message pre')].some(n => n.textContent === 'Only ".". No tools.') }));
     assert.equal(settings.total, '210'); assert.equal(settings.outcomes, '2 / 0 / 0');
     assert.equal(settings.attempts, '2 / 10'); assert.notEqual(settings.lastSuccess, 'None');
     assert.equal(settings.next, 'Not scheduled'); assert.equal(settings.costDisabled, true);

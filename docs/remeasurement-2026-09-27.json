@@ -1,0 +1,2027 @@
+{
+  "generatedAt": "2026-09-26T17:27:21.496Z",
+  "protocol": {
+    "date": "2026-09-27",
+    "baseline": "One shared warmup per arm after a 1,500-row fixture with a distinct 24-character marker",
+    "arms": "Counterbalanced control without intermediate requests versus keeper with three requests",
+    "idle": {
+      "claude": "12m",
+      "codex": "35m",
+      "grok": "12m"
+    },
+    "interval": {
+      "claude": "3m",
+      "codex": "9m",
+      "grok": "3m"
+    },
+    "prompt": {
+      "claude": "Only \".\". No tools.",
+      "codex": "Only .",
+      "grok": "Only ."
+    },
+    "validation": "Marker recall, completed maintenance, cadence and monotonic idle, no pause/gap, unchanged runtime/config fingerprint",
+    "estimate": "CLI reported dollar values are not subscription invoices or isolated quota usage; Codex does not report dollars",
+    "sample": "Two pairs per host; descriptive only; no replacement pairs or retries"
+  },
+  "initialClaudeShortPromptFailure": {
+    "status": "failed",
+    "completedModelRequests": 2,
+    "failedStage": "warmup",
+    "prompt": "Only .",
+    "expected": ".",
+    "observed": "Clarification instead of a period; response body withheld",
+    "probe": {
+      "requests": 2,
+      "prompt": "Only \".\". No tools.",
+      "observed": "."
+    }
+  },
+  "controlled": [
+    {
+      "study": "reread-claude-20260927",
+      "host": "claude",
+      "model": "claude-opus-5-5[1m]",
+      "startedAt": "2026-09-26T16:53:29.506Z",
+      "finishedAt": "2026-09-26T17:06:14.031Z",
+      "idleMs": 720000,
+      "intervalMs": 180000,
+      "replicates": 2,
+      "maxSubmittedPrompts": 18,
+      "warmupRequestsPerArm": 1,
+      "baselineMeaning": "Last shared warmup completion; setup usage is recorded separately",
+      "submittedPrompts": 18,
+      "status": "completed",
+      "environment": {
+        "runtimeSHA256": "e20e1e30d50ebe1c63d526eadd571972fe7c360a4c024dc6dcab79e818808956",
+        "version": "2.1.283 (Claude Code)",
+        "node": "v26.7.0"
+      },
+      "results": [
+        {
+          "trial": 0,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "control": {
+            "model": "claude-opus-5-5[1m]",
+            "seedUsage": {
+              "inputTokens": 2,
+              "cacheReadTokens": 12161,
+              "cacheWriteTokens": 43412,
+              "outputTokens": 3,
+              "reasoningTokens": 0,
+              "costUSD": null,
+              "reportedSessionCostUSD": 0.6956640000000001,
+              "cacheWrite1hTokens": 43412,
+              "cacheWrite5mTokens": 0
+            },
+            "idleMs": 720030,
+            "monotonicIdleMs": 720036.160208,
+            "nextUserUsage": {
+              "inputTokens": 2,
+              "cacheReadTokens": 12161,
+              "cacheWriteTokens": 43977,
+              "outputTokens": 20,
+              "reasoningTokens": 0,
+              "costUSD": null,
+              "reportedSessionCostUSD": 1.0503202,
+              "cacheWrite1hTokens": 43977,
+              "cacheWrite5mTokens": 0
+            },
+            "durationMs": 4628.501917000045,
+            "firstTokenMs": 3099.4692499999655,
+            "keeperRequests": 0,
+            "keeperUsage": [],
+            "keeperStatuses": [],
+            "totalPostSeedReportedCostUSD": 0.3546562,
+            "costMeaning": "CLI list-price estimate; includes all post-seed session requests",
+            "warnings": [],
+            "setupUsage": [
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 10459,
+                "cacheWriteTokens": 42961,
+                "outputTokens": 4,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.3458678,
+                "cacheWrite1hTokens": 42961,
+                "cacheWrite5mTokens": 0
+              },
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 12161,
+                "cacheWriteTokens": 43412,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.6956640000000001,
+                "cacheWrite1hTokens": 43412,
+                "cacheWrite5mTokens": 0
+              }
+            ],
+            "continuity": true,
+            "monotonicCadence": null
+          },
+          "keeper": {
+            "model": "claude-opus-5-5[1m]",
+            "seedUsage": {
+              "inputTokens": 2,
+              "cacheReadTokens": 53423,
+              "cacheWriteTokens": 2337,
+              "outputTokens": 3,
+              "reasoningTokens": 0,
+              "costUSD": null,
+              "reportedSessionCostUSD": 0.3635248,
+              "cacheWrite1hTokens": 2337,
+              "cacheWrite5mTokens": 0
+            },
+            "idleMs": 720003,
+            "monotonicIdleMs": 720009.0105000001,
+            "nextUserUsage": {
+              "inputTokens": 2,
+              "cacheReadTokens": 56603,
+              "cacheWriteTokens": 883,
+              "outputTokens": 23,
+              "reasoningTokens": 0,
+              "costUSD": null,
+              "reportedSessionCostUSD": 0.4230952,
+              "cacheWrite1hTokens": 883,
+              "cacheWrite5mTokens": 0
+            },
+            "durationMs": 6495.729958999902,
+            "firstTokenMs": 4768.208125000005,
+            "keeperRequests": 3,
+            "keeperUsage": [
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 55760,
+                "cacheWriteTokens": 765,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.3808648,
+                "cacheWrite1hTokens": 765,
+                "cacheWrite5mTokens": 0
+              },
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 56525,
+                "cacheWriteTokens": 39,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.3925498,
+                "cacheWrite1hTokens": 39,
+                "cacheWrite5mTokens": 0
+              },
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 56564,
+                "cacheWriteTokens": 39,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.4042426,
+                "cacheWrite1hTokens": 39,
+                "cacheWrite5mTokens": 0
+              }
+            ],
+            "keeperStatuses": [
+              "completed",
+              "completed",
+              "completed"
+            ],
+            "totalPostSeedReportedCostUSD": 0.05957040000000002,
+            "costMeaning": "CLI list-price estimate; includes all post-seed session requests",
+            "warnings": [],
+            "setupUsage": [
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 12161,
+                "cacheWriteTokens": 41262,
+                "outputTokens": 77,
+                "reasoningTokens": 73,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.3340762,
+                "cacheWrite1hTokens": 41262,
+                "cacheWrite5mTokens": 0
+              },
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 53423,
+                "cacheWriteTokens": 2337,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.3635248,
+                "cacheWrite1hTokens": 2337,
+                "cacheWrite5mTokens": 0
+              }
+            ],
+            "continuity": true,
+            "monotonicCadence": {
+              "activatedAt": 18271.451459000004,
+              "turns": [
+                {
+                  "startedAt": 198273.094834,
+                  "finishedAt": 202487.257667
+                },
+                {
+                  "startedAt": 382491.157875,
+                  "finishedAt": 387018.790834
+                },
+                {
+                  "startedAt": 567022.628834,
+                  "finishedAt": 570951.496959
+                }
+              ]
+            }
+          },
+          "valid": true
+        },
+        {
+          "trial": 1,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "keeper": {
+            "model": "claude-opus-5-5[1m]",
+            "seedUsage": {
+              "inputTokens": 2,
+              "cacheReadTokens": 53416,
+              "cacheWriteTokens": 2214,
+              "outputTokens": 3,
+              "reasoningTokens": 0,
+              "costUSD": null,
+              "reportedSessionCostUSD": 0.375499,
+              "cacheWrite1hTokens": 2214,
+              "cacheWrite5mTokens": 0
+            },
+            "idleMs": 720028,
+            "monotonicIdleMs": 720033.8672499999,
+            "nextUserUsage": {
+              "inputTokens": 2,
+              "cacheReadTokens": 57594,
+              "cacheWriteTokens": 47,
+              "outputTokens": 16,
+              "reasoningTokens": 0,
+              "costUSD": null,
+              "reportedSessionCostUSD": 0.43761059999999996,
+              "cacheWrite1hTokens": 47,
+              "cacheWrite5mTokens": 0
+            },
+            "durationMs": 5522.416750000091,
+            "firstTokenMs": 3206.87883400009,
+            "keeperRequests": 3,
+            "keeperUsage": [
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 55630,
+                "cacheWriteTokens": 1049,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.395085,
+                "cacheWrite1hTokens": 1049,
+                "cacheWrite5mTokens": 0
+              },
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 56679,
+                "cacheWriteTokens": 876,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.4134968,
+                "cacheWrite1hTokens": 876,
+                "cacheWrite5mTokens": 0
+              },
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 57555,
+                "cacheWriteTokens": 39,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.4253878,
+                "cacheWrite1hTokens": 39,
+                "cacheWrite5mTokens": 0
+              }
+            ],
+            "keeperStatuses": [
+              "completed",
+              "completed",
+              "completed"
+            ],
+            "totalPostSeedReportedCostUSD": 0.062111599999999934,
+            "costMeaning": "CLI list-price estimate; includes all post-seed session requests",
+            "warnings": [],
+            "setupUsage": [
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 10459,
+                "cacheWriteTokens": 42957,
+                "outputTokens": 64,
+                "reasoningTokens": 60,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.3470358,
+                "cacheWrite1hTokens": 42957,
+                "cacheWrite5mTokens": 0
+              },
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 53416,
+                "cacheWriteTokens": 2214,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.375499,
+                "cacheWrite1hTokens": 2214,
+                "cacheWrite5mTokens": 0
+              }
+            ],
+            "continuity": true,
+            "monotonicCadence": {
+              "activatedAt": 26927.120958999963,
+              "turns": [
+                {
+                  "startedAt": 206930.805959,
+                  "finishedAt": 211232.902375
+                },
+                {
+                  "startedAt": 391234.667334,
+                  "finishedAt": 397520.578792
+                },
+                {
+                  "startedAt": 577527.634292,
+                  "finishedAt": 581791.510334
+                }
+              ]
+            }
+          },
+          "control": {
+            "model": "claude-opus-5-5[1m]",
+            "seedUsage": {
+              "inputTokens": 2,
+              "cacheReadTokens": 53416,
+              "cacheWriteTokens": 965,
+              "outputTokens": 3,
+              "reasoningTokens": 0,
+              "costUSD": null,
+              "reportedSessionCostUSD": 0.3523914,
+              "cacheWrite1hTokens": 965,
+              "cacheWrite5mTokens": 0
+            },
+            "idleMs": 720016,
+            "monotonicIdleMs": 720022.6145,
+            "nextUserUsage": {
+              "inputTokens": 2,
+              "cacheReadTokens": 54381,
+              "cacheWriteTokens": 1952,
+              "outputTokens": 15,
+              "reasoningTokens": 0,
+              "costUSD": null,
+              "reportedSessionCostUSD": 0.3791916,
+              "cacheWrite1hTokens": 1952,
+              "cacheWrite5mTokens": 0
+            },
+            "durationMs": 7212.118832999957,
+            "firstTokenMs": 4895.1711249999935,
+            "keeperRequests": 0,
+            "keeperUsage": [],
+            "keeperStatuses": [],
+            "totalPostSeedReportedCostUSD": 0.026800199999999996,
+            "costMeaning": "CLI list-price estimate; includes all post-seed session requests",
+            "warnings": [],
+            "setupUsage": [
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 12161,
+                "cacheWriteTokens": 41255,
+                "outputTokens": 72,
+                "reasoningTokens": 68,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.3339202,
+                "cacheWrite1hTokens": 41255,
+                "cacheWrite5mTokens": 0
+              },
+              {
+                "inputTokens": 2,
+                "cacheReadTokens": 53416,
+                "cacheWriteTokens": 965,
+                "outputTokens": 3,
+                "reasoningTokens": 0,
+                "costUSD": null,
+                "reportedSessionCostUSD": 0.3523914,
+                "cacheWrite1hTokens": 965,
+                "cacheWrite5mTokens": 0
+              }
+            ],
+            "continuity": true,
+            "monotonicCadence": null
+          },
+          "valid": true
+        }
+      ],
+      "limitations": [
+        "Shared host system/tool prefixes may share cache; conversation markers differ at the first user message.",
+        "Estimates are not subscription invoices or isolated quota measurements.",
+        "Finite paired observations establish only this tested configuration.",
+        "Config fingerprints do not establish identical rendered prompts; inspect host context separately."
+      ]
+    },
+    {
+      "study": "reread-codex-20260927",
+      "host": "codex",
+      "model": "gpt-6-astra",
+      "startedAt": "2026-09-26T16:50:17.946Z",
+      "finishedAt": "2026-09-26T17:26:08.410Z",
+      "idleMs": 2100000,
+      "intervalMs": 540000,
+      "replicates": 2,
+      "maxSubmittedPrompts": 18,
+      "warmupRequestsPerArm": 1,
+      "baselineMeaning": "Last shared warmup completion; setup usage is recorded separately",
+      "submittedPrompts": 18,
+      "status": "completed",
+      "environment": {
+        "runtimeSHA256": "4acda10c0191b4e9baa5a0beac4c43fc2f9a6bd2f57fd60af4ca961959767f7b",
+        "version": "codex-cli 0.157.1",
+        "node": "v26.7.0"
+      },
+      "results": [
+        {
+          "trial": 0,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "control": {
+            "model": "gpt-6-astra",
+            "seedUsage": {
+              "inputTokens": 42704,
+              "cacheReadTokens": 35328,
+              "cacheWriteTokens": null,
+              "outputTokens": 5,
+              "reasoningTokens": 0,
+              "costUSD": null
+            },
+            "idleMs": 2100073,
+            "monotonicIdleMs": 2100055.3668750003,
+            "nextUserUsage": {
+              "inputTokens": 42727,
+              "cacheReadTokens": 42496,
+              "cacheWriteTokens": null,
+              "outputTokens": 55,
+              "reasoningTokens": 35,
+              "costUSD": null
+            },
+            "durationMs": 4267.747707999777,
+            "firstTokenMs": 3714.949624999892,
+            "keeperRequests": 0,
+            "keeperUsage": [],
+            "keeperStatuses": [],
+            "totalPostSeedReportedCostUSD": null,
+            "costMeaning": "Dollar cost unavailable",
+            "warnings": [],
+            "setupUsage": [
+              {
+                "inputTokens": 35529,
+                "cacheReadTokens": 9728,
+                "cacheWriteTokens": null,
+                "outputTokens": 48,
+                "reasoningTokens": 41,
+                "costUSD": null
+              },
+              {
+                "inputTokens": 42704,
+                "cacheReadTokens": 35328,
+                "cacheWriteTokens": null,
+                "outputTokens": 5,
+                "reasoningTokens": 0,
+                "costUSD": null
+              }
+            ],
+            "continuity": true,
+            "monotonicCadence": null
+          },
+          "keeper": {
+            "model": "gpt-6-astra",
+            "seedUsage": {
+              "inputTokens": 42690,
+              "cacheReadTokens": 35328,
+              "cacheWriteTokens": null,
+              "outputTokens": 18,
+              "reasoningTokens": 11,
+              "costUSD": null
+            },
+            "idleMs": 2100065,
+            "monotonicIdleMs": 2100046.4758329997,
+            "nextUserUsage": {
+              "inputTokens": 42765,
+              "cacheReadTokens": 42624,
+              "cacheWriteTokens": null,
+              "outputTokens": 58,
+              "reasoningTokens": 36,
+              "costUSD": null
+            },
+            "durationMs": 3747.075750000309,
+            "firstTokenMs": 3334.4691670001484,
+            "keeperRequests": 3,
+            "keeperUsage": [
+              {
+                "inputTokens": 42716,
+                "cacheReadTokens": 42496,
+                "cacheWriteTokens": null,
+                "outputTokens": 5,
+                "reasoningTokens": 0,
+                "costUSD": null
+              },
+              {
+                "inputTokens": 42729,
+                "cacheReadTokens": 42496,
+                "cacheWriteTokens": null,
+                "outputTokens": 5,
+                "reasoningTokens": 0,
+                "costUSD": null
+              },
+              {
+                "inputTokens": 42742,
+                "cacheReadTokens": 42496,
+                "cacheWriteTokens": null,
+                "outputTokens": 5,
+                "reasoningTokens": 0,
+                "costUSD": null
+              }
+            ],
+            "keeperStatuses": [
+              "completed",
+              "completed",
+              "completed"
+            ],
+            "totalPostSeedReportedCostUSD": null,
+            "costMeaning": "Dollar cost unavailable",
+            "warnings": [],
+            "setupUsage": [
+              {
+                "inputTokens": 35532,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": null,
+                "outputTokens": 31,
+                "reasoningTokens": 24,
+                "costUSD": null
+              },
+              {
+                "inputTokens": 42690,
+                "cacheReadTokens": 35328,
+                "cacheWriteTokens": null,
+                "outputTokens": 18,
+                "reasoningTokens": 11,
+                "costUSD": null
+              }
+            ],
+            "continuity": true,
+            "monotonicCadence": {
+              "activatedAt": 24197.72429100005,
+              "turns": [
+                {
+                  "startedAt": 564202.314208,
+                  "finishedAt": 565965.901125
+                },
+                {
+                  "startedAt": 1105967.974458,
+                  "finishedAt": 1109500.594125
+                },
+                {
+                  "startedAt": 1649503.617666,
+                  "finishedAt": 1652395.605041
+                }
+              ]
+            }
+          },
+          "valid": true
+        },
+        {
+          "trial": 1,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "keeper": {
+            "model": "gpt-6-astra",
+            "seedUsage": {
+              "inputTokens": 42699,
+              "cacheReadTokens": 35328,
+              "cacheWriteTokens": null,
+              "outputTokens": 5,
+              "reasoningTokens": 0,
+              "costUSD": null
+            },
+            "idleMs": 2100057,
+            "monotonicIdleMs": 2100038.739292,
+            "nextUserUsage": {
+              "inputTokens": 42761,
+              "cacheReadTokens": 42496,
+              "cacheWriteTokens": null,
+              "outputTokens": 59,
+              "reasoningTokens": 37,
+              "costUSD": null
+            },
+            "durationMs": 3596.1903749997728,
+            "firstTokenMs": 2912.591499999631,
+            "keeperRequests": 3,
+            "keeperUsage": [
+              {
+                "inputTokens": 42712,
+                "cacheReadTokens": 42496,
+                "cacheWriteTokens": null,
+                "outputTokens": 5,
+                "reasoningTokens": 0,
+                "costUSD": null
+              },
+              {
+                "inputTokens": 42725,
+                "cacheReadTokens": 42496,
+                "cacheWriteTokens": null,
+                "outputTokens": 5,
+                "reasoningTokens": 0,
+                "costUSD": null
+              },
+              {
+                "inputTokens": 42738,
+                "cacheReadTokens": 42496,
+                "cacheWriteTokens": null,
+                "outputTokens": 5,
+                "reasoningTokens": 0,
+                "costUSD": null
+              }
+            ],
+            "keeperStatuses": [
+              "completed",
+              "completed",
+              "completed"
+            ],
+            "totalPostSeedReportedCostUSD": null,
+            "costMeaning": "Dollar cost unavailable",
+            "warnings": [],
+            "setupUsage": [
+              {
+                "inputTokens": 35531,
+                "cacheReadTokens": 9728,
+                "cacheWriteTokens": null,
+                "outputTokens": 41,
+                "reasoningTokens": 34,
+                "costUSD": null
+              },
+              {
+                "inputTokens": 42699,
+                "cacheReadTokens": 35328,
+                "cacheWriteTokens": null,
+                "outputTokens": 5,
+                "reasoningTokens": 0,
+                "costUSD": null
+              }
+            ],
+            "continuity": true,
+            "monotonicCadence": {
+              "activatedAt": 33483.96916599991,
+              "turns": [
+                {
+                  "startedAt": 573485.675333,
+                  "finishedAt": 575475.702125
+                },
+                {
+                  "startedAt": 1115477.323083,
+                  "finishedAt": 1117750.331625
+                },
+                {
+                  "startedAt": 1657752.727291,
+                  "finishedAt": 1663942.811666
+                }
+              ]
+            }
+          },
+          "control": {
+            "model": "gpt-6-astra",
+            "seedUsage": {
+              "inputTokens": 42705,
+              "cacheReadTokens": 35328,
+              "cacheWriteTokens": null,
+              "outputTokens": 15,
+              "reasoningTokens": 8,
+              "costUSD": null
+            },
+            "idleMs": 2100057,
+            "monotonicIdleMs": 2100038.7277079998,
+            "nextUserUsage": {
+              "inputTokens": 42738,
+              "cacheReadTokens": 42496,
+              "cacheWriteTokens": null,
+              "outputTokens": 49,
+              "reasoningTokens": 28,
+              "costUSD": null
+            },
+            "durationMs": 6687.16724999994,
+            "firstTokenMs": 6068.289667000063,
+            "keeperRequests": 0,
+            "keeperUsage": [],
+            "keeperStatuses": [],
+            "totalPostSeedReportedCostUSD": null,
+            "costMeaning": "Dollar cost unavailable",
+            "warnings": [],
+            "setupUsage": [
+              {
+                "inputTokens": 35530,
+                "cacheReadTokens": 9728,
+                "cacheWriteTokens": null,
+                "outputTokens": 48,
+                "reasoningTokens": 41,
+                "costUSD": null
+              },
+              {
+                "inputTokens": 42705,
+                "cacheReadTokens": 35328,
+                "cacheWriteTokens": null,
+                "outputTokens": 15,
+                "reasoningTokens": 8,
+                "costUSD": null
+              }
+            ],
+            "continuity": true,
+            "monotonicCadence": null
+          },
+          "valid": true
+        }
+      ],
+      "limitations": [
+        "Shared host system/tool prefixes may share cache; conversation markers differ at the first user message.",
+        "Estimates are not subscription invoices or isolated quota measurements.",
+        "Finite paired observations establish only this tested configuration.",
+        "Config fingerprints do not establish identical rendered prompts; inspect host context separately."
+      ]
+    },
+    {
+      "study": "reread-grok-20260927",
+      "host": "grok",
+      "model": "grok-4.7",
+      "startedAt": "2026-09-26T16:50:17.927Z",
+      "finishedAt": "2026-09-26T17:03:48.504Z",
+      "idleMs": 720000,
+      "intervalMs": 180000,
+      "replicates": 2,
+      "maxSubmittedPrompts": 18,
+      "warmupRequestsPerArm": 1,
+      "baselineMeaning": "Last shared warmup completion; setup usage is recorded separately",
+      "submittedPrompts": 18,
+      "status": "completed",
+      "environment": {
+        "runtimeSHA256": "4acda10c0191b4e9baa5a0beac4c43fc2f9a6bd2f57fd60af4ca961959767f7b",
+        "version": "grok 1.0.41 (4220f3b224a6) [stable]",
+        "node": "v26.7.0"
+      },
+      "results": [
+        {
+          "trial": 0,
+          "order": [
+            "control",
+            "keeper"
+          ],
+          "control": {
+            "model": "grok-4.7",
+            "seedUsage": {
+              "inputTokens": 903,
+              "cacheReadTokens": 54656,
+              "cacheWriteTokens": 0,
+              "outputTokens": 234,
+              "reasoningTokens": null,
+              "costUSD": 0.01038292
+            },
+            "idleMs": 720011,
+            "monotonicIdleMs": 720016.445458,
+            "nextUserUsage": {
+              "inputTokens": 274,
+              "cacheReadTokens": 55552,
+              "cacheWriteTokens": 0,
+              "outputTokens": 125,
+              "reasoningTokens": null,
+              "costUSD": 0.00988516
+            },
+            "durationMs": 7092.213792000082,
+            "firstTokenMs": 5348.423249999993,
+            "keeperRequests": 0,
+            "keeperUsage": [],
+            "keeperStatuses": [],
+            "totalPostSeedReportedCostUSD": 0.00988516,
+            "costMeaning": "CLI reported estimate; includes keeper requests",
+            "warnings": [],
+            "setupUsage": [
+              {
+                "inputTokens": 54769,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 84,
+                "reasoningTokens": null,
+                "costUSD": 0.03741428
+              },
+              {
+                "inputTokens": 903,
+                "cacheReadTokens": 54656,
+                "cacheWriteTokens": 0,
+                "outputTokens": 234,
+                "reasoningTokens": null,
+                "costUSD": 0.01038292
+              }
+            ],
+            "continuity": true,
+            "monotonicCadence": null
+          },
+          "keeper": {
+            "model": "grok-4.7",
+            "seedUsage": {
+              "inputTokens": 189,
+              "cacheReadTokens": 55296,
+              "cacheWriteTokens": 0,
+              "outputTokens": 599,
+              "reasoningTokens": null,
+              "costUSD": 0.0107508
+            },
+            "idleMs": 720007,
+            "monotonicIdleMs": 720012.4262089999,
+            "nextUserUsage": {
+              "inputTokens": 104,
+              "cacheReadTokens": 56320,
+              "cacheWriteTokens": 0,
+              "outputTokens": 59,
+              "reasoningTokens": null,
+              "costUSD": 0.00976548
+            },
+            "durationMs": 6879.82033300004,
+            "firstTokenMs": 4601.490708000027,
+            "keeperRequests": 3,
+            "keeperUsage": [
+              {
+                "inputTokens": 683,
+                "cacheReadTokens": 55424,
+                "cacheWriteTokens": 0,
+                "outputTokens": 139,
+                "reasoningTokens": null,
+                "costUSD": 0.01017008
+              },
+              {
+                "inputTokens": 205,
+                "cacheReadTokens": 56064,
+                "cacheWriteTokens": 0,
+                "outputTokens": 46,
+                "reasoningTokens": null,
+                "costUSD": 0.00976412
+              },
+              {
+                "inputTokens": 146,
+                "cacheReadTokens": 56192,
+                "cacheWriteTokens": 0,
+                "outputTokens": 53,
+                "reasoningTokens": null,
+                "costUSD": 0.00976004
+              }
+            ],
+            "keeperStatuses": [
+              "completed",
+              "completed",
+              "completed"
+            ],
+            "totalPostSeedReportedCostUSD": 0.03945972,
+            "costMeaning": "CLI reported estimate; includes keeper requests",
+            "warnings": [],
+            "setupUsage": [
+              {
+                "inputTokens": 55388,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 74,
+                "reasoningTokens": null,
+                "costUSD": 0.0378148
+              },
+              {
+                "inputTokens": 189,
+                "cacheReadTokens": 55296,
+                "cacheWriteTokens": 0,
+                "outputTokens": 599,
+                "reasoningTokens": null,
+                "costUSD": 0.0107508
+              }
+            ],
+            "continuity": true,
+            "monotonicCadence": {
+              "activatedAt": 43991.46412499994,
+              "turns": [
+                {
+                  "startedAt": 224011.085083,
+                  "finishedAt": 234791.268792
+                },
+                {
+                  "startedAt": 414794.584417,
+                  "finishedAt": 420175.059875
+                },
+                {
+                  "startedAt": 600177.739,
+                  "finishedAt": 609142.419958
+                }
+              ]
+            }
+          },
+          "valid": true
+        },
+        {
+          "trial": 1,
+          "order": [
+            "keeper",
+            "control"
+          ],
+          "keeper": {
+            "model": "grok-4.7",
+            "seedUsage": {
+              "inputTokens": 177,
+              "cacheReadTokens": 55296,
+              "cacheWriteTokens": 0,
+              "outputTokens": 291,
+              "reasoningTokens": null,
+              "costUSD": 0.01011432
+            },
+            "idleMs": 720007,
+            "monotonicIdleMs": 720011.8998750001,
+            "nextUserUsage": {
+              "inputTokens": 182,
+              "cacheReadTokens": 55808,
+              "cacheWriteTokens": 0,
+              "outputTokens": 79,
+              "reasoningTokens": null,
+              "costUSD": 0.00977228
+            },
+            "durationMs": 8803.080207999912,
+            "firstTokenMs": 4759.65716599999,
+            "keeperRequests": 3,
+            "keeperUsage": [
+              {
+                "inputTokens": 363,
+                "cacheReadTokens": 55424,
+                "cacheWriteTokens": 0,
+                "outputTokens": 48,
+                "reasoningTokens": null,
+                "costUSD": 0.00976684
+              },
+              {
+                "inputTokens": 178,
+                "cacheReadTokens": 55680,
+                "cacheWriteTokens": 0,
+                "outputTokens": 37,
+                "reasoningTokens": null,
+                "costUSD": 0.00966212
+              },
+              {
+                "inputTokens": 55918,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 39,
+                "reasoningTokens": null,
+                "costUSD": 0.0381038
+              }
+            ],
+            "keeperStatuses": [
+              "completed",
+              "completed",
+              "completed"
+            ],
+            "totalPostSeedReportedCostUSD": 0.06730504,
+            "costMeaning": "CLI reported estimate; includes keeper requests",
+            "warnings": [],
+            "setupUsage": [
+              {
+                "inputTokens": 55385,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 65,
+                "reasoningTokens": null,
+                "costUSD": 0.0377944
+              },
+              {
+                "inputTokens": 177,
+                "cacheReadTokens": 55296,
+                "cacheWriteTokens": 0,
+                "outputTokens": 291,
+                "reasoningTokens": null,
+                "costUSD": 0.01011432
+              }
+            ],
+            "continuity": true,
+            "monotonicCadence": {
+              "activatedAt": 62472.04237499996,
+              "turns": [
+                {
+                  "startedAt": 245024.222292,
+                  "finishedAt": 253505.061708
+                },
+                {
+                  "startedAt": 433507.653458,
+                  "finishedAt": 439330.247917
+                },
+                {
+                  "startedAt": 619334.098208,
+                  "finishedAt": 627607.127583
+                }
+              ]
+            }
+          },
+          "control": {
+            "model": "grok-4.7",
+            "seedUsage": {
+              "inputTokens": 55490,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 148,
+              "reasoningTokens": null,
+              "costUSD": 0.03803512
+            },
+            "idleMs": 720009,
+            "monotonicIdleMs": 720013.891792,
+            "nextUserUsage": {
+              "inputTokens": 55671,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 0,
+              "outputTokens": 59,
+              "reasoningTokens": null,
+              "costUSD": 0.03797664
+            },
+            "durationMs": 10067.729500000016,
+            "firstTokenMs": 8272.489165999927,
+            "keeperRequests": 0,
+            "keeperUsage": [],
+            "keeperStatuses": [],
+            "totalPostSeedReportedCostUSD": 0.03797664,
+            "costMeaning": "CLI reported estimate; includes keeper requests",
+            "warnings": [],
+            "setupUsage": [
+              {
+                "inputTokens": 55388,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 79,
+                "reasoningTokens": null,
+                "costUSD": 0.037825
+              },
+              {
+                "inputTokens": 55490,
+                "cacheReadTokens": 0,
+                "cacheWriteTokens": 0,
+                "outputTokens": 148,
+                "reasoningTokens": null,
+                "costUSD": 0.03803512
+              }
+            ],
+            "continuity": true,
+            "monotonicCadence": null
+          },
+          "valid": true
+        }
+      ],
+      "limitations": [
+        "Shared host system/tool prefixes may share cache; conversation markers differ at the first user message.",
+        "Estimates are not subscription invoices or isolated quota measurements.",
+        "Finite paired observations establish only this tested configuration.",
+        "Config fingerprints do not establish identical rendered prompts; inspect host context separately."
+      ]
+    }
+  ],
+  "contextAudit": [
+    {
+      "host": "claude",
+      "scope": "Passive host transcript metadata; Codex skill blocks, Claude rendered attachments, Grok system/synthetic context. Not the complete outbound request or server cache key.",
+      "sessions": [
+        {
+          "trial": 0,
+          "arm": "control",
+          "submittedRequests": 3,
+          "completedRequests": 3,
+          "context": [
+            {
+              "index": 3,
+              "turn": 0,
+              "kind": "hook_success",
+              "characters": 5434,
+              "sha256": "8bb8d754fe21d0d9639b960c14d3339f2e07ae2388fceb7e5112bee740e93c7a"
+            },
+            {
+              "index": 7,
+              "turn": 0,
+              "kind": "hook_additional_context",
+              "characters": 3686,
+              "sha256": "f6a28571b5b428558fa4014374296363e29db17316a2508816ed8dd4fd9c7e3d"
+            },
+            {
+              "index": 9,
+              "turn": 0,
+              "kind": "environment",
+              "characters": 339,
+              "sha256": "23ca78ff85f427790985fb49820e6ea7db0448185a61dd3823f08bfea5484491"
+            },
+            {
+              "index": 10,
+              "turn": 0,
+              "kind": "model",
+              "characters": 196,
+              "sha256": "46e6b6873b30976e0cd065f31fb42dbfc607cfe6c60e3c17dc7dcd3079b5c97f"
+            },
+            {
+              "index": 11,
+              "turn": 0,
+              "kind": "language",
+              "characters": 532,
+              "sha256": "c7a3088313d63df150db0ffc3fc9887bf3373bfa99700ee3ee0b7a9d49f0e06c"
+            },
+            {
+              "index": 12,
+              "turn": 0,
+              "kind": "deferred_tools_delta",
+              "characters": 2269,
+              "sha256": "09408fce682256d9047230f9b9e11c688ee93fe9d0375430f1f82cec45d2864d"
+            },
+            {
+              "index": 13,
+              "turn": 0,
+              "kind": "agent_listing_delta",
+              "characters": 2741,
+              "sha256": "47e779c97bb211196e1e02fbb48641c3467b4d4d0896558a22f3668fc8ea939b"
+            },
+            {
+              "index": 14,
+              "turn": 0,
+              "kind": "skill_listing",
+              "characters": 30383,
+              "sha256": "2ec226b6fcab88d1538b56f63df17d740363e6380e15fb8ef84158ac8e1c6344"
+            },
+            {
+              "index": 15,
+              "turn": 0,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 17,
+              "turn": 0,
+              "kind": "instructions",
+              "characters": 3936,
+              "sha256": "d5ab3b9222de15c2563199d6161cc7635cff49829302811de0a8ff74622a53ef"
+            },
+            {
+              "index": 18,
+              "turn": 0,
+              "kind": "session_context",
+              "characters": 559,
+              "sha256": "1c794b25b5d48899110b76908233e8d08c0d821c7593b9a0850e8ca8e84f1db9"
+            },
+            {
+              "index": 19,
+              "turn": 0,
+              "kind": "date",
+              "characters": 82,
+              "sha256": "c591e649a815a8a77e6460d936b1c27ced5923698f5914b3146e684e878d6c50"
+            },
+            {
+              "index": 21,
+              "turn": 0,
+              "kind": "remote_session_change",
+              "characters": 615,
+              "sha256": "1072ccc8edaa03253062f7db55b6e215d70dba1ae70e5baf5c319e3424144e15"
+            },
+            {
+              "index": 37,
+              "turn": 1,
+              "kind": "deferred_tools_delta",
+              "characters": 4475,
+              "sha256": "31b41f7dc10c1cbea3633e48d72a17a54dc5c4c04071b47ded74cbc5142dcf91"
+            },
+            {
+              "index": 38,
+              "turn": 1,
+              "kind": "mcp_instructions_delta",
+              "characters": 829,
+              "sha256": "b7af6d6522f2e7d9f2d0134e1e334b0fb6eefce836e8b3649be780f1584cf592"
+            },
+            {
+              "index": 39,
+              "turn": 1,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 50,
+              "turn": 2,
+              "kind": "deferred_tools_delta",
+              "characters": 1691,
+              "sha256": "6b73c8339eec3b20168e0228c73f3c2e4673e5d18cff80e727583707b7b31616"
+            },
+            {
+              "index": 51,
+              "turn": 2,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            }
+          ]
+        },
+        {
+          "trial": 0,
+          "arm": "keeper",
+          "submittedRequests": 6,
+          "completedRequests": 6,
+          "context": [
+            {
+              "index": 3,
+              "turn": 0,
+              "kind": "hook_success",
+              "characters": 5434,
+              "sha256": "8bb8d754fe21d0d9639b960c14d3339f2e07ae2388fceb7e5112bee740e93c7a"
+            },
+            {
+              "index": 7,
+              "turn": 0,
+              "kind": "hook_additional_context",
+              "characters": 3686,
+              "sha256": "f6a28571b5b428558fa4014374296363e29db17316a2508816ed8dd4fd9c7e3d"
+            },
+            {
+              "index": 9,
+              "turn": 0,
+              "kind": "environment",
+              "characters": 339,
+              "sha256": "23ca78ff85f427790985fb49820e6ea7db0448185a61dd3823f08bfea5484491"
+            },
+            {
+              "index": 10,
+              "turn": 0,
+              "kind": "model",
+              "characters": 196,
+              "sha256": "46e6b6873b30976e0cd065f31fb42dbfc607cfe6c60e3c17dc7dcd3079b5c97f"
+            },
+            {
+              "index": 11,
+              "turn": 0,
+              "kind": "language",
+              "characters": 532,
+              "sha256": "c7a3088313d63df150db0ffc3fc9887bf3373bfa99700ee3ee0b7a9d49f0e06c"
+            },
+            {
+              "index": 12,
+              "turn": 0,
+              "kind": "deferred_tools_delta",
+              "characters": 2269,
+              "sha256": "09408fce682256d9047230f9b9e11c688ee93fe9d0375430f1f82cec45d2864d"
+            },
+            {
+              "index": 13,
+              "turn": 0,
+              "kind": "agent_listing_delta",
+              "characters": 2741,
+              "sha256": "47e779c97bb211196e1e02fbb48641c3467b4d4d0896558a22f3668fc8ea939b"
+            },
+            {
+              "index": 14,
+              "turn": 0,
+              "kind": "skill_listing",
+              "characters": 30383,
+              "sha256": "2ec226b6fcab88d1538b56f63df17d740363e6380e15fb8ef84158ac8e1c6344"
+            },
+            {
+              "index": 15,
+              "turn": 0,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 17,
+              "turn": 0,
+              "kind": "instructions",
+              "characters": 3936,
+              "sha256": "d5ab3b9222de15c2563199d6161cc7635cff49829302811de0a8ff74622a53ef"
+            },
+            {
+              "index": 18,
+              "turn": 0,
+              "kind": "session_context",
+              "characters": 559,
+              "sha256": "1c794b25b5d48899110b76908233e8d08c0d821c7593b9a0850e8ca8e84f1db9"
+            },
+            {
+              "index": 19,
+              "turn": 0,
+              "kind": "date",
+              "characters": 82,
+              "sha256": "c591e649a815a8a77e6460d936b1c27ced5923698f5914b3146e684e878d6c50"
+            },
+            {
+              "index": 21,
+              "turn": 0,
+              "kind": "remote_session_change",
+              "characters": 615,
+              "sha256": "1072ccc8edaa03253062f7db55b6e215d70dba1ae70e5baf5c319e3424144e15"
+            },
+            {
+              "index": 38,
+              "turn": 1,
+              "kind": "deferred_tools_delta",
+              "characters": 4731,
+              "sha256": "a19fa41a64e1acbe595e17dba374bf6fca5db4381239251503d548d949b54f52"
+            },
+            {
+              "index": 39,
+              "turn": 1,
+              "kind": "mcp_instructions_delta",
+              "characters": 829,
+              "sha256": "b7af6d6522f2e7d9f2d0134e1e334b0fb6eefce836e8b3649be780f1584cf592"
+            },
+            {
+              "index": 40,
+              "turn": 1,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 51,
+              "turn": 2,
+              "kind": "deferred_tools_delta",
+              "characters": 2300,
+              "sha256": "3617dfbd4573ada87b2dd01adaf309a29ac39815434b24342600c84395605414"
+            },
+            {
+              "index": 52,
+              "turn": 2,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 63,
+              "turn": 3,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 73,
+              "turn": 4,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 84,
+              "turn": 5,
+              "kind": "deferred_tools_delta",
+              "characters": 2387,
+              "sha256": "c23ea0b5df6f4125ad817e2080742105d7e2c7a1d2abc450660148400348f9a1"
+            },
+            {
+              "index": 85,
+              "turn": 5,
+              "kind": "mcp_instructions_delta",
+              "characters": 271,
+              "sha256": "a86bbe8295229b47fc4e4eecedb580aefd7bb89d9538863752ee80599f8eaf3d"
+            },
+            {
+              "index": 86,
+              "turn": 5,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            }
+          ]
+        },
+        {
+          "trial": 1,
+          "arm": "control",
+          "submittedRequests": 3,
+          "completedRequests": 3,
+          "context": [
+            {
+              "index": 3,
+              "turn": 0,
+              "kind": "hook_success",
+              "characters": 5434,
+              "sha256": "8bb8d754fe21d0d9639b960c14d3339f2e07ae2388fceb7e5112bee740e93c7a"
+            },
+            {
+              "index": 7,
+              "turn": 0,
+              "kind": "hook_additional_context",
+              "characters": 3686,
+              "sha256": "f6a28571b5b428558fa4014374296363e29db17316a2508816ed8dd4fd9c7e3d"
+            },
+            {
+              "index": 9,
+              "turn": 0,
+              "kind": "environment",
+              "characters": 339,
+              "sha256": "3b984993a2a26b7ddff1f3f1f3cb02207ace8a68d743da160448f32dec4b121a"
+            },
+            {
+              "index": 10,
+              "turn": 0,
+              "kind": "model",
+              "characters": 196,
+              "sha256": "46e6b6873b30976e0cd065f31fb42dbfc607cfe6c60e3c17dc7dcd3079b5c97f"
+            },
+            {
+              "index": 11,
+              "turn": 0,
+              "kind": "language",
+              "characters": 532,
+              "sha256": "c7a3088313d63df150db0ffc3fc9887bf3373bfa99700ee3ee0b7a9d49f0e06c"
+            },
+            {
+              "index": 12,
+              "turn": 0,
+              "kind": "deferred_tools_delta",
+              "characters": 2269,
+              "sha256": "09408fce682256d9047230f9b9e11c688ee93fe9d0375430f1f82cec45d2864d"
+            },
+            {
+              "index": 13,
+              "turn": 0,
+              "kind": "agent_listing_delta",
+              "characters": 2741,
+              "sha256": "47e779c97bb211196e1e02fbb48641c3467b4d4d0896558a22f3668fc8ea939b"
+            },
+            {
+              "index": 14,
+              "turn": 0,
+              "kind": "skill_listing",
+              "characters": 30383,
+              "sha256": "2ec226b6fcab88d1538b56f63df17d740363e6380e15fb8ef84158ac8e1c6344"
+            },
+            {
+              "index": 15,
+              "turn": 0,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 17,
+              "turn": 0,
+              "kind": "instructions",
+              "characters": 3936,
+              "sha256": "d5ab3b9222de15c2563199d6161cc7635cff49829302811de0a8ff74622a53ef"
+            },
+            {
+              "index": 18,
+              "turn": 0,
+              "kind": "session_context",
+              "characters": 559,
+              "sha256": "1c794b25b5d48899110b76908233e8d08c0d821c7593b9a0850e8ca8e84f1db9"
+            },
+            {
+              "index": 19,
+              "turn": 0,
+              "kind": "date",
+              "characters": 82,
+              "sha256": "c591e649a815a8a77e6460d936b1c27ced5923698f5914b3146e684e878d6c50"
+            },
+            {
+              "index": 21,
+              "turn": 0,
+              "kind": "remote_session_change",
+              "characters": 615,
+              "sha256": "1072ccc8edaa03253062f7db55b6e215d70dba1ae70e5baf5c319e3424144e15"
+            },
+            {
+              "index": 37,
+              "turn": 1,
+              "kind": "deferred_tools_delta",
+              "characters": 2546,
+              "sha256": "db40f5c308070221c3109232672a6e4a09aac6c933847c7536990851e7a0f8f1"
+            },
+            {
+              "index": 38,
+              "turn": 1,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 49,
+              "turn": 2,
+              "kind": "deferred_tools_delta",
+              "characters": 4006,
+              "sha256": "936ea6ab78a91e2658f3c0be83477f622e670bda92e66c0ae8b199371ab32b24"
+            },
+            {
+              "index": 50,
+              "turn": 2,
+              "kind": "mcp_instructions_delta",
+              "characters": 829,
+              "sha256": "b7af6d6522f2e7d9f2d0134e1e334b0fb6eefce836e8b3649be780f1584cf592"
+            },
+            {
+              "index": 51,
+              "turn": 2,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            }
+          ]
+        },
+        {
+          "trial": 1,
+          "arm": "keeper",
+          "submittedRequests": 6,
+          "completedRequests": 6,
+          "context": [
+            {
+              "index": 3,
+              "turn": 0,
+              "kind": "hook_success",
+              "characters": 5434,
+              "sha256": "8bb8d754fe21d0d9639b960c14d3339f2e07ae2388fceb7e5112bee740e93c7a"
+            },
+            {
+              "index": 7,
+              "turn": 0,
+              "kind": "hook_additional_context",
+              "characters": 3686,
+              "sha256": "f6a28571b5b428558fa4014374296363e29db17316a2508816ed8dd4fd9c7e3d"
+            },
+            {
+              "index": 9,
+              "turn": 0,
+              "kind": "environment",
+              "characters": 339,
+              "sha256": "3b984993a2a26b7ddff1f3f1f3cb02207ace8a68d743da160448f32dec4b121a"
+            },
+            {
+              "index": 10,
+              "turn": 0,
+              "kind": "model",
+              "characters": 196,
+              "sha256": "46e6b6873b30976e0cd065f31fb42dbfc607cfe6c60e3c17dc7dcd3079b5c97f"
+            },
+            {
+              "index": 11,
+              "turn": 0,
+              "kind": "language",
+              "characters": 532,
+              "sha256": "c7a3088313d63df150db0ffc3fc9887bf3373bfa99700ee3ee0b7a9d49f0e06c"
+            },
+            {
+              "index": 12,
+              "turn": 0,
+              "kind": "deferred_tools_delta",
+              "characters": 2269,
+              "sha256": "09408fce682256d9047230f9b9e11c688ee93fe9d0375430f1f82cec45d2864d"
+            },
+            {
+              "index": 13,
+              "turn": 0,
+              "kind": "agent_listing_delta",
+              "characters": 2741,
+              "sha256": "47e779c97bb211196e1e02fbb48641c3467b4d4d0896558a22f3668fc8ea939b"
+            },
+            {
+              "index": 14,
+              "turn": 0,
+              "kind": "skill_listing",
+              "characters": 30383,
+              "sha256": "2ec226b6fcab88d1538b56f63df17d740363e6380e15fb8ef84158ac8e1c6344"
+            },
+            {
+              "index": 15,
+              "turn": 0,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 17,
+              "turn": 0,
+              "kind": "instructions",
+              "characters": 3936,
+              "sha256": "d5ab3b9222de15c2563199d6161cc7635cff49829302811de0a8ff74622a53ef"
+            },
+            {
+              "index": 18,
+              "turn": 0,
+              "kind": "session_context",
+              "characters": 559,
+              "sha256": "1c794b25b5d48899110b76908233e8d08c0d821c7593b9a0850e8ca8e84f1db9"
+            },
+            {
+              "index": 19,
+              "turn": 0,
+              "kind": "date",
+              "characters": 82,
+              "sha256": "c591e649a815a8a77e6460d936b1c27ced5923698f5914b3146e684e878d6c50"
+            },
+            {
+              "index": 21,
+              "turn": 0,
+              "kind": "remote_session_change",
+              "characters": 615,
+              "sha256": "1072ccc8edaa03253062f7db55b6e215d70dba1ae70e5baf5c319e3424144e15"
+            },
+            {
+              "index": 38,
+              "turn": 1,
+              "kind": "deferred_tools_delta",
+              "characters": 4475,
+              "sha256": "31b41f7dc10c1cbea3633e48d72a17a54dc5c4c04071b47ded74cbc5142dcf91"
+            },
+            {
+              "index": 39,
+              "turn": 1,
+              "kind": "mcp_instructions_delta",
+              "characters": 829,
+              "sha256": "b7af6d6522f2e7d9f2d0134e1e334b0fb6eefce836e8b3649be780f1584cf592"
+            },
+            {
+              "index": 40,
+              "turn": 1,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 51,
+              "turn": 2,
+              "kind": "deferred_tools_delta",
+              "characters": 2347,
+              "sha256": "570e18d4e9290be04c1d2fa4d4960c1c2cc905824cdf97c12e44ab18d1ec13d2"
+            },
+            {
+              "index": 52,
+              "turn": 2,
+              "kind": "mcp_instructions_delta",
+              "characters": 845,
+              "sha256": "e0b3953cbcfc7edfaecdf4a04d1057902f679f167edecf5947e6abcaa6bbb559"
+            },
+            {
+              "index": 53,
+              "turn": 2,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 64,
+              "turn": 3,
+              "kind": "deferred_tools_delta",
+              "characters": 2394,
+              "sha256": "9b08b16d25e4effe155cc06d47613df34c0cc38c5a842649fd45c9eccb1b21cd"
+            },
+            {
+              "index": 65,
+              "turn": 3,
+              "kind": "mcp_instructions_delta",
+              "characters": 287,
+              "sha256": "e02031354c735017c357bb91725ad46b1a1cf9ef12432eb15c4224f2cb3dcc55"
+            },
+            {
+              "index": 66,
+              "turn": 3,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 77,
+              "turn": 4,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            },
+            {
+              "index": 87,
+              "turn": 5,
+              "kind": "total_tokens_reminder",
+              "characters": 104,
+              "sha256": "678309323df118a4f55274331b7004f9628cdbe0a5b86e4f0ba88a97651af27f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "host": "codex",
+      "scope": "Passive host transcript metadata; Codex skill blocks, Claude rendered attachments, Grok system/synthetic context. Not the complete outbound request or server cache key.",
+      "sessions": [
+        {
+          "trial": 0,
+          "arm": "control",
+          "submittedRequests": 3,
+          "completedRequests": 3,
+          "context": [
+            {
+              "turn": 0,
+              "characters": 22192,
+              "sha256": "b0608b65c771d1ac464670bc5dd1152b0ecd2e7e0176709ea6cd875a41607c34",
+              "skillCount": 209,
+              "rootCount": 13
+            },
+            {
+              "turn": 1,
+              "characters": 22223,
+              "sha256": "846c6c2aa4fe6b45a33692ff76937246f8412db500922cf0e419905bf805f609",
+              "skillCount": 244,
+              "rootCount": 17
+            }
+          ]
+        },
+        {
+          "trial": 0,
+          "arm": "keeper",
+          "submittedRequests": 6,
+          "completedRequests": 6,
+          "context": [
+            {
+              "turn": 0,
+              "characters": 22192,
+              "sha256": "b0608b65c771d1ac464670bc5dd1152b0ecd2e7e0176709ea6cd875a41607c34",
+              "skillCount": 209,
+              "rootCount": 13
+            },
+            {
+              "turn": 1,
+              "characters": 22223,
+              "sha256": "846c6c2aa4fe6b45a33692ff76937246f8412db500922cf0e419905bf805f609",
+              "skillCount": 244,
+              "rootCount": 17
+            }
+          ]
+        },
+        {
+          "trial": 1,
+          "arm": "control",
+          "submittedRequests": 3,
+          "completedRequests": 3,
+          "context": [
+            {
+              "turn": 0,
+              "characters": 22192,
+              "sha256": "b0608b65c771d1ac464670bc5dd1152b0ecd2e7e0176709ea6cd875a41607c34",
+              "skillCount": 209,
+              "rootCount": 13
+            },
+            {
+              "turn": 1,
+              "characters": 22223,
+              "sha256": "846c6c2aa4fe6b45a33692ff76937246f8412db500922cf0e419905bf805f609",
+              "skillCount": 244,
+              "rootCount": 17
+            }
+          ]
+        },
+        {
+          "trial": 1,
+          "arm": "keeper",
+          "submittedRequests": 6,
+          "completedRequests": 6,
+          "context": [
+            {
+              "turn": 0,
+              "characters": 22192,
+              "sha256": "b0608b65c771d1ac464670bc5dd1152b0ecd2e7e0176709ea6cd875a41607c34",
+              "skillCount": 209,
+              "rootCount": 13
+            },
+            {
+              "turn": 1,
+              "characters": 22223,
+              "sha256": "846c6c2aa4fe6b45a33692ff76937246f8412db500922cf0e419905bf805f609",
+              "skillCount": 244,
+              "rootCount": 17
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "host": "grok",
+      "scope": "Passive host transcript metadata; Codex skill blocks, Claude rendered attachments, Grok system/synthetic context. Not the complete outbound request or server cache key.",
+      "sessions": [
+        {
+          "trial": 0,
+          "arm": "control",
+          "submittedRequests": 3,
+          "completedRequests": 3,
+          "context": [
+            {
+              "index": 0,
+              "kind": "system",
+              "characters": 8754,
+              "sha256": "84e988e0667e51b279c22a910376b9661a788366657d7a2080e80d0c28b961a0"
+            },
+            {
+              "index": 1,
+              "kind": "unindexed_user",
+              "characters": 6018,
+              "sha256": "d59ef572bce8468a6994b10c9ddae11ed0b5320d83ba84b2057ddb9787b82353"
+            },
+            {
+              "index": 2,
+              "kind": "system_reminder",
+              "characters": 87345,
+              "sha256": "667ccef08617bc64340a295331fc66209fc6b7a233b5e66851032d8a48b8ce01"
+            },
+            {
+              "index": 4,
+              "kind": "system_reminder",
+              "characters": 355,
+              "sha256": "60e323b81f0c63f345121c4173c8f4fac5588a20833531884864d369e51a4b1d"
+            },
+            {
+              "index": 7,
+              "kind": "system_reminder",
+              "characters": 3229,
+              "sha256": "538b81a54b9ae5e6f23c8b022b5fe0878c2938085bac98ccd1b3c72d8d14f0ba"
+            }
+          ]
+        },
+        {
+          "trial": 0,
+          "arm": "keeper",
+          "submittedRequests": 6,
+          "completedRequests": 6,
+          "context": [
+            {
+              "index": 0,
+              "kind": "system",
+              "characters": 8754,
+              "sha256": "84e988e0667e51b279c22a910376b9661a788366657d7a2080e80d0c28b961a0"
+            },
+            {
+              "index": 1,
+              "kind": "unindexed_user",
+              "characters": 6018,
+              "sha256": "d59ef572bce8468a6994b10c9ddae11ed0b5320d83ba84b2057ddb9787b82353"
+            },
+            {
+              "index": 2,
+              "kind": "system_reminder",
+              "characters": 87345,
+              "sha256": "667ccef08617bc64340a295331fc66209fc6b7a233b5e66851032d8a48b8ce01"
+            },
+            {
+              "index": 4,
+              "kind": "system_reminder",
+              "characters": 3229,
+              "sha256": "538b81a54b9ae5e6f23c8b022b5fe0878c2938085bac98ccd1b3c72d8d14f0ba"
+            }
+          ]
+        },
+        {
+          "trial": 1,
+          "arm": "control",
+          "submittedRequests": 3,
+          "completedRequests": 3,
+          "context": [
+            {
+              "index": 0,
+              "kind": "system",
+              "characters": 8754,
+              "sha256": "84e988e0667e51b279c22a910376b9661a788366657d7a2080e80d0c28b961a0"
+            },
+            {
+              "index": 1,
+              "kind": "unindexed_user",
+              "characters": 6018,
+              "sha256": "badf263b3856bfe1d2a89117bd911ba567b8d432d20bcf3aa955c1fe64b14f03"
+            },
+            {
+              "index": 2,
+              "kind": "system_reminder",
+              "characters": 87345,
+              "sha256": "667ccef08617bc64340a295331fc66209fc6b7a233b5e66851032d8a48b8ce01"
+            },
+            {
+              "index": 4,
+              "kind": "system_reminder",
+              "characters": 3229,
+              "sha256": "538b81a54b9ae5e6f23c8b022b5fe0878c2938085bac98ccd1b3c72d8d14f0ba"
+            }
+          ]
+        },
+        {
+          "trial": 1,
+          "arm": "keeper",
+          "submittedRequests": 6,
+          "completedRequests": 6,
+          "context": [
+            {
+              "index": 0,
+              "kind": "system",
+              "characters": 8754,
+              "sha256": "84e988e0667e51b279c22a910376b9661a788366657d7a2080e80d0c28b961a0"
+            },
+            {
+              "index": 1,
+              "kind": "unindexed_user",
+              "characters": 6018,
+              "sha256": "badf263b3856bfe1d2a89117bd911ba567b8d432d20bcf3aa955c1fe64b14f03"
+            },
+            {
+              "index": 2,
+              "kind": "system_reminder",
+              "characters": 87345,
+              "sha256": "667ccef08617bc64340a295331fc66209fc6b7a233b5e66851032d8a48b8ce01"
+            },
+            {
+              "index": 4,
+              "kind": "system_reminder",
+              "characters": 3229,
+              "sha256": "538b81a54b9ae5e6f23c8b022b5fe0878c2938085bac98ccd1b3c72d8d14f0ba"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "postFixLive": {
+    "at": "2026-09-26T17:30:17.333Z",
+    "results": [
+      {
+        "host": "codex",
+        "version": "codex-cli 0.157.1",
+        "passed": true,
+        "cancellation": false,
+        "sameSession": true,
+        "hiddenLive": true,
+        "hiddenReplay": true,
+        "continuity": true,
+        "requests": 3,
+        "firstUsage": {
+          "inputTokens": 19216,
+          "cacheReadTokens": 9344,
+          "cacheWriteTokens": null,
+          "outputTokens": 5,
+          "reasoningTokens": 0,
+          "costUSD": null
+        },
+        "keeperUsage": {
+          "inputTokens": 19233,
+          "cacheReadTokens": 19072,
+          "cacheWriteTokens": null,
+          "outputTokens": 5,
+          "reasoningTokens": 0,
+          "costUSD": null
+        },
+        "nextUserUsage": {
+          "inputTokens": 19262,
+          "cacheReadTokens": 9344,
+          "cacheWriteTokens": null,
+          "outputTokens": 7,
+          "reasoningTokens": 0,
+          "costUSD": null
+        }
+      },
+      {
+        "host": "grok",
+        "version": "grok 1.0.41 (4220f3b224a6) [stable]",
+        "passed": true,
+        "cancellation": false,
+        "sameSession": true,
+        "hiddenLive": true,
+        "hiddenReplay": true,
+        "continuity": true,
+        "requests": 3,
+        "firstUsage": {
+          "inputTokens": 39216,
+          "cacheReadTokens": 1152,
+          "cacheWriteTokens": 0,
+          "outputTokens": 58,
+          "reasoningTokens": null,
+          "costUSD": 0.05396208
+        },
+        "keeperUsage": {
+          "inputTokens": 133,
+          "cacheReadTokens": 40320,
+          "cacheWriteTokens": 0,
+          "outputTokens": 33,
+          "reasoningTokens": null,
+          "costUSD": 0.01402432
+        },
+        "nextUserUsage": {
+          "inputTokens": 77,
+          "cacheReadTokens": 40448,
+          "cacheWriteTokens": 0,
+          "outputTokens": 39,
+          "reasoningTokens": null,
+          "costUSD": 0.01401616
+        }
+      }
+    ]
+  }
+}

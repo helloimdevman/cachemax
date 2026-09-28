@@ -1,5 +1,9 @@
 # Compatibility matrix
 
+For newer Claude Code 2.1.283 and Codex 0.157.1 observations, see the
+[2026-09-27 remeasurement](remeasurement-2026-09-27.md). This matrix records
+the 2026-09-25 checks.
+
 Checked on 2026-09-25, macOS arm64, Node 26.7.0. Support applies to these tested
 CLI versions; other versions must pass the same opt-in live test.
 
