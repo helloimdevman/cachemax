@@ -7,7 +7,7 @@ import { join } from 'node:path';
 import { randomBytes } from 'node:crypto';
 import { once } from 'node:events';
 import { managed } from '../plugins/cachemax/scripts/server.mjs';
-import { PROMPT, duration } from '../plugins/cachemax/scripts/core.mjs';
+import { duration } from '../plugins/cachemax/scripts/core.mjs';
 import { visibleHistory } from '../plugins/cachemax/scripts/store.mjs';
 import { measure, fingerprint, observeCadence, save } from './validation-support.mjs';
 
@@ -23,8 +23,8 @@ const resume = v['resume-state'] ? JSON.parse(readFileSync(v['resume-state'], 'u
 if (v['resume-state']) assert.ok(resume?.home && resume?.cwd && resume?.sessionId, 'Missing synthetic session state');
 const root = resume ? null : mkdtempSync(join(tmpdir(), 'keeper-maintenance-'));
 const cwd = resume?.cwd || join(root, 'project'); if (!resume) mkdirSync(cwd);
-const environment = fingerprint(v.host), previous = 'Only ".". No tools.';
-const variants = resume ? [PROMPT, previous, PROMPT] : [previous, PROMPT, PROMPT, previous];
+const environment = fingerprint(v.host), previous = 'Only ".". No tools.', short = 'Only .';
+const variants = resume ? [short, previous, short] : [previous, short, short, previous];
 const report = { host: v.host, model: v.model, startedAt: new Date().toISOString(), environment, intervalMs,
   maxPrompts: resume ? 4 : 7, continuedSyntheticSession: !!resume, status: 'preparing',
   promptSequence: resume ? ['short','previous','short'] : ['previous','short','short','previous'], turns: [] };

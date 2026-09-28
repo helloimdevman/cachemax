@@ -2,7 +2,7 @@ import { EventEmitter } from 'node:events';
 import { randomUUID } from 'node:crypto';
 import { performance } from 'node:perf_hooks';
 
-export const PROMPT = 'Only .';
+export const PROMPT = 'Only ".". No tools.';
 export function duration(value) {
   const m = /^(\d+(?:\.\d+)?)(s|m|h)$/.exec(String(value));
   const ms = m && Number(m[1]) * { s: 1000, m: 60000, h: 3600000 }[m[2]];
