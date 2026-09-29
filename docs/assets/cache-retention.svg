@@ -1,52 +1,118 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 292" width="860" height="292" role="img" aria-labelledby="t">
-<title id="t">Share of the return turn read from cache after time away, with and without cachemax</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 268" width="860" height="268" role="img" aria-labelledby="t">
+<title id="t">Share of the return turn read from cache after 5 minutes to 2 hours away, with and without cachemax</title>
 <style>
 text{font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#1f2328}
-.m{fill:#59636e}.b{font-weight:600}.grid{stroke:#d1d9e0;stroke-width:1}.link{stroke:#d1d9e0;stroke-width:2}
-.on{fill:#2a78d6;stroke:#ffffff;stroke-width:2}.off{fill:#ffffff;stroke:#898781;stroke-width:2.5}
+.m{fill:#59636e}.b{font-weight:600}.grid{stroke:#d1d9e0;stroke-width:1}
+.on{fill:#2a78d6;stroke:#ffffff;stroke-width:2}.off{fill:#ffffff;stroke:#898781;stroke-width:2}
 @media (prefers-color-scheme: dark){
-text{fill:#f0f6fc}.m{fill:#9198a1}.grid{stroke:#3d444d}.link{stroke:#3d444d}
+text{fill:#f0f6fc}.m{fill:#9198a1}.grid{stroke:#3d444d}
 .on{fill:#3987e5;stroke:#0d1117}.off{fill:#0d1117}}
 </style>
-<circle cx="6" cy="18" r="6" class="on"/><text x="18" y="22" font-size="12">with cachemax</text><circle cx="136" cy="18" r="5" class="off"/><text x="148" y="22" font-size="12">without</text><text x="860" y="22" class="m" font-size="12" text-anchor="end">without → with</text>
-<line x1="200" x2="200" y1="44" y2="260" class="grid"/>
-<text x="200" y="280" class="m" font-size="11" text-anchor="middle">0%</text>
-<line x1="320" x2="320" y1="44" y2="260" class="grid"/>
-<text x="320" y="280" class="m" font-size="11" text-anchor="middle">25%</text>
-<line x1="440" x2="440" y1="44" y2="260" class="grid"/>
-<text x="440" y="280" class="m" font-size="11" text-anchor="middle">50%</text>
-<line x1="560" x2="560" y1="44" y2="260" class="grid"/>
-<text x="560" y="280" class="m" font-size="11" text-anchor="middle">75%</text>
-<line x1="680" x2="680" y1="44" y2="260" class="grid"/>
-<text x="680" y="280" class="m" font-size="11" text-anchor="middle">100%</text>
-<text x="0" y="68" class="b" font-size="13">Claude Code</text>
-<line x1="303.9771998574991" x2="672.6106317840245" y1="64" y2="64" class="link"/>
-<circle cx="303.9771998574991" cy="64" r="5" class="off"/>
-<circle cx="672.6106317840245" cy="64" r="6" class="on"/>
-<text x="860" y="68" font-size="13" text-anchor="end"><tspan class="m">21.7% → </tspan><tspan class="b">98.5%</tspan></text>
-<text x="0" y="98" class="m" font-size="12">12 min away</text>
-<line x1="663.3510251176001" x2="679.5919712714466" y1="94" y2="94" class="link"/>
-<circle cx="663.3510251176001" cy="94" r="5" class="off"/>
-<circle cx="679.5919712714466" cy="94" r="6" class="on"/>
-<text x="860" y="98" font-size="13" text-anchor="end"><tspan class="m">96.5% → </tspan><tspan class="b">99.9%</tspan></text>
-<text x="0" y="142" class="b" font-size="13">Codex</text>
-<line x1="677.4049196058697" x2="678.4173974044195" y1="138" y2="138" class="link"/>
-<circle cx="677.4049196058697" cy="138" r="5" class="off"/>
-<circle cx="678.4173974044195" cy="138" r="6" class="on"/>
-<text x="860" y="142" font-size="13" text-anchor="end"><tspan class="m">99.5% → </tspan><tspan class="b">99.7%</tspan></text>
-<text x="0" y="172" class="m" font-size="12">35 min away</text>
-<line x1="677.2820440825495" x2="677.0253268164917" y1="168" y2="168" class="link"/>
-<circle cx="677.2820440825495" cy="168" r="5" class="off"/>
-<circle cx="677.0253268164917" cy="168" r="6" class="on"/>
-<text x="860" y="172" font-size="13" text-anchor="end"><tspan class="m">99.4% → </tspan><tspan class="b">99.4%</tspan></text>
-<text x="0" y="216" class="b" font-size="13">Grok Build</text>
-<line x1="677.6441084799197" x2="679.1152700978307" y1="212" y2="212" class="link"/>
-<circle cx="677.6441084799197" cy="212" r="5" class="off"/>
-<circle cx="679.1152700978307" cy="212" r="6" class="on"/>
-<text x="860" y="216" font-size="13" text-anchor="end"><tspan class="m">99.5% → </tspan><tspan class="b">99.8%</tspan></text>
-<text x="0" y="246" class="m" font-size="12">12 min away</text>
-<line x1="200" x2="678.4397213788177" y1="242" y2="242" class="link"/>
-<circle cx="200" cy="242" r="5" class="off"/>
-<circle cx="678.4397213788177" cy="242" r="6" class="on"/>
-<text x="860" y="246" font-size="13" text-anchor="end"><tspan class="m">0%* → </tspan><tspan class="b">99.7%</tspan></text>
+<circle cx="6" cy="16" r="5" class="on"/><text x="17" y="20" font-size="12">with cachemax</text><circle cx="132" cy="16" r="4.5" class="off"/><text x="143" y="20" font-size="12">without</text>
+<text x="32" y="228" class="m" font-size="11" text-anchor="end">0%</text>
+<text x="32" y="148" class="m" font-size="11" text-anchor="end">50%</text>
+<text x="32" y="68" class="m" font-size="11" text-anchor="end">100%</text>
+<text x="40" y="50" class="b" font-size="13">Claude Code</text>
+<line x1="40" x2="294.66666666666663" y1="224" y2="224" class="grid"/>
+<line x1="40" x2="294.66666666666663" y1="144" y2="144" class="grid"/>
+<line x1="40" x2="294.66666666666663" y1="64" y2="64" class="grid"/>
+<text x="61.22222222222222" y="242" class="m" font-size="11" text-anchor="middle">5m</text>
+<text x="103.66666666666666" y="242" class="m" font-size="11" text-anchor="middle">10m</text>
+<text x="146.11111111111111" y="242" class="m" font-size="11" text-anchor="middle">15m</text>
+<text x="188.55555555555554" y="242" class="m" font-size="11" text-anchor="middle">30m</text>
+<text x="231" y="242" class="m" font-size="11" text-anchor="middle">1h</text>
+<text x="273.44444444444446" y="242" class="m" font-size="11" text-anchor="middle">2h†</text>
+<circle cx="56.2" cy="70.1" r="4.5" class="off"/>
+<circle cx="56.2" cy="70.8" r="4.5" class="off"/>
+<circle cx="98.7" cy="67.7" r="4.5" class="off"/>
+<circle cx="98.7" cy="69.5" r="4.5" class="off"/>
+<circle cx="141.1" cy="70.2" r="4.5" class="off"/>
+<circle cx="141.1" cy="69.3" r="4.5" class="off"/>
+<circle cx="183.6" cy="70.9" r="4.5" class="off"/>
+<circle cx="183.6" cy="66.6" r="4.5" class="off"/>
+<circle cx="226.0" cy="69.5" r="4.5" class="off"/>
+<circle cx="226.0" cy="69.2" r="4.5" class="off"/>
+<circle cx="268.4" cy="190.8" r="4.5" class="off"/>
+<circle cx="268.4" cy="190.9" r="4.5" class="off"/>
+<circle cx="66.2" cy="64.1" r="5" class="on"/>
+<circle cx="66.2" cy="70.3" r="5" class="on"/>
+<circle cx="108.7" cy="64.2" r="5" class="on"/>
+<circle cx="108.7" cy="64.1" r="5" class="on"/>
+<circle cx="151.1" cy="64.2" r="5" class="on"/>
+<circle cx="151.1" cy="64.1" r="5" class="on"/>
+<circle cx="193.6" cy="68.1" r="5" class="on"/>
+<circle cx="193.6" cy="64.1" r="5" class="on"/>
+<circle cx="236.0" cy="64.1" r="5" class="on"/>
+<circle cx="236.0" cy="66.5" r="5" class="on"/>
+<circle cx="278.4" cy="66.9" r="5" class="on"/>
+<circle cx="278.4" cy="68.2" r="5" class="on"/>
+<text x="322.66666666666663" y="50" class="b" font-size="13">Codex</text>
+<line x1="322.66666666666663" x2="577.3333333333333" y1="224" y2="224" class="grid"/>
+<line x1="322.66666666666663" x2="577.3333333333333" y1="144" y2="144" class="grid"/>
+<line x1="322.66666666666663" x2="577.3333333333333" y1="64" y2="64" class="grid"/>
+<text x="343.88888888888886" y="242" class="m" font-size="11" text-anchor="middle">5m</text>
+<text x="386.3333333333333" y="242" class="m" font-size="11" text-anchor="middle">10m</text>
+<text x="428.7777777777777" y="242" class="m" font-size="11" text-anchor="middle">15m</text>
+<text x="471.2222222222222" y="242" class="m" font-size="11" text-anchor="middle">30m</text>
+<text x="513.6666666666666" y="242" class="m" font-size="11" text-anchor="middle">1h</text>
+<text x="556.1111111111111" y="242" class="m" font-size="11" text-anchor="middle">2h</text>
+<circle cx="338.9" cy="64.7" r="4.5" class="off"/>
+<circle cx="338.9" cy="64.7" r="4.5" class="off"/>
+<circle cx="381.3" cy="64.7" r="4.5" class="off"/>
+<circle cx="381.3" cy="64.8" r="4.5" class="off"/>
+<circle cx="423.8" cy="64.7" r="4.5" class="off"/>
+<circle cx="423.8" cy="64.7" r="4.5" class="off"/>
+<circle cx="466.2" cy="64.7" r="4.5" class="off"/>
+<circle cx="466.2" cy="64.8" r="4.5" class="off"/>
+<circle cx="508.7" cy="64.7" r="4.5" class="off"/>
+<circle cx="508.7" cy="64.8" r="4.5" class="off"/>
+<circle cx="551.1" cy="199.7" r="4.5" class="off"/>
+<circle cx="551.1" cy="224.0" r="4.5" class="off"/>
+<circle cx="348.9" cy="64.8" r="5" class="on"/>
+<circle cx="348.9" cy="64.8" r="5" class="on"/>
+<circle cx="391.3" cy="64.9" r="5" class="on"/>
+<circle cx="391.3" cy="64.9" r="5" class="on"/>
+<circle cx="433.8" cy="64.5" r="5" class="on"/>
+<circle cx="433.8" cy="64.5" r="5" class="on"/>
+<circle cx="476.2" cy="64.8" r="5" class="on"/>
+<circle cx="476.2" cy="64.8" r="5" class="on"/>
+<circle cx="518.7" cy="64.5" r="5" class="on"/>
+<circle cx="518.7" cy="64.5" r="5" class="on"/>
+<circle cx="561.1" cy="64.8" r="5" class="on"/>
+<circle cx="561.1" cy="64.8" r="5" class="on"/>
+<text x="605.3333333333333" y="50" class="b" font-size="13">Grok Build</text>
+<line x1="605.3333333333333" x2="859.9999999999999" y1="224" y2="224" class="grid"/>
+<line x1="605.3333333333333" x2="859.9999999999999" y1="144" y2="144" class="grid"/>
+<line x1="605.3333333333333" x2="859.9999999999999" y1="64" y2="64" class="grid"/>
+<text x="626.5555555555554" y="242" class="m" font-size="11" text-anchor="middle">5m</text>
+<text x="668.9999999999999" y="242" class="m" font-size="11" text-anchor="middle">10m</text>
+<text x="711.4444444444443" y="242" class="m" font-size="11" text-anchor="middle">15m</text>
+<text x="753.8888888888888" y="242" class="m" font-size="11" text-anchor="middle">30m</text>
+<text x="796.3333333333333" y="242" class="m" font-size="11" text-anchor="middle">1h</text>
+<text x="838.7777777777777" y="242" class="m" font-size="11" text-anchor="middle">2h</text>
+<circle cx="621.6" cy="64.2" r="4.5" class="off"/>
+<circle cx="621.6" cy="64.2" r="4.5" class="off"/>
+<circle cx="664.0" cy="64.3" r="4.5" class="off"/>
+<circle cx="664.0" cy="64.3" r="4.5" class="off"/>
+<circle cx="706.4" cy="224.0" r="4.5" class="off"/>
+<circle cx="706.4" cy="64.2" r="4.5" class="off"/>
+<circle cx="748.9" cy="189.4" r="4.5" class="off"/>
+<circle cx="748.9" cy="224.0" r="4.5" class="off"/>
+<circle cx="791.3" cy="224.0" r="4.5" class="off"/>
+<circle cx="791.3" cy="224.0" r="4.5" class="off"/>
+<circle cx="833.8" cy="224.0" r="4.5" class="off"/>
+<circle cx="833.8" cy="224.0" r="4.5" class="off"/>
+<circle cx="631.6" cy="64.4" r="5" class="on"/>
+<circle cx="631.6" cy="64.3" r="5" class="on"/>
+<circle cx="674.0" cy="64.4" r="5" class="on"/>
+<circle cx="674.0" cy="64.2" r="5" class="on"/>
+<circle cx="716.4" cy="64.5" r="5" class="on"/>
+<circle cx="716.4" cy="64.4" r="5" class="on"/>
+<circle cx="758.9" cy="64.5" r="5" class="on"/>
+<circle cx="758.9" cy="64.4" r="5" class="on"/>
+<circle cx="801.3" cy="64.2" r="5" class="on"/>
+<circle cx="801.3" cy="64.2" r="5" class="on"/>
+<circle cx="843.8" cy="64.4" r="5" class="on"/>
+<circle cx="843.8" cy="64.3" r="5" class="on"/>
+<text x="430" y="264" class="m" font-size="11" text-anchor="middle">Time away</text>
 </svg>

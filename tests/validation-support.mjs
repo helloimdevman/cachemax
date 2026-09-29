@@ -15,7 +15,9 @@ export function fingerprint(host) {
     }
   };
   walk('plugins/cachemax');
-  const settings = ['.claude/settings.json', '.claude/plugins/installed_plugins.json', '.codex/config.toml', '.grok/config.toml'].map(name => {
+  // Only the tested host's config can change its requests
+  const configs = { claude: ['.claude/settings.json', '.claude/plugins/installed_plugins.json'], codex: ['.codex/config.toml'], grok: ['.grok/config.toml'] };
+  const settings = configs[host].map(name => {
     const p = join(homedir(), name), s = existsSync(p) && statSync(p);
     return { name, size: s ? s.size : null, sha256: s ? createHash('sha256').update(readFileSync(p)).digest('hex') : null };
   });
