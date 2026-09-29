@@ -30,15 +30,34 @@ stops at hard limits, and shows exactly what each request used.
 
 ## Does it keep the cache?
 
-How much of your next message was read from cache after you stepped away
-(real subscription-account runs on 2026-09-27, two per host):
+How much of your next message was read from cache after you stepped away, with and
+without cachemax at the default 3-minute interval. Real subscription-account runs on
+2026-09-29, two per host and time (one dot each):
 
-![Cache read on return: 98.5–99.9% with cachemax on all three hosts, 0–99.5% without](docs/assets/cache-retention.svg)
+![Cache read on return by time away. With cachemax: 96–99.9% on all three hosts up to 2 hours. Without: Claude Code 96–98% up to 1 hour and 21% at 2 hours; Codex 99.5% up to 1 hour and 0–15% at 2 hours; Grok Build 0–22% in 7 of 8 runs from 15 minutes](docs/assets/cache-retention.svg)
 
-Maintenance turns that read the cache: Claude Code 6/6 · Codex 6/6 · Grok Build 5/6.
+| Away | Claude Code | Codex | Grok Build | Requests sent |
+| --- | --- | --- | --- | ---: |
+| 5 min | 95.7–96.2% → **96.1–99.9%** | 99.5–99.6% → **99.5%** | 99.9% → **99.8%** | 1 |
+| 10 min | 96.6–97.7% → **99.9%** | 99.5–99.6% → **99.4%** | 99.8% → **99.8–99.9%** | 3 |
+| 15 min | 96.1–96.7% → **99.9%** | 99.5–99.6% → **99.7%** | 0–99.9% → **99.7%** | 4 |
+| 30 min | 95.7–98.4% → **97.4–99.9%** | 99.5–99.6% → **99.5%** | 0–21.6% → **99.7%** | 9 |
+| 1 h | 96.6–96.8% → **98.5–99.9%** | 99.5–99.6% → **99.7%** | 0% → **99.9%** | 19 |
+| 2 h | 20.7–20.8% → **97.4–98.2%**† | 0–15.2% → **99.5%** | 0% → **99.8%** | 38–39 |
 
-\* The 0% Grok session never read the cache, even on its warmup before the wait.
-Codex and Grok used the previous `Only .` prompt. [Raw data](docs/remeasurement-2026-09-27.md)
+Without → **with** cachemax, range over the two runs.
+
+- **Claude Code** keeps the cache on its own for an hour. At 2 hours it fell to about 21%.
+- **Codex** keeps it on its own for an hour. At 2 hours it fell to 0–15%.
+- **Grok Build** lost it on its own in 7 of 8 runs from 15 minutes on.
+
+Keeping it costs more, because every request re-reads the whole conversation. The
+estimated cost rose in every Claude and Grok pair (Claude +38% to +904%, Grok +27% to
++1,357%), and Codex used 1.7–47× the input.
+
+† In both runs a Claude API retry at 98 minutes paused cachemax after 31 of 39 requests,
+as designed. It never restarts on its own. The last request was 25 minutes before the return.
+[Full results](docs/idle-sweep-2026-09-29.md)
 
 ## Quick start
 
@@ -122,7 +141,7 @@ npm run test:live -- --confirm-usage       # 3 real model turns per host
 Docs: [Troubleshooting](docs/troubleshooting.md) · [Privacy](docs/privacy.md) ·
 [Validation](docs/validation-report.md) · [Cache analysis](docs/cache-analysis.md) ·
 [Three-host follow-up](docs/reproducibility-report.md) · [Remeasurement](docs/remeasurement-2026-09-27.md) ·
-[Usage reduction](docs/usage-minimization.md)
+[Idle sweep](docs/idle-sweep-2026-09-29.md) · [Usage reduction](docs/usage-minimization.md)
 
 ## License
 
