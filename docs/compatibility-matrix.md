@@ -1,8 +1,14 @@
 # Compatibility matrix
 
-For newer Claude Code 2.1.283 and Codex 0.157.1 observations, see the
-[2026-09-27 remeasurement](remeasurement-2026-09-27.md). This matrix records
-the 2026-09-25 checks.
+For cache retention by time away on Claude Code 2.1.284, Codex 0.158.0, and
+Grok Build 1.0.41, see the [2026-09-29 idle sweep](idle-sweep-2026-09-29.md).
+Without cachemax, Claude Code and Codex read 95.7–99.6% from cache up to 1 hour
+and 0–21% at 2 hours; Grok Build read 0–22% in 7 of 8 runs from 15 minutes.
+With cachemax at the default 3-minute interval, all three read 96.1–99.9%, and
+estimated cost or input rose in every pair. The cache rows below are the
+2026-09-25 results; the [2026-09-27 remeasurement](remeasurement-2026-09-27.md)
+covers Claude Code 2.1.283 and Codex 0.157.1. This matrix records the 2026-09-25
+checks.
 
 Checked on 2026-09-25, macOS arm64, Node 26.7.0. Support applies to these tested
 CLI versions; other versions must pass the same opt-in live test.
