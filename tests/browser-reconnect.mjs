@@ -3,7 +3,7 @@
 const fs = await import('node:fs/promises');
 const { join } = await import('node:path');
 if (process.argv.includes('--server')) {
-  const { managed } = await import('../plugins/cachemax/scripts/server.mjs');
+  const { managed } = await import('../plugins/cachemax/skills/cachemax/scripts/server.mjs');
   const { tmpdir } = await import('node:os');
   const { randomUUID } = await import('node:crypto');
   const rows = Array.from({ length: 30 }, (_, i) => ({ id: `history-${i}`, role: i % 2 ? 'assistant' : 'user', text: `Conversation ${i}\n` + 'A preserved line of conversation.\n'.repeat(5) }));

@@ -2,8 +2,12 @@
 
 - **No runner owns this session:** start `cachemax run HOST`. The `on` command
   only controls a running owner; it cannot attach to an arbitrary native window.
-- **Existing native conversation:** finish the native turn, exit that client,
-  and use `run HOST --session ID --cwd ORIGINAL_DIRECTORY --handoff`.
+- **Existing native conversation:** run the `cachemax` skill in it and exit
+  within 10 minutes, or exit that client and use
+  `run HOST --session ID --cwd ORIGINAL_DIRECTORY --handoff`.
+- **Nothing opened after exiting:** `cachemax status` shows the session, and
+  the skill's `keep` output names a log under `~/.cachemax` with the takeover
+  result and page URL.
 - **Already owned / stale lock:** stop the existing runner. After an abnormal
   exit, `cachemax unlock --host HOST --session ID` checks that the recorded
   parent and active child processes have exited. Reopen the session afterward;

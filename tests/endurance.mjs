@@ -6,9 +6,9 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { randomBytes } from 'node:crypto';
 import { setTimeout as delay } from 'node:timers/promises';
-import { managed } from '../plugins/cachemax/scripts/server.mjs';
-import { duration, PROMPT } from '../plugins/cachemax/scripts/core.mjs';
-import { visibleHistory } from '../plugins/cachemax/scripts/store.mjs';
+import { managed } from '../plugins/cachemax/skills/cachemax/scripts/server.mjs';
+import { duration, PROMPT } from '../plugins/cachemax/skills/cachemax/scripts/core.mjs';
+import { visibleHistory } from '../plugins/cachemax/skills/cachemax/scripts/store.mjs';
 import { fingerprint, measure, armSummary, checkCadence, observeCadence, save } from './validation-support.mjs';
 
 const { values: v } = parseArgs({ options: { 'confirm-usage': { type: 'boolean' }, host: { type: 'string' }, model: { type: 'string' }, duration: { type: 'string', default: '2h' }, interval: { type: 'string', default: '3m' } } });

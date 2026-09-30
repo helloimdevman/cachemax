@@ -11,7 +11,7 @@
     <dl class="metrics">
       <div><dt>Last successful request</dt><dd id="last-success">None</dd></div>
       <div><dt>Next request</dt><dd id="next-request">Not scheduled</dd></div>
-      <div><dt>Attempts / limit</dt><dd id="attempts">0 / 10</dd></div>
+      <div><dt>Attempts / limit</dt><dd id="attempts">0 / 5</dd></div>
       <div><dt>Success / failed / interrupted</dt><dd id="outcomes">0 / 0 / 0</dd></div>
       <div><dt>Total maintenance tokens</dt><dd id="total-tokens">0</dd></div>
       <div><dt>Estimated maintenance cost</dt><dd id="total-cost">Unknown</dd></div>
@@ -25,7 +25,7 @@
         <label for="ttl">Cache TTL<select id="ttl" aria-describedby="ttl-help"><option value="">Unknown</option><option value="5m">5 minutes</option><option value="1h">1 hour</option><option value="custom">Custom</option></select></label>
         <label id="custom-ttl-label" for="custom-ttl" hidden>Custom TTL<input id="custom-ttl" placeholder="e.g. 20m" pattern="[0-9]+([.][0-9]+)?[smh]"></label>
         <label for="interval">Request interval<input id="interval" placeholder="Auto from TTL" pattern="[0-9]+([.][0-9]+)?[smh]"></label>
-        <label for="max-ticks">Maximum requests<input id="max-ticks" type="number" min="1" max="120" step="1" value="10" required></label>
+        <label for="max-ticks">Maximum requests<input id="max-ticks" type="number" min="1" max="120" step="1" value="5" required></label>
         <label for="max-tokens">Token stop threshold<input id="max-tokens" type="number" min="1" step="1" placeholder="Optional" aria-describedby="budget-help"></label>
         <label for="max-cost">Cost stop threshold (USD)<input id="max-cost" type="number" min="0.000001" step="any" placeholder="Optional" aria-describedby="budget-help cost-help"></label>
       </div>

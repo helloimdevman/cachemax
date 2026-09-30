@@ -25,7 +25,7 @@ stops at hard limits, and shows exactly what each request used.
 - **Same conversation, hidden turns.** The managed page hides maintenance turns. The host transcript keeps everything.
 - **You go first.** A running keeper request is cancelled before your message is sent.
 - **Only while you are away.** The wait counts from the last reply, including one from before **Keep ready** or from the native CLI. With a 1h TTL (50-minute interval), a message at minute 25 moves the next request to 50 minutes after its reply. If the interval has already passed, the first request goes right away.
-- **Bounded by default.** 30 minutes and 10 requests unless you change them. Errors or unexpected replies pause it, and it never restarts on its own.
+- **Bounded by default.** 5 requests unless you change them, within a fixed end time. Errors or unexpected replies pause it, and it never restarts on its own.
 - **No extra setup.** No API key, no npm dependencies, no build step. It uses your existing CLI login.
 
 ## Does it keep the cache?
@@ -64,31 +64,44 @@ as designed. It never restarts on its own. The last request was 25 minutes befor
 Requires Node.js 22.18+, macOS (Linux and Windows are untested), and a signed-in host CLI.
 
 ```sh
-# 1. Plugin (pick your host)
+npx skills add helloimdevman/cachemax -g -a claude-code codex grok
+```
+
+1. In the conversation you want to keep, run the skill: `/cachemax` in Claude Code and
+   Grok Build, `$cachemax` in Codex.
+2. Choose how many keepalive requests to send (default 5) and the cache TTL.
+3. Exit the CLI within 10 minutes. cachemax takes the session over and opens it in your
+   browser. Continue the conversation there; your message always goes first.
+
+`/cachemax off` before you exit cancels it. The skill bundles the whole runtime, so there is
+nothing else to install.
+
+<details>
+<summary>Other ways to install</summary>
+
+```sh
+# Plugin (pick your host)
 claude plugin marketplace add helloimdevman/cachemax && claude plugin install cachemax@cachemax
 codex plugin marketplace add helloimdevman/cachemax && codex plugin add cachemax@cachemax
 grok plugin install helloimdevman/cachemax#plugins/cachemax
 
-# 2. CLI, then start a managed session
+# Terminal CLI, for a new managed session
 git clone https://github.com/helloimdevman/cachemax.git && cd cachemax
 npm install --global .
-cachemax doctor
 cachemax run claude          # or: codex, grok
 ```
 
-Open the private localhost URL it prints, choose a TTL and limits, and click **Keep ready**.
-Maintenance always starts **off**. In the host, the `cachemax` skill controls a managed
-session or gives you the handoff command for the current one.
-
-**Existing session:** finish its turn, close the native client, then run
-`cachemax run codex --session ID --cwd /original/dir --handoff`.
+`cachemax run` opens a private localhost page with maintenance **off**. Choose a TTL and
+limits there and click **Keep ready**. To hand over an existing session from a terminal,
+close its native client, then run `cachemax run codex --session ID --cwd /original/dir --handoff`.
+</details>
 
 ## Settings
 
 | Setting | Default | Rule |
 | --- | --- | --- |
-| Duration | 30m | Up to 24h. The end time is fixed at activation. |
-| Max requests | 10 | 1–120 |
+| Duration | Skill: fits the request count. Page: 30m | Up to 24h. The end time is fixed at activation. |
+| Max requests | 5 | 1–120 |
 | Interval | From TTL: unknown or 5m → 3m, 1h → 50m, custom → 5/6 of TTL | Must be shorter than the TTL |
 | Token / $ stop | Off | Checked after each response, so one request can overshoot. $ works on Claude and Grok only. |
 
@@ -97,11 +110,14 @@ No backlog is replayed after sleep. Each completed turn restarts the interval wa
 ## Commands
 
 ```text
+# In Claude Code, Codex, or Grok Build
+/cachemax [requests] [ttl] | off | status | logs
+
 # In the managed page
 /cachemax 30m | off | status | logs | show-hidden
 
 # From another terminal
-cachemax on     --host codex --session ID --duration 30m --ttl 5m --max-ticks 10 [--max-tokens N] [--max-cost-usd N]
+cachemax on     --host codex --session ID --duration 30m --ttl 5m --max-ticks 5 [--max-tokens N] [--max-cost-usd N]
 cachemax off    --host codex --session ID
 cachemax status --host codex --session ID      # reads only, no model request
 cachemax logs   --host codex --session ID
@@ -127,7 +143,7 @@ See the [compatibility matrix](docs/compatibility-matrix.md).
 - Binds to `127.0.0.1` only and requires a random token. Treat the URL like session access.
 - No telemetry. Credentials are never read or copied. The host owns conversation text.
 - Metadata lives in `~/.cachemax` (or `CACHEMAX_HOME`) with mode `0600`.
-- To uninstall: stop the runner, remove the plugin with your host's command, and run `npm uninstall --global cachemax`.
+- To uninstall: run `/cachemax off`, then `npx skills remove cachemax -g` (or remove the plugin with your host's command, and run `npm uninstall --global cachemax`).
 
 ## Development
 

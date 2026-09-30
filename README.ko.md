@@ -25,7 +25,7 @@ cachemax는 **같은 세션**에 숨겨진 `Only ".". No tools.` 턴을 주기�
 - **같은 대화, 숨겨진 턴.** 관리 페이지에서는 유지 턴이 보이지 않고, 호스트 원본 기록에는 모두 남습니다.
 - **사용자가 먼저.** 진행 중인 유지 요청을 취소한 뒤 사용자 메시지를 보냅니다.
 - **자리를 비웠을 때만.** 대기 시간은 마지막 답변부터 셉니다. **Keep ready** 전이나 네이티브 CLI에서 받은 답변도 포함합니다. TTL 1h(간격 50분)에서 25분에 메시지를 보내면 다음 유지 요청은 그 답변 50분 뒤로 밀립니다. 이미 간격이 지났다면 첫 요청을 바로 보냅니다.
-- **기본값부터 제한.** 따로 바꾸지 않으면 30분, 10회까지만 보냅니다. 오류나 예상 밖 응답이 나오면 멈추고, 스스로 다시 켜지지 않습니다.
+- **기본값부터 제한.** 따로 바꾸지 않으면 정해진 종료 시각 안에서 5회까지만 보냅니다. 오류나 예상 밖 응답이 나오면 멈추고, 스스로 다시 켜지지 않습니다.
 - **추가 설정 없음.** API 키, npm 의존성, 빌드 단계가 필요 없습니다. 기존 CLI 로그인을 그대로 씁니다.
 
 ## 캐시가 유지되나요?
@@ -63,31 +63,45 @@ cachemax는 **같은 세션**에 숨겨진 `Only ".". No tools.` 턴을 주기�
 Node.js 22.18 이상, macOS(Linux·Windows는 미검증), 로그인된 호스트 CLI가 필요합니다.
 
 ```sh
-# 1. 플러그인 (사용하는 호스트 하나)
+npx skills add helloimdevman/cachemax -g -a claude-code codex grok
+```
+
+1. 유지하려는 대화에서 스킬을 실행합니다. Claude Code와 Grok Build는 `/cachemax`,
+   Codex는 `$cachemax`입니다.
+2. 유지 요청을 몇 번까지 보낼지(기본 5회)와 캐시 TTL을 고릅니다.
+3. 10분 안에 CLI를 종료합니다. cachemax가 세션을 넘겨받아 브라우저에서 엽니다. 대화는
+   그 페이지에서 이어 가면 되고, 사용자 메시지가 항상 먼저 전송됩니다.
+
+종료하기 전에 `/cachemax off`를 실행하면 취소됩니다. 스킬에 런타임 전체가 들어 있어 따로
+설치할 것이 없습니다.
+
+<details>
+<summary>다른 설치 방법</summary>
+
+```sh
+# 플러그인 (사용하는 호스트 하나)
 claude plugin marketplace add helloimdevman/cachemax && claude plugin install cachemax@cachemax
 codex plugin marketplace add helloimdevman/cachemax && codex plugin add cachemax@cachemax
 grok plugin install helloimdevman/cachemax#plugins/cachemax
 
-# 2. CLI 설치 후 관리 세션 시작
+# 터미널 CLI, 새 관리 세션용
 git clone https://github.com/helloimdevman/cachemax.git && cd cachemax
 npm install --global .
-cachemax doctor
 cachemax run claude          # 또는 codex, grok
 ```
 
-출력된 비공개 localhost URL을 열고 TTL과 한도를 고른 뒤 **Keep ready**를 누르세요.
-유지 기능은 항상 **꺼진 상태**로 시작합니다. 호스트 안에서는 `cachemax` 스킬이 관리 세션을
-제어하거나, 현재 세션을 넘길 handoff 명령을 알려 줍니다.
-
-**기존 세션:** 진행 중인 턴을 끝내고 네이티브 클라이언트를 닫은 뒤
-`cachemax run codex --session ID --cwd /원래/디렉터리 --handoff`를 실행하세요.
+`cachemax run`은 유지 기능이 **꺼진 상태**로 비공개 localhost 페이지를 엽니다. 거기서 TTL과
+한도를 고르고 **Keep ready**를 누르세요. 터미널에서 기존 세션을 넘기려면 네이티브
+클라이언트를 닫은 뒤 `cachemax run codex --session ID --cwd /원래/디렉터리 --handoff`를
+실행하세요.
+</details>
 
 ## 설정
 
 | 설정 | 기본값 | 규칙 |
 | --- | --- | --- |
-| 지속 시간 | 30m | 최대 24h. 종료 시각은 활성화할 때 고정됩니다. |
-| 최대 요청 | 10 | 1–120 |
+| 지속 시간 | 스킬: 요청 횟수에 맞춤. 페이지: 30m | 최대 24h. 종료 시각은 활성화할 때 고정됩니다. |
+| 최대 요청 | 5 | 1–120 |
 | 간격 | TTL 기준: Unknown·5m → 3m, 1h → 50m, Custom → TTL의 5/6 | TTL보다 짧아야 함 |
 | 토큰 / $ 한도 | 꺼짐 | 응답 후에 확인하므로 요청 한 번이 한도를 넘을 수 있습니다. $ 한도는 Claude·Grok만 지원합니다. |
 
@@ -96,11 +110,14 @@ cachemax run claude          # 또는 codex, grok
 ## 명령
 
 ```text
+# Claude Code, Codex, Grok Build 안에서
+/cachemax [요청 횟수] [ttl] | off | status | logs
+
 # 관리 페이지에서
 /cachemax 30m | off | status | logs | show-hidden
 
 # 다른 터미널에서
-cachemax on     --host codex --session ID --duration 30m --ttl 5m --max-ticks 10 [--max-tokens N] [--max-cost-usd N]
+cachemax on     --host codex --session ID --duration 30m --ttl 5m --max-ticks 5 [--max-tokens N] [--max-cost-usd N]
 cachemax off    --host codex --session ID
 cachemax status --host codex --session ID      # 조회만, 모델 요청 없음
 cachemax logs   --host codex --session ID
@@ -126,7 +143,7 @@ cachemax forget --host codex --session ID      # 중지된 세션의 메타데�
 - `127.0.0.1`에만 바인딩되고 무작위 토큰을 요구합니다. URL은 세션 접근 권한처럼 다루세요.
 - 텔레메트리가 없습니다. 인증 정보를 읽거나 복사하지 않으며, 대화 내용은 호스트가 관리합니다.
 - 메타데이터는 `~/.cachemax`(또는 `CACHEMAX_HOME`)에 권한 `0600`으로 저장됩니다.
-- 제거: runner를 멈추고, 호스트의 플러그인 제거 명령을 실행한 뒤 `npm uninstall --global cachemax`를 실행하세요.
+- 제거: `/cachemax off`를 실행한 뒤 `npx skills remove cachemax -g`를 실행하세요. 플러그인으로 설치했다면 호스트의 플러그인 제거 명령과 `npm uninstall --global cachemax`를 실행하세요.
 
 ## 개발
 

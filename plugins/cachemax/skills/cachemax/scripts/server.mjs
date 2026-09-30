@@ -121,7 +121,7 @@ export async function managed({ host, cwd = process.cwd(), sessionId, model, han
       await new Promise(resolve => server.close(resolve));
       store.release();
     })();
-    return { url: `${url}/#${token}`, sessionId, keeper, store, adapter, close };
+    return { url: `${url}/#${token}`, sessionId, keeper, store, adapter, close, viewers: () => clients.size };
   } catch (e) {
     await adapter?.close(); store?.release();
     if (existsSync(guardPath)) unlinkSync(guardPath);

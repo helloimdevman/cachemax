@@ -1,0 +1,14 @@
+{
+  "name": "cachemax",
+  "version": "0.2.0",
+  "description": "Keep an owned session active with bounded, hidden maintenance turns.",
+  "author": {
+    "name": "cachemax contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "cache",
+    "session",
+    "productivity"
+  ]
+}

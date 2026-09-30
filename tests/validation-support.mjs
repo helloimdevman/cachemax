@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { homedir } from 'node:os';
 import { execFileSync } from 'node:child_process';
-import { atomicJSON } from '../plugins/cachemax/scripts/store.mjs';
+import { atomicJSON } from '../plugins/cachemax/skills/cachemax/scripts/store.mjs';
 import assert from 'node:assert/strict';
 
 export function fingerprint(host) {
