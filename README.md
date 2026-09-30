@@ -7,158 +7,144 @@
 ![Platform](https://img.shields.io/badge/platform-macOS-lightgrey)
 ![Version](https://img.shields.io/badge/version-0.2.0-orange)
 
-Keep a Claude Code, Codex, or Grok Build conversation warm while you step away.
-cachemax sends a hidden `Only ".". No tools.` turn to the **same session** on a timer,
-stops at hard limits, and shows exactly what each request used.
-
-![cachemax managed page showing maintenance status and usage](docs/assets/screenshot.png)
+Keep your **Claude Code, Codex, or Grok Build conversation** warm while you step away.
+cachemax periodically sends `Only ".". No tools.` to the same session, hides those turns
+in a local browser page, and stops at your limits. Uses your existing CLI login;
+no API key, npm dependencies, or build step.
 
 > [!WARNING]
-> Maintenance runs on your signed-in account and **can increase total cost**.
-> A `.` reply still reads the whole conversation. Savings and provider cache
-> retention are not guaranteed; the TTL you pick only sets the local schedule.
-
-## How it works
-
-![Timeline: Keep ready, hidden period requests every interval, your message goes first, hard stop](docs/assets/how-it-works.svg)
-
-- **Same conversation, hidden turns.** The managed page hides maintenance turns. The host transcript keeps everything.
-- **You go first.** A running keeper request is cancelled before your message is sent.
-- **Only while you are away.** The wait counts from the last reply, including one from before **Keep ready** or from the native CLI. With a 1h TTL (50-minute interval), a message at minute 25 moves the next request to 50 minutes after its reply. If the interval has already passed, the first request goes right away.
-- **Bounded by default.** 5 requests unless you change them, within a fixed end time. Errors or unexpected replies pause it, and it never restarts on its own.
-- **No extra setup.** No API key, no npm dependencies, no build step. It uses your existing CLI login.
-
-## Does it keep the cache?
-
-How much of your next message was read from cache after you stepped away, with and
-without cachemax at the default 3-minute interval. Real subscription-account runs on
-2026-09-29, two per host and time (one dot each):
-
-![Cache read on return by time away. With cachemax: 96–99.9% on all three hosts up to 2 hours. Without: Claude Code 96–98% up to 1 hour and 21% at 2 hours; Codex 99.5% up to 1 hour and 0–15% at 2 hours; Grok Build 0–22% in 7 of 8 runs from 15 minutes](docs/assets/cache-retention.svg)
-
-| Away | Claude Code | Codex | Grok Build |
-| --- | --- | --- | --- |
-| 5 min | 95.7–96.2% → **96.1–99.9%** | 99.5–99.6% → **99.5%** | 99.9% → **99.8%** |
-| 10 min | 96.6–97.7% → **99.9%** | 99.5–99.6% → **99.4%** | 99.8% → **99.8–99.9%** |
-| 15 min | 96.1–96.7% → **99.9%** | 99.5–99.6% → **99.7%** | 0–99.9% → **99.7%** |
-| 30 min | 95.7–98.4% → **97.4–99.9%** | 99.5–99.6% → **99.5%** | 0–21.6% → **99.7%** |
-| 1 h | 96.6–96.8% → **98.5–99.9%** | 99.5–99.6% → **99.7%** | 0% → **99.9%** |
-| 2 h | 20.7–20.8% → **97.4–98.2%**† | 0–15.2% → **99.5%** | 0% → **99.8%** |
-
-Without → **with** cachemax, range over the two runs.
-
-- **Claude Code** keeps the cache on its own for an hour. At 2 hours it fell to about 21%.
-- **Codex** keeps it on its own for an hour. At 2 hours it fell to 0–15%.
-- **Grok Build** lost it on its own in 7 of 8 runs from 15 minutes on.
-
-Keeping it costs more, because every request re-reads the whole conversation. The
-estimated cost rose in every Claude and Grok pair (Claude +38% to +904%, Grok +27% to
-+1,357%), and Codex used 1.7–47× the input.
-
-† In both runs a Claude API retry at 98 minutes paused cachemax after 31 of 39 requests,
-as designed. It never restarts on its own. The last request was 25 minutes before the return.
-[Full results](docs/idle-sweep-2026-09-29.md)
+> **Maintenance can increase total usage and cost.** Even a `.` reply reads the conversation.
+> Cache retention and savings are not guaranteed. Your TTL choice sets the local schedule only.
 
 ## Quick start
 
-Requires Node.js 22.18+, macOS (Linux and Windows are untested), and a signed-in host CLI.
+Requires **Node.js 22.18+**, macOS, and a signed-in host CLI. Linux and Windows are untested.
 
 ```sh
 npx skills add helloimdevman/cachemax -g -a claude-code codex grok
 ```
 
-1. In the conversation you want to keep, run the skill: `/cachemax` in Claude Code and
-   Grok Build, `$cachemax` in Codex.
-2. Choose how many keepalive requests to send (default 5) and the cache TTL.
-3. Exit the CLI within 10 minutes. cachemax takes the session over and opens it in your
-   browser. Continue the conversation there; your message always goes first.
+1. In the conversation to keep, run `/cachemax` in Claude Code or Grok Build, or `$cachemax` in Codex.
+2. Choose the maximum requests (**default 5**) and cache TTL (**default unknown**).
+3. **Exit the CLI within 10 minutes.** cachemax takes over and opens the conversation in your
+   browser. Continue there; your messages take priority over maintenance.
 
-`/cachemax off` before you exit cancels it. The skill bundles the whole runtime, so there is
-nothing else to install.
+To cancel before exiting, run the same skill with `off`. The skill includes the runtime.
 
 <details>
-<summary>Other ways to install</summary>
+<summary>Preview the managed page</summary>
+
+![cachemax managed page showing maintenance status and usage](docs/assets/screenshot.png)
+
+</details>
+
+## Measured cache effect and usage
+
+The chart shows **the share of the next user turn's input read from cache**, not the
+probability of a cache hit. Subscription-account runs on 2026-09-29 used a 3-minute
+interval and longer windows/request caps for each condition; **the default stops after 5 requests**.
+
+![Cache read ranges after 5 minutes to 2 hours away, with and without cachemax, alongside added usage. Claude's paused 2-hour runs are marked separately.](docs/assets/cache-retention.svg)
+
+- **Claude Code and Codex:** controls already retained most of the cache through 1 hour.
+  At 2 hours, Codex read 0–15.2% without maintenance and 99.5% with it.
+- **Grok Build:** without maintenance, 7 of 8 return turns from 15 minutes onward read
+  only 0–21.6% from cache; with maintenance, they read 99.7–99.9%.
+- **Usage rose in every completed pair.** The left column includes maintenance + return
+  after warm-up. Claude/Grok show CLI dollar estimates; Codex shows input tokens, not dollars or quota.
+
+† Both Claude 2-hour runs paused on an API retry around minute 98, after 31 completed
+maintenance requests. Their return values are shown for reference and excluded from
+the usage ranges. Two pairs per condition on shared accounts do not establish a provider TTL.
+[Method, all results, and source data](docs/idle-sweep-2026-09-29.md).
+
+## How it behaves
+
+- **Your turn goes first.** A running maintenance request is cancelled before your message is sent.
+- **Waits from the last reply**, including replies before activation or in the native CLI.
+  Each completed turn resets the wait; if already overdue at activation, the first request starts immediately.
+- **Stops at the first limit or error.** Fixed end time, request cap, and optional token/$ budgets.
+  Unexpected replies also pause it. It never restarts automatically or replays missed requests after sleep.
+- **Hidden in the managed page.** Maintenance stays in the host transcript and may appear in native clients.
+
+## Limits and defaults
+
+| Setting | Default | Limit / behavior |
+| --- | --- | --- |
+| Requests | 5 | 1–120 |
+| Duration | Skill: fits request count; page: 30m | Up to 24h; end time fixed at activation |
+| Interval | Unknown/5m TTL → 3m; 1h → 50m | Custom TTL → 5/6 of TTL; interval must be shorter than TTL |
+| Token / $ budget | Off | Maintenance only; checked after responses, so one request can overshoot |
+
+Dollar budgets work on Claude and Grok. Missing budget usage pauses maintenance.
+It uses the session's model and blocks maintenance tools. Native `/loop` and
+`--require-native-loop` are unsupported. For interactive approvals, close the runner and use the native CLI.
+Measurements used Claude Code **2.1.284**, Codex **0.158.0**, and Grok Build **1.0.41**;
+see the [compatibility matrix](docs/compatibility-matrix.md) for guard and transport details.
+
+<details>
+<summary>Plugin installation and terminal commands</summary>
 
 ```sh
-# Plugin (pick your host)
+# Plugin: choose your host
 claude plugin marketplace add helloimdevman/cachemax && claude plugin install cachemax@cachemax
 codex plugin marketplace add helloimdevman/cachemax && codex plugin add cachemax@cachemax
 grok plugin install helloimdevman/cachemax#plugins/cachemax
 
-# Terminal CLI, for a new managed session
+# Standalone CLI
 git clone https://github.com/helloimdevman/cachemax.git && cd cachemax
 npm install --global .
-cachemax run claude          # or: codex, grok
+cachemax run codex          # or: claude, grok
 ```
 
-`cachemax run` opens a private localhost page with maintenance **off**. Choose a TTL and
-limits there and click **Keep ready**. To hand over an existing session from a terminal,
-close its native client, then run `cachemax run codex --session ID --cwd /original/dir --handoff`.
-</details>
+`run` opens a local conversation with maintenance **off**. Set TTL and limits, then click
+**Keep ready**. For an existing session, close its native client first, then use:
 
-## Settings
+```sh
+cachemax run codex --session ID --cwd /original/dir --handoff
+```
 
-| Setting | Default | Rule |
-| --- | --- | --- |
-| Duration | Skill: fits the request count. Page: 30m | Up to 24h. The end time is fixed at activation. |
-| Max requests | 5 | 1–120 |
-| Interval | From TTL: unknown or 5m → 3m, 1h → 50m, custom → 5/6 of TTL | Must be shorter than the TTL |
-| Token / $ stop | Off | Checked after each response, so one request can overshoot. $ works on Claude and Grok only. |
+In the host, pass `[requests] [ttl]`, `off`, `status`, or `logs` to the skill
+(`/cachemax` or `$cachemax`). In the managed page, use `/cachemax 30m`, `/cachemax off`,
+`/cachemax status`, `/cachemax logs`, or `/cachemax show-hidden`. From another terminal:
 
-No backlog is replayed after sleep. Each completed turn restarts the interval wait.
-
-## Commands
-
-```text
-# In Claude Code, Codex, or Grok Build
-/cachemax [requests] [ttl] | off | status | logs
-
-# In the managed page
-/cachemax 30m | off | status | logs | show-hidden
-
-# From another terminal
-cachemax on     --host codex --session ID --duration 30m --ttl 5m --max-ticks 5 [--max-tokens N] [--max-cost-usd N]
+```sh
+cachemax on     --host codex --session ID --duration 30m --ttl 5m --max-ticks 5
 cachemax off    --host codex --session ID
-cachemax status --host codex --session ID      # reads only, no model request
+cachemax status --host codex --session ID      # no model request
 cachemax logs   --host codex --session ID
-cachemax forget --host codex --session ID      # delete metadata of a stopped session
+cachemax forget --host codex --session ID      # remove stopped session metadata
 ```
 
-## Supported hosts
+`on` also accepts `--max-tokens N` and `--max-cost-usd N` (Claude/Grok only).
+To uninstall, stop maintenance, then run `npx skills remove cachemax -g`; for plugin/CLI
+installs, remove the host plugin and run `npm uninstall --global cachemax` as applicable.
 
-| Host | Tested | Transport | Tool guard on maintenance |
-| --- | --- | --- | --- |
-| Claude Code | 2.1.283 | Structured print + resume | Bundled PreToolUse deny hook |
-| Codex | 0.157.1 | App Server thread/turn API | Bundled hook; hosted web search off |
-| Grok Build | 1.0.41 | Structured headless + resume | Native `--deny '*'` |
-
-Maintenance uses the session's own model, with no cheaper model or subagent. Turns are
-hidden only in the managed page, so native viewers may show them. Native `/loop` is not
-supported, and `--require-native-loop` is rejected. Headless turns deny interactive
-approvals, so close the runner and use the native CLI for those.
-See the [compatibility matrix](docs/compatibility-matrix.md).
+</details>
 
 ## Privacy
 
-- Binds to `127.0.0.1` only and requires a random token. Treat the URL like session access.
-- No telemetry. Credentials are never read or copied. The host owns conversation text.
-- Metadata lives in `~/.cachemax` (or `CACHEMAX_HOME`) with mode `0600`.
-- To uninstall: run `/cachemax off`, then `npx skills remove cachemax -g` (or remove the plugin with your host's command, and run `npm uninstall --global cachemax`).
+- Local only: binds to `127.0.0.1` with a random access token. Treat the URL as session access.
+- No telemetry; credentials are never read or copied. The host owns the conversation text.
+- Metadata: `~/.cachemax` (or `CACHEMAX_HOME`), mode `0600`. [Privacy details](docs/privacy.md).
 
-## Development
+<details>
+<summary>Development and measurement reports</summary>
 
 ```sh
-npm test                                   # offline, no model usage
+npm test                                    # offline; no model usage
 npm run check
-node tests/browser-reconnect.mjs           # Ego Lite + local fake host
-npm run test:live -- --confirm-usage       # 3 real model turns per host
+node scripts/render-readme-charts.mjs        # regenerate both charts from saved data
+node scripts/render-readme-charts.mjs --check
 ```
 
-Docs: [Troubleshooting](docs/troubleshooting.md) · [Privacy](docs/privacy.md) ·
-[Validation](docs/validation-report.md) · [Cache analysis](docs/cache-analysis.md) ·
+Browser check: `node tests/browser-reconnect.mjs` (Ego Lite + local fake host).
+Live checks: `npm run test:live -- --confirm-usage` (3 real model turns per host).
+
+Reports: [Validation](docs/validation-report.md) · [Cache analysis](docs/cache-analysis.md) ·
 [Three-host follow-up](docs/reproducibility-report.md) · [Remeasurement](docs/remeasurement-2026-09-27.md) ·
-[Idle sweep](docs/idle-sweep-2026-09-29.md) · [Usage reduction](docs/usage-minimization.md)
+[Idle sweep](docs/idle-sweep-2026-09-29.md) · [Usage reduction](docs/usage-minimization.md).
 
-## License
+</details>
 
-[MIT](LICENSE)
+[Troubleshooting](docs/troubleshooting.md) · [MIT license](LICENSE)
