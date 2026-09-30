@@ -1,7 +1,7 @@
 ---
 name: cachemax
-description: Enable, inspect, or stop bounded keepalive for Claude Code, Codex, and Grok sessions in cachemax's managed conversation screen. Use when the user asks to keep a session or its cache ready while away.
-argument-hint: "[30m|off|status|logs|show-hidden]"
+description: Keep this Claude Code, Codex, or Grok Build conversation's cache warm while the user steps away, with a user-chosen number of hidden keepalive requests. Use when the user asks to keep a session or its cache ready while away, or to check or stop cachemax.
+argument-hint: "[requests] [ttl] | off | status | logs"
 disable-model-invocation: true
 user-invocable: true
 license: MIT
@@ -9,42 +9,47 @@ license: MIT
 
 # cachemax
 
-Use the bundled `scripts/cli.mjs`, resolved from this skill's directory as
-`../../scripts/cli.mjs`. It requires Node.js 22.18 or newer and the host CLI's
-existing login. Do not read, copy, or replace authentication files.
+Run `node scripts/cli.mjs` from this skill's directory. It needs Node.js 22.18 or
+newer and uses the host CLI's existing login. Do not read, copy, or replace
+authentication files. The commands write to `~/.cachemax`, and `keep` starts a
+background process. If this host sandboxes commands, request permission to run
+them outside the sandbox.
 
-1. Run `node <plugin-root>/scripts/cli.mjs status` to find managed sessions.
-2. Before activation, use the user's selected TTL. If not provided, ask them to
-   choose unknown, 5m, 1h, or a custom duration; never infer TTL from their plan.
-   Use the given duration or default 30m, with 10 requests by default. Honor any
-   requested interval, token threshold or cost threshold. For an owned session:
-   `node <plugin-root>/scripts/cli.mjs on --host <host> --session <id> --duration 30m --ttl <ttl> --max-ticks 10`,
-   omitting `--ttl` for unknown. Optional flags: `--interval <duration>`,
-   `--max-tokens <integer>`, `--max-cost-usd <amount>` (Claude/Grok only).
-   For read/stop requests, execute
-   or `off`, `status`, `logs`, `show-hidden` with the same host/session options.
-3. If the conversation is still running in the native CLI, provide this exact
-   handoff command with its actual host, session ID, and working directory:
-   `node <plugin-root>/scripts/cli.mjs run <host> --session <id> --cwd <cwd> --handoff`.
-   Tell the user to finish the native turn, close that native session, then run
-   the command in a terminal. Do not launch a second writer into this live session.
-4. For a new managed session, `node <plugin-root>/scripts/cli.mjs run <host>` opens
-   the local conversation page. Its keeper starts off; choose TTL and limits there.
+## Keep this session ready (default)
 
-Activation consumes subscription usage. Default duration 30m, default 10 requests,
-maximum 120 requests and 24h. Auto interval: unknown/5m TTL → 3m; 1h → 50m;
+1. Unless the user already gave them, ask for both in one short message:
+   - How many keepalive requests to send at most: 1–120, default 5.
+   - Cache TTL: unknown (default), 5m, 1h, or a custom duration. Never infer it
+     from their plan.
+   Mention that each request re-reads the whole conversation and can increase usage.
+2. Run `node <skill-dir>/scripts/cli.mjs keep --max-ticks <N>`, adding
+   `--ttl <ttl>` unless it is unknown. Add `--interval`, `--duration`,
+   `--max-tokens` or `--max-cost-usd` (Claude and Grok only) only when the user
+   asked for them.
+3. Relay the output. The user must exit this session (for example `/exit`)
+   within 10 minutes. cachemax then takes the session over, opens its page in
+   the browser, and sends at most N requests. The user continues the
+   conversation in that page, where their message always goes first.
+
+## Other requests
+
+- off: `node <skill-dir>/scripts/cli.mjs off` cancels a pending takeover or
+  stops maintenance.
+- status, logs: `node <skill-dir>/scripts/cli.mjs status` or `logs`. Neither
+  calls the model.
+
+## Limits
+
+Default 5 requests. Without `--duration`, the window fits the request count.
+Maximum 120 requests and 24h. Auto interval: unknown/5m TTL → 3m; 1h → 50m;
 other TTL → 5/6 of TTL. Custom intervals must be shorter than the selected TTL.
 TTL is a user scheduling assumption, not a provider-side cache setting.
-Status reports outcomes, last success, next scheduled request and maintenance-only
-tokens/cost. Logs and status do not call the model. Missing costs remain unknown.
-Thresholds stop the next maintenance request after reported usage reaches the
-limit; one request can exceed it. Missing budget usage pauses; Codex does not
-support a dollar threshold. Reopening keeps maintenance off.
-Maintenance can increase total usage.
+Thresholds count maintenance only and stop the next request after usage is
+reported; one request can exceed them. Missing budget usage pauses. Errors or
+unexpected replies pause maintenance, and it never restarts on its own.
 Do not promise savings or a TTL without measurements for the actual request path.
-The managed page hides maintenance; the original host transcript retains it.
-Do not promise hidden output in native CLI screens. `--require-native-loop`
-deliberately rejects currently unverified native loop routes.
+The page hides maintenance; the original host transcript retains it, and native
+CLI screens may show it.
 
 Never call a subagent, invoke a skill on each tick, change system instructions,
 delete transcript rows, expand tool permissions, or start a recurring task from

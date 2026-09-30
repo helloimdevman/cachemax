@@ -6,8 +6,8 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { randomBytes } from 'node:crypto';
 import { setTimeout as delay } from 'node:timers/promises';
-import { managed } from '../plugins/cachemax/scripts/server.mjs';
-import { duration, PROMPT } from '../plugins/cachemax/scripts/core.mjs';
+import { managed } from '../plugins/cachemax/skills/cachemax/scripts/server.mjs';
+import { duration, PROMPT } from '../plugins/cachemax/skills/cachemax/scripts/core.mjs';
 import { fingerprint, measure, armSummary, observeCadence, checkCadence, save } from './validation-support.mjs';
 
 const { values: v } = parseArgs({ options: { 'confirm-usage': { type: 'boolean' }, host: { type: 'string' }, model: { type: 'string' }, idle: { type: 'string', default: '12m' }, interval: { type: 'string', default: '3m' }, replicates: { type: 'string', default: '6' }, label: { type: 'string' }, warmup: { type: 'boolean' } } });

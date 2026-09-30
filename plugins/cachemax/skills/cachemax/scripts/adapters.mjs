@@ -1,7 +1,8 @@
 import { createInterface } from 'node:readline';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { homedir } from 'node:os';
-import { join, resolve, dirname } from 'node:path';
+import { join, resolve, dirname, basename } from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { RPC, launch, terminate, shellQuote } from './protocol.mjs';
 
@@ -68,6 +69,27 @@ export function transcript(host, sessionId) {
     }
     return [{ id: r.uuid || r.id || msg.id || `${sessionId}:${i}`, role, text }];
   });
+}
+
+const sessionEnv = { claude: 'CLAUDE_CODE_SESSION_ID', codex: 'CODEX_THREAD_ID', grok: 'GROK_SESSION_ID' };
+// The nearest host process above this command owns the conversation. Stop there: an ID
+// from an outer host can be inherited through the environment.
+export function findHost(table, env, pid) {
+  for (let row; (row = table.get(pid)); pid = row.ppid) {
+    const host = pid === Number(env.CLAUDE_PID) ? 'claude' : /^(claude|codex|grok)\b/.exec(basename(row.comm))?.[1];
+    if (host) return env[sessionEnv[host]] ? { host, sessionId: env[sessionEnv[host]], pid } : null;
+  }
+  return null;
+}
+export function currentSession() {
+  let ps;
+  try { ps = execFileSync('ps', ['-A', '-o', 'pid=,ppid=,comm='], { encoding: 'utf8' }); } catch { return null; }
+  const table = new Map(ps.split('\n')
+    .flatMap(line => { const m = /^\s*(\d+)\s+(\d+)\s+(.*)$/.exec(line); return m ? [[Number(m[1]), { ppid: Number(m[2]), comm: m[3] }]] : []; }));
+  const found = findHost(table, process.env, process.pid);
+  // Resume needs the host's own directory; the shell may have changed directory since.
+  if (found) try { found.cwd = /^n(.+)$/m.exec(execFileSync('lsof', ['-a', '-p', String(found.pid), '-d', 'cwd', '-Fn'], { encoding: 'utf8' }))[1]; } catch { found.cwd = process.cwd(); }
+  return found;
 }
 
 export class HeadlessAdapter {

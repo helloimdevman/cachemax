@@ -1,12 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { EventEmitter } from 'node:events';
-import { CodexAdapter, transcript } from '../plugins/cachemax/scripts/adapters.mjs';
+import { CodexAdapter, transcript, findHost } from '../plugins/cachemax/skills/cachemax/scripts/adapters.mjs';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 const turn = { requestKey: 'request-one', source: 'keeper' };
+test('keep targets the nearest host, never an ID inherited from an outer host', () => {
+  const table = new Map([[40, { ppid: 30, comm: 'node' }], [30, { ppid: 20, comm: '/bin/sh' }], [20, { ppid: 10, comm: '/opt/x/bin/codex' }], [10, { ppid: 1, comm: 'claude' }]]);
+  const outer = { CLAUDE_CODE_SESSION_ID: 'claude-session' };
+  assert.deepEqual(findHost(table, { ...outer, CODEX_THREAD_ID: 'codex-thread' }, 40), { host: 'codex', sessionId: 'codex-thread', pid: 20 });
+  assert.equal(findHost(table, outer, 40), null);
+  assert.deepEqual(findHost(new Map([[40, { ppid: 9, comm: 'node' }], [9, { ppid: 1, comm: 'node' }]]), { ...outer, CLAUDE_PID: '9' }, 40), { host: 'claude', sessionId: 'claude-session', pid: 9 });
+  assert.equal(findHost(new Map([[40, { ppid: 1, comm: 'zsh' }]]), outer, 40), null);
+});
 test('Grok new account history is empty before its first session exists', () => {
   const original = process.env.GROK_HOME, root = mkdtempSync(join(tmpdir(), 'keeper-new-grok-'));
   try { process.env.GROK_HOME = root; assert.deepEqual(transcript('grok', 'fresh-session'), []); }

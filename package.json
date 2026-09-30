@@ -5,10 +5,10 @@
   "type": "module",
   "license": "MIT",
   "engines": { "node": ">=22.18.0" },
-  "bin": { "cachemax": "plugins/cachemax/scripts/cli.mjs" },
+  "bin": { "cachemax": "plugins/cachemax/skills/cachemax/scripts/cli.mjs" },
   "files": [".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json", "plugins/cachemax", "scripts", "tests", "README.md", "LICENSE", "docs"],
   "scripts": {
-    "start": "node plugins/cachemax/scripts/cli.mjs",
+    "start": "node plugins/cachemax/skills/cachemax/scripts/cli.mjs",
     "test": "node --test tests/*.test.mjs",
     "test:live": "node tests/live.mjs",
     "check": "node scripts/check.mjs"

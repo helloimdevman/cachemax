@@ -4,9 +4,9 @@ import { mkdtempSync, rmSync, readFileSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { Keeper, duration } from '../plugins/cachemax/scripts/core.mjs';
-import { Store, visibleHistory, atomicJSON } from '../plugins/cachemax/scripts/store.mjs';
-import { usage } from '../plugins/cachemax/scripts/adapters.mjs';
+import { Keeper, duration, settings } from '../plugins/cachemax/skills/cachemax/scripts/core.mjs';
+import { Store, visibleHistory, atomicJSON } from '../plugins/cachemax/skills/cachemax/scripts/store.mjs';
+import { usage } from '../plugins/cachemax/skills/cachemax/scripts/adapters.mjs';
 
 const flush = () => new Promise(resolve => setImmediate(resolve));
 const seconds = async (clock, n) => { for (let i = 0; i < n; i++) await clock.advance(1000); };
@@ -177,7 +177,7 @@ test('failed activation persistence cannot arm paid maintenance after an active 
 });
 test('bundled guard denies keeper tools and malformed state, grants nothing for user tools', () => {
   const home = mkdtempSync(join(tmpdir(), 'keeper-guard-')); const state = join(home, 'guard.json');
-  const run = input => spawnSync(process.execPath, ['plugins/cachemax/scripts/guard.mjs'], { input: JSON.stringify(input), encoding: 'utf8', env: { ...process.env, CACHEMAX_GUARD: state } });
+  const run = input => spawnSync(process.execPath, ['plugins/cachemax/skills/cachemax/scripts/guard.mjs'], { input: JSON.stringify(input), encoding: 'utf8', env: { ...process.env, CACHEMAX_GUARD: state } });
   try {
     atomicJSON(state, { source: 'keeper' });
     for (const tool_name of ['Bash', 'Read', 'mcp__example__run', 'apply_patch', 'Agent']) assert.equal(JSON.parse(run({ tool_name }).stdout).hookSpecificOutput.permissionDecision, 'deny');
@@ -199,6 +199,9 @@ test('user TTL sets the default interval; custom intervals must precede it', asy
   for (const ttl of ['0s', '25h', false, 0, -1, {}]) assert.throws(() => keeper.onFor('30m', { ttl }));
   assert.throws(() => keeper.onFor('30m', { ttl: '5m', interval: '5m' }));
   keeper.off();
+  assert.equal(settings(null).maxTicks, 5);
+  assert.equal(settings(null).durationMs, 18 * 60000);
+  assert.equal(settings(null, { ttl: '1h', maxTicks: 30 }).durationMs, 86400000);
 });
 test('token limit counts cached input once and stops the next keeper, not user turns', async () => {
   const { keeper, clock, calls } = setup({ measuredUsage: { inputTokens: 100, cacheReadTokens: 90, cacheWriteTokens: null, outputTokens: 5, reasoningTokens: 3, costUSD: null } });

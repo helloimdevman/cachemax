@@ -6,9 +6,9 @@ import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { once } from 'node:events';
 import { setTimeout as delay } from 'node:timers/promises';
-import { managed } from '../plugins/cachemax/scripts/server.mjs';
-import { visibleHistory } from '../plugins/cachemax/scripts/store.mjs';
-import { PROMPT } from '../plugins/cachemax/scripts/core.mjs';
+import { managed } from '../plugins/cachemax/skills/cachemax/scripts/server.mjs';
+import { visibleHistory } from '../plugins/cachemax/skills/cachemax/scripts/store.mjs';
+import { PROMPT } from '../plugins/cachemax/skills/cachemax/scripts/core.mjs';
 
 if (!process.argv.includes('--confirm-usage')) throw Error('Add --confirm-usage to authorize up to 3 model turns per selected host');
 const selected = process.argv.filter(x => ['claude', 'codex', 'grok'].includes(x));

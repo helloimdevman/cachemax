@@ -65,7 +65,9 @@ Grok uses its native wildcard deny rule for keeper requests; tools remain in
 the normal host interface. All managed routes disable or deny subagents.
 
 Native-to-managed takeover requires an explicit handoff after the native client
-exits. Local lock files coordinate cachemax instances; they cannot prevent
+exits. The skill's `keep` command automates only the wait: it starts nothing
+until the host process it was run from has exited.
+Local lock files coordinate cachemax instances; they cannot prevent
 an unrelated native client from ignoring that ownership contract. Automatic
 attachment to the current live native conversation is deliberately rejected.
 

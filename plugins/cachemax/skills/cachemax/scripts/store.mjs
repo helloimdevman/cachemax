@@ -24,6 +24,8 @@ export class Store {
     this.path = join(home, `${key}.json`);
     this.lockPath = join(home, `${key}.lock`);
     this.guardPath = join(home, `${key}.guard.json`);
+    this.waitPath = join(home, `${key}.wait.json`);
+    this.logPath = join(home, `${key}.log`);
     this.data = existsSync(this.path) ? JSON.parse(readFileSync(this.path, 'utf8')) : { host, sessionId, generation: 0, turns: [], events: [] };
     if (this.data.host !== host || this.data.sessionId !== sessionId || !Array.isArray(this.data.turns)) throw Error('Invalid session metadata');
   }

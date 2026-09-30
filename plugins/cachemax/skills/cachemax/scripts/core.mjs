@@ -11,6 +11,20 @@ export function duration(value) {
 }
 const clock = { now: () => performance.now(), wall: () => Date.now(), set: (fn, ms) => setTimeout(fn, ms), clear: id => clearTimeout(id) };
 const known = value => Number.isFinite(value) && value >= 0;
+// A null duration fits the request count, with one spare interval for the replies themselves.
+export function settings(value, { interval, maxTicks = 5, ttl = null, maxTokens = null, maxCostUSD = null } = {}, host) {
+  if (typeof ttl === 'string') ttl = duration(ttl);
+  if (ttl !== null && (!Number.isSafeInteger(ttl) || ttl < 1 || ttl > 86400000)) throw Error('TTL must be unknown or a positive duration up to 24h');
+  if (!Number.isInteger(maxTicks) || maxTicks < 1 || maxTicks > 120) throw Error('maxTicks must be an integer from 1 to 120');
+  const intervalMs = interval === undefined
+    ? ttl === null || ttl === 300000 ? 180000 : Math.max(1, Math.floor(ttl * 5 / 6)) : duration(interval);
+  const durationMs = value === null ? Math.min(86400000, intervalMs * (maxTicks + 1)) : duration(value);
+  if (ttl && intervalMs >= ttl) throw Error('Interval must be shorter than your selected TTL');
+  if (maxTokens !== null && (!Number.isSafeInteger(maxTokens) || maxTokens < 1)) throw Error('Token limit must be a positive integer');
+  if (maxCostUSD !== null && (!known(maxCostUSD) || maxCostUSD <= 0)) throw Error('Cost limit must be a positive number');
+  if (maxCostUSD !== null && host === 'codex') throw Error('Codex does not report cost; use a token or request limit');
+  return { durationMs, intervalMs, ttl, maxTicks, maxTokens, maxCostUSD };
+}
 const sum = values => values.every(known) ? values.reduce((a, b) => a + b, 0) : null;
 
 export class Keeper extends EventEmitter {
@@ -20,7 +34,7 @@ export class Keeper extends EventEmitter {
     this.store = store;
     this.clock = options.clock || clock;
     this.timeoutMs = options.timeoutMs || 120000;
-    this.state = { maxTicks: 10, ttlMs: null, maxTokens: null, maxCostUSD: null, ...store.data.activation, phase: 'off', generation: store.data.generation || 0, admittedTicks: 0, nextDueAt: null, cache: 'cache_unknown' };
+    this.state = { maxTicks: 5, ttlMs: null, maxTokens: null, maxCostUSD: null, ...store.data.activation, phase: 'off', generation: store.data.generation || 0, admittedTicks: 0, nextDueAt: null, cache: 'cache_unknown' };
     this.lastReportedCost = null;
     this.queue = [];
     this.active = null;
@@ -50,20 +64,13 @@ export class Keeper extends EventEmitter {
     return { host: this.store.data.host, sessionId: this.store.data.sessionId, ...this.state, admittedTicks: maintenance.submitted, enabled: this.enabled, maintenance, busy: this.active?.turn.source || null };
   }
   publish() { this.emit('status', this.status()); }
-  onFor(value = '30m', { interval, maxTicks = 10, ttl = null, maxTokens = null, maxCostUSD = null, requireNativeLoop = false } = {}) {
-    if (requireNativeLoop) throw Error('Native loop does not provide verified quiet display and dispatch guards. Use managed-quiet.');
+  onFor(value = '30m', options = {}) {
+    if (options.requireNativeLoop) throw Error('Native loop does not provide verified quiet display and dispatch guards. Use managed-quiet.');
     if (this.closed) throw Error('Session is closed');
     if (this.active?.turn.source === 'keeper') throw Error('Wait for the previous keeper request to finish');
     if (!this.adapter.capabilities.verifiedToolBlocking) throw Error('Keeper tool guard is unavailable; run doctor and review the guard setup');
-    if (typeof ttl === 'string') ttl = duration(ttl);
-    if (ttl !== null && (!Number.isSafeInteger(ttl) || ttl < 1 || ttl > 86400000)) throw Error('TTL must be unknown or a positive duration up to 24h');
-    const durationMs = duration(value), intervalMs = interval === undefined
-      ? ttl === null || ttl === 300000 ? 180000 : Math.max(1, Math.floor(ttl * 5 / 6)) : duration(interval);
-    if (!Number.isInteger(maxTicks) || maxTicks < 1 || maxTicks > 120) throw Error('maxTicks must be an integer from 1 to 120');
-    if (ttl && intervalMs >= ttl) throw Error('Interval must be shorter than your selected TTL');
-    if (maxTokens !== null && (!Number.isSafeInteger(maxTokens) || maxTokens < 1)) throw Error('Token limit must be a positive integer');
-    if (maxCostUSD !== null && (!known(maxCostUSD) || maxCostUSD <= 0)) throw Error('Cost limit must be a positive number');
-    if (maxCostUSD !== null && this.store.data.host === 'codex') throw Error('Codex does not report cost; use a token or request limit');
+    const { durationMs, intervalMs, ttl, maxTicks, maxTokens, maxCostUSD } = settings(value, options, this.store.data.host);
+    const { interval } = options;
     if (!this.store.owns()) throw Error('Session ownership lost');
     this.clearTimers();
     this.clock.clear(this.watchTimer);
