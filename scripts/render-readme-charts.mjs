@@ -29,29 +29,23 @@ const labels = {
     title: 'Cache on return · usage to keep it warm',
     subtitle: '2026-09-29 · 3-minute interval · two paired runs per host and duration',
     top: 'Top: without cachemax', bottom: 'Bottom: with cachemax', scale: 'Each bar: 0–100%',
-    usage: 'Added usage¹', away: ['5 min', '10 min', '15 min', '30 min', '1 h', '2 h'],
-    cost: 'CLI $ estimate', input: 'Input tokens', paused: 'Paused†',
-    foot: '¹ Maintenance + return after warm-up, vs without; range across completed pairs. CLI $ ≠ subscription bill.',
-    pause: '† Claude 2 h: paused after 31 completed requests. Return values shown for reference; excluded from ¹.',
-    bounds: 'Labels show the range of two runs; the lighter bar tip spans that range. These are observations, not hit probabilities.',
+    usage: 'Added usage', away: ['5 min', '10 min', '15 min', '30 min', '1 h', '2 h'],
+    cost: 'CLI $ estimate', input: 'Input tokens', paused: 'Paused',
   },
   ko: {
     title: '복귀 시 캐시 읽기 · 유지에 든 추가 사용량',
     subtitle: '2026-09-29 · 3분 간격 · 호스트·시간별 2쌍 비교',
     top: '위: cachemax 미사용', bottom: '아래: cachemax 사용', scale: '막대마다 0–100%',
-    usage: '추가 사용량¹', away: ['5분', '10분', '15분', '30분', '1시간', '2시간'],
-    cost: 'CLI 달러 추정치', input: '입력 토큰', paused: '중단†',
-    foot: '¹ 예열 후 유지 요청 + 복귀 요청을 미사용과 비교한 완료 쌍의 범위. CLI 달러 추정치는 구독 청구액과 다릅니다.',
-    pause: '† Claude 2시간: 유지 요청 31회 완료 후 중단. 복귀 값은 참고용으로 표시하고 ¹에서 제외했습니다.',
-    bounds: '숫자는 2회의 범위이며 막대 끝의 옅은 부분이 그 범위입니다. 관측된 입력 비율이지 캐시 적중 확률이 아닙니다.',
+    usage: '추가 사용량', away: ['5분', '10분', '15분', '30분', '1시간', '2시간'],
+    cost: 'CLI 달러 추정치', input: '입력 토큰', paused: '중단',
   },
 };
 
 function render(lang) {
   const l = labels[lang];
-  const svg = [`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 506" width="960" height="506" role="img" aria-labelledby="title desc" xml:lang="${lang}">
+  const svg = [`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 454" width="960" height="454" role="img" aria-labelledby="title desc" xml:lang="${lang}">
 <title id="title">${escape(l.title)}</title>
-<desc id="desc">${escape(`${l.subtitle}. ${l.top}. ${l.bottom}. ${l.bounds} ${l.foot} ${l.pause}`)}</desc>
+<desc id="desc">${escape(`${l.subtitle}. ${l.top}. ${l.bottom}.`)}</desc>
 <!-- Generated from docs/idle-sweep-2026-09-29.json by scripts/render-readme-charts.mjs. -->
 <style>
 text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:#1f2328;font-variant-numeric:tabular-nums}
@@ -92,7 +86,7 @@ text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
     });
     svg.push(`<line x1="20" x2="940" y1="${y + 80}" y2="${y + 80}" class="rule"/>`);
   });
-  svg.push(text(20, 452, l.foot, 13, 'muted'), text(20, 473, l.pause, 13, 'muted'), text(20, 494, l.bounds, 13, 'muted'), '</svg>');
+  svg.push('</svg>');
   return svg.join('\n') + '\n';
 }
 

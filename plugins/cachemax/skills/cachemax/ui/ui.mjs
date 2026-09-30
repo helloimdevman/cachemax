@@ -27,7 +27,6 @@ function renderStatus(s) {
   status = s;
   ttlChanged();
   $('max-cost').disabled = s.host === 'codex';
-  $('cost-help').textContent = s.host === 'codex' ? 'Codex does not report cost. Use the token and request limits.' : 'CLI cost estimates may differ from billing. Claude needs consecutive cost reports; a missing baseline pauses a cost-limited run.';
   $('host').textContent = s.host;
   $('session').textContent = s.sessionId;
   $('phase').textContent = { off: 'Off', armed: 'Waiting', heartbeat: 'Maintenance', yielding: 'Returning to you', user_turn: 'Working', paused: 'Paused', stopped: 'Off' }[s.phase] || s.phase;
@@ -41,7 +40,7 @@ function renderStatus(s) {
   $('outcomes').textContent = `${m.successful} / ${m.failed} / ${m.interrupted}`;
   $('total-tokens').textContent = amount(m.totalTokens);
   $('total-cost').textContent = m.costUSD === null ? 'Unknown' : `$${m.costUSD.toFixed(6)}`;
-  $('usage-detail').textContent = `Input ${amount(m.inputTokens)} (cached reads ${amount(m.cacheReadTokens)}, cache writes ${amount(m.cacheWriteTokens)}) · output ${amount(m.outputTokens)}. Usage appears after completion.`;
+  $('usage-detail').textContent = `Input ${amount(m.inputTokens)} (cached reads ${amount(m.cacheReadTokens)}, cache writes ${amount(m.cacheWriteTokens)}) · output ${amount(m.outputTokens)}`;
   $('active-settings').textContent = s.durationMs ? `${s.enabled ? 'Enabled' : 'Last activation'} · duration ${span(s.durationMs)} · TTL ${s.ttlMs ? span(s.ttlMs) + ' (selected)' : 'unknown'} · interval ${span(s.intervalMs)} · token threshold ${s.maxTokens ?? 'none'} · cost threshold ${s.maxCostUSD === null ? 'none' : '$' + s.maxCostUSD}` : 'Off · no requests scheduled';
   $('stop-reason').textContent = s.warning || ({ token_limit: 'Stopped: token threshold reached.', cost_limit: 'Stopped: cost threshold reached.', tick_limit: 'Stopped: request limit reached.', expired: 'Stopped: duration ended.', manual: 'Turned off.', shutdown: 'Runner stopped.' }[s.stopReason] || '');
 }

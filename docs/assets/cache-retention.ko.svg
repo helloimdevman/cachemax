@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 506" width="960" height="506" role="img" aria-labelledby="title desc" xml:lang="ko">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 454" width="960" height="454" role="img" aria-labelledby="title desc" xml:lang="ko">
 <title id="title">복귀 시 캐시 읽기 · 유지에 든 추가 사용량</title>
-<desc id="desc">2026-09-29 · 3분 간격 · 호스트·시간별 2쌍 비교. 위: cachemax 미사용. 아래: cachemax 사용. 숫자는 2회의 범위이며 막대 끝의 옅은 부분이 그 범위입니다. 관측된 입력 비율이지 캐시 적중 확률이 아닙니다. ¹ 예열 후 유지 요청 + 복귀 요청을 미사용과 비교한 완료 쌍의 범위. CLI 달러 추정치는 구독 청구액과 다릅니다. † Claude 2시간: 유지 요청 31회 완료 후 중단. 복귀 값은 참고용으로 표시하고 ¹에서 제외했습니다.</desc>
+<desc id="desc">2026-09-29 · 3분 간격 · 호스트·시간별 2쌍 비교. 위: cachemax 미사용. 아래: cachemax 사용.</desc>
 <!-- Generated from docs/idle-sweep-2026-09-29.json by scripts/render-readme-charts.mjs. -->
 <style>
 text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;fill:#1f2328;font-variant-numeric:tabular-nums}
@@ -10,7 +10,7 @@ text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 </style>
 <text x="20" y="29" font-size="23" class="bold" text-anchor="start">복귀 시 캐시 읽기 · 유지에 든 추가 사용량</text>
 <text x="20" y="53" font-size="14" class="muted" text-anchor="start">2026-09-29 · 3분 간격 · 호스트·시간별 2쌍 비교</text>
-<text x="20" y="90" font-size="14" class="bold" text-anchor="start">추가 사용량¹</text>
+<text x="20" y="90" font-size="14" class="bold" text-anchor="start">추가 사용량</text>
 <rect x="224" y="77" width="16" height="5" class="off"/>
 <text x="248" y="84" font-size="13" class="" text-anchor="start">위: cachemax 미사용</text>
 <rect x="464" y="77" width="16" height="5" class="on"/>
@@ -75,17 +75,17 @@ text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 <rect x="688" y="184" width="96" height="5" class="track"/>
 <rect x="688" y="184" width="94.523" height="5" class="on"/>
 <rect x="782.523" y="184" width="1.401" height="5" class="on" opacity=".4"/></g>
-<g><title>Claude Code · 2시간 · 위: cachemax 미사용: 20.7–20.8% · 중단†</title>
+<g><title>Claude Code · 2시간 · 위: cachemax 미사용: 20.7–20.8% · 중단</title>
 <text x="852" y="140" font-size="14" class="paused" text-anchor="middle">20.7–20.8%</text>
 <rect x="804" y="148" width="96" height="5" class="track"/>
 <rect x="804" y="148" width="19.859" height="5" class="paused"/>
 <rect x="823.859" y="148" width="0.067" height="5" class="paused" opacity=".4"/></g>
-<g><title>Claude Code · 2시간 · 아래: cachemax 사용: 97.4–98.2% · 중단†</title>
+<g><title>Claude Code · 2시간 · 아래: cachemax 사용: 97.4–98.2% · 중단</title>
 <text x="852" y="176" font-size="14" class="paused" text-anchor="middle">97.4–98.2%</text>
 <rect x="804" y="184" width="96" height="5" class="track"/>
 <rect x="804" y="184" width="93.484" height="5" class="paused"/>
 <rect x="897.484" y="184" width="0.782" height="5" class="paused" opacity=".4"/></g>
-<text x="852" y="205" font-size="12" class="paused" text-anchor="middle">중단†</text>
+<text x="852" y="205" font-size="12" class="paused" text-anchor="middle">중단</text>
 <line x1="20" x2="940" y1="220" y2="220" class="rule"/>
 <text x="20" y="250" font-size="18" class="bold" text-anchor="start">Codex</text>
 <text x="20" y="275" font-size="13" class="muted" text-anchor="start">입력 토큰</text>
@@ -215,7 +215,4 @@ text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 <rect x="804" y="404" width="95.782" height="5" class="on"/>
 <rect x="899.782" y="404" width="0.049" height="5" class="on" opacity=".4"/></g>
 <line x1="20" x2="940" y1="440" y2="440" class="rule"/>
-<text x="20" y="452" font-size="13" class="muted" text-anchor="start">¹ 예열 후 유지 요청 + 복귀 요청을 미사용과 비교한 완료 쌍의 범위. CLI 달러 추정치는 구독 청구액과 다릅니다.</text>
-<text x="20" y="473" font-size="13" class="muted" text-anchor="start">† Claude 2시간: 유지 요청 31회 완료 후 중단. 복귀 값은 참고용으로 표시하고 ¹에서 제외했습니다.</text>
-<text x="20" y="494" font-size="13" class="muted" text-anchor="start">숫자는 2회의 범위이며 막대 끝의 옅은 부분이 그 범위입니다. 관측된 입력 비율이지 캐시 적중 확률이 아닙니다.</text>
 </svg>
